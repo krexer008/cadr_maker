@@ -1,42 +1,27 @@
 import {
-    Position,
-    Size,
-    ColorType,
-    Base64,
-    Link,
-    Block,
     TextBlock,
     ImageBlock,
-    GraphicBlock,
+    ArtBlock,
     CanvasType,
     EditorType,
+    Template,
     Hystory
 } from "../type/type.js";
 
-let positionValue: Position;
-let sizeValue: Size;
-let colorValue: ColorType;
-let base64Value: Base64;
-let linkValue: Link;
-let blockValue: Block;
-let textValue: TextBlock;
+let textBlockValue: TextBlock;
 let imageBlockValue: ImageBlock;
-let graphicBlockValue: GraphicBlock;
+let artBlockValue: ArtBlock;
 let canvasValue: CanvasType;
 let editorValue: EditorType;
+let templateValue: Template;
 let hystoryValue: Hystory;
 
 export {
-    positionValue,
-    sizeValue,
-    colorValue,
-    base64Value,
-    linkValue,
-    blockValue,
-    textValue,
+    textBlockValue,
     imageBlockValue,
-    graphicBlockValue,
+    artBlockValue,
     canvasValue,
     editorValue,
-    hystoryValue
+    hystoryValue,
+    templateValue
 };
