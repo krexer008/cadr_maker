@@ -6,7 +6,7 @@ import {
     EditorType,
     Template,
     Hystory
-} from "../type/type.js";
+} from '../type/type.js';
 
 const textBlockHalf: TextBlock = {
     id: '',
@@ -14,7 +14,7 @@ const textBlockHalf: TextBlock = {
     value: 'half',
     fontSize: 16,
     fontFamily: 'Arial',
-    color: { color: "Red" },
+    color: { color: 'Red' },
     italic: false,
     bold: false,
     size: {
@@ -38,7 +38,7 @@ const imageBlockLink: ImageBlock = {
         yPosition: 100
     },
     type: 'image',
-    filtr: { color: "Red" },
+    filtr: { color: 'Red' },
     background: { type: 'link', data: '' }
 };
 
@@ -54,8 +54,8 @@ const artBlockNote: ArtBlock = {
         xPosition: 300,
         yPosition: 130
     },
-    background: { color: "White" },
-    borderStyle: "solid",
+    background: { color: 'White' },
+    borderStyle: 'solid',
     borederSize: 5,
     borderColor: { color: 'Red' }
 };
@@ -67,8 +67,9 @@ const canvas1: CanvasType = {
         width: 80,
         height: 40
     },
-    filtr: { color: "Yellow" },
-    background: { link: "" }
+    filtr: { color: 'Yellow' },
+    background: { type: 'link',
+    data: '' }
 };
 
 const editor1: EditorType = {
@@ -87,8 +88,9 @@ const template1: Template = {
             width: 0,
             height: 0
         },
-        filtr: { color: "" },
-        background: { link: "" }
+        filtr: { color: '' },
+        background: { type: 'link',
+        data: '' }
     }
 };
 

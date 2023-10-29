@@ -10,7 +10,7 @@ type Size = {
     width: number
 };
 
-type Image = {
+type ImageType= {
     type: "link" | "base64"
     data: string
 }
@@ -40,13 +40,13 @@ type TextBlock = Block & {
 type ImageBlock = Block & {
     type: 'image',
     filtr: ColorType,
-    background: Image
+    background:ImageType
 };
 
 type ArtBlock = Block & {
     type: 'art',
     data: string,
-    background: ColorType | Image,
+    background: ColorType |ImageType,
     borderStyle: "solid" | "dotted" | "dashed" | "double",
     borederSize: number,
     borderColor: ColorType | "";
@@ -57,7 +57,7 @@ type CanvasType = {
     objects: Array<TextBlock | ImageBlock | ArtBlock>,
     size: Size,
     filtr: ColorType,
-    background: ColorType | Base64 | Link
+    background: ColorType |ImageType
 };
 
 type EditorType = {
@@ -78,7 +78,7 @@ type Hystory = {
 export type {
     Position,
     Size,
-    Image,
+   ImageType,
     ColorType,
     Block,
     TextBlock,

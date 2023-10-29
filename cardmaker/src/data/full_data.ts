@@ -33,7 +33,7 @@ const imageBlockLink: ImageBlock = {
     filtr: { color: "Red" },
     background: {
         type: 'link',
-        data: ''
+        data: 'https://catherineasquithgallery.com/uploads/posts/2021-03/1614587290_31-p-kartinka-telefon-na-belom-fone-33.png'
     },
     size: {
         width: 240,
@@ -71,7 +71,8 @@ const canvas1: CanvasType = {
         height: 40
     },
     filtr: { color: "Yellow" },
-    background: { link: "" }
+    background: { type: 'link',
+    data : "'https://catherineasquithgallery.com/uploads/posts/2021-03/1614587290_31-p-kartinka-telefon-na-belom-fone-32.png'" }
 };
 
 const editor1: EditorType = {
@@ -91,7 +92,8 @@ const template1: Template = {
             height: 0
         },
         filtr: { color: "" },
-        background: { link: "" }
+        background: { type: 'link',
+        data: "https://cs14.pikabu.ru/images/community/1426/169712059939710739.webp" }
     }
 };
 
