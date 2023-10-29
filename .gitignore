@@ -1,6 +1,6 @@
 $ cat .gitignore
 .vscode
 cardmaker/node_modules
+cardmaker/my-app
 cardmaker/package-lock.json
-cardmaker/package.json
 bin

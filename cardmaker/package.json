@@ -1,0 +1,32 @@
+{
+  "name": "cardmaker",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "check": "npx eslint . --fix"
+  },
+  "author": "Fedor Yamolkin",
+  "license": "ISC",
+  "dependencies": {
+    "@types/jest": "^29.5.6",
+    "@types/node": "^20.8.9",
+    "@types/react": "^18.2.33",
+    "@types/react-dom": "^18.2.14"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.9.0",
+    "@typescript-eslint/parser": "^6.9.0",
+    "eslint": "^8.52.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "prettier": "^3.0.3",
+    "typescript": "^5.2.2"
+  },
+  "description": ""
+}
