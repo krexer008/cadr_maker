@@ -1,7 +1,11 @@
 import React from 'react'
-import s from './Work_space.module.css'
+import css from './Work_space.module.css'
 
 function Work_space() {
-  return <div className="workspace">Workspace</div>
+  return (
+    <div className={css.workspace}>
+      <div>Workspace</div>
+    </div>
+  )
 }
 export default Work_space

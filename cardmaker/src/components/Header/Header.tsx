@@ -1,10 +1,11 @@
 import React from 'react'
-import s from './Header.module.css'
+import css from './Header.module.css'
 import Menu from './Menu/Menu'
 
 function Header() {
   return (
-    <div className={s.header}>
+    <div className={css.header}>
+      <div className={css.logo}>Card Maker</div>
       <Menu />
     </div>
   )
