@@ -4,7 +4,7 @@ import Menu from './Menu/Menu'
 
 function Header() {
   return (
-    <div className="header">
+    <div className={s.header}>
       <Menu />
     </div>
   )

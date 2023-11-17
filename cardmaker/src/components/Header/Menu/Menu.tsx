@@ -8,7 +8,7 @@ import Exit from './Exit/Exit'
 
 function Menu() {
   return (
-    <div className="menu">
+    <div className={s.menu}>
       <New_project />
       <Save_project />
       <Save_as_project />

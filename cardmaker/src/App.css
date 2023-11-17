@@ -1,4 +1,5 @@
 .app-wrapper {
+  margin: 0 auto;
   display: grid;
   height: 100vh;
   
@@ -11,10 +12,7 @@
   grid-gap: 10px
 }
 
-.header {
-  grid-area: hd;
-  background-color: green;
-}
+
 
 .sidebar {
   grid-area: sb;
