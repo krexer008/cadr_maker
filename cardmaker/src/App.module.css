@@ -1,13 +1,10 @@
-.app_wrapper {
-  margin: 0 auto;
-  display: grid;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.app {
+  width: 100vw;
   height: 100vh;
-
-  grid-template-areas:
-    "hd hd"
-    "sb ws";
-
-  grid-template-rows: 60px 1fr;
-  grid-template-columns: 3fr 10fr;
-  grid-gap: 10px
 }

@@ -9,6 +9,7 @@ import Exit from './Exit/Exit'
 function Menu() {
   return (
     <div className={css.menu}>
+      
       <New_project />
       <Save_project />
       <Save_as_project />
@@ -18,3 +19,5 @@ function Menu() {
   )
 }
 export default Menu
+
+//<Button text={'File menu'} onClick={() => alert('menu clicked')} />

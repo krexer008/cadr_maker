@@ -1,11 +1,11 @@
 import React from 'react'
-import css from './Work_space.module.css'
+import css from './Workspace.module.css'
 
-function Work_space() {
+function Workspace() {
   return (
     <div className={css.workspace}>
       <div>Workspace</div>
     </div>
   )
 }
-export default Work_space
+export default Workspace

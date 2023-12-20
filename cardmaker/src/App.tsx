@@ -1,15 +1,15 @@
 import React from 'react'
 import css from './App.module.css'
 import Header from './components/Header/Header'
-import Sidebar from './components/Sidebar/Sidebar'
-import Work_space from './components/Work_space/Work_space'
+import Toolbar from './components/Toolbar/Toolbar'
+import Workspace from './components/Workspace/Workspace'
 
 const App = () => {
   return (
-    <div className={css.app_wrapper}>
+    <div className={css.app}>
       <Header />
-      <Sidebar />
-      <Work_space />
+      <Toolbar />
+      <Workspace />
     </div>
   )
 }

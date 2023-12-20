@@ -3,11 +3,11 @@ import ArtBlock from '../ArtBlock/ArtBlock'
 import Canvas from '../Canvas/Canvas'
 import ImageBlock from '../ImageBlock/ImageBlock'
 import TextBlock from '../TextBlock/TextBlock'
-import css from './Sidebar.module.css'
+import css from './Toolbar.module.css'
 
-function Sidebar() {
+function Toolbar() {
   return (
-    <div className={css.sidebar}>
+    <div className={css.toolbar}>
       <ArtBlock />
       <ImageBlock />
       <TextBlock />
@@ -15,4 +15,4 @@ function Sidebar() {
     </div>
   )
 }
-export default Sidebar
+export default Toolbar
