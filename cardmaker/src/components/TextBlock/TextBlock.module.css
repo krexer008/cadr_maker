@@ -1,0 +1,4 @@
+.textBlock {
+  grid-area: sb;
+  background-color: red;
+}

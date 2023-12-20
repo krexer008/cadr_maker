@@ -1,14 +1,14 @@
 import {
-  TextBlock,
-  ImageBlock,
-  ArtBlock,
+  TextBlockType,
+  ImageBlockType,
+  ArtBlockType,
   CanvasType,
   EditorType,
   Template,
   Hystory,
 } from '../type/type.js'
 
-const textBlockHalf: TextBlock = {
+const textBlockHalf: TextBlockType = {
   id: '',
   type: 'text',
   value: 'half',
@@ -27,7 +27,7 @@ const textBlockHalf: TextBlock = {
   },
 }
 
-const imageBlockLink: ImageBlock = {
+const imageBlockLink: ImageBlockType = {
   id: 'img1',
   size: {
     width: 240,
@@ -42,7 +42,7 @@ const imageBlockLink: ImageBlock = {
   background: { type: 'link', data: '' },
 }
 
-const artBlockNote: ArtBlock = {
+const artBlockNote: ArtBlockType = {
   id: 'note',
   type: 'art',
   data: '',

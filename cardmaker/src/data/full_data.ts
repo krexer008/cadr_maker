@@ -1,14 +1,14 @@
 import {
-  TextBlock,
-  ImageBlock,
-  ArtBlock,
+  TextBlockType,
+  ImageBlockType,
+  ArtBlockType,
   CanvasType,
   EditorType,
   Template,
   Hystory,
 } from '../type/type.js'
 
-const textBlockWazzap: TextBlock = {
+const textBlockWazzap: TextBlockType = {
   id: 'text1',
   size: {
     width: 52,
@@ -27,7 +27,7 @@ const textBlockWazzap: TextBlock = {
   bold: false,
 }
 
-const imageBlockLink: ImageBlock = {
+const imageBlockLink: ImageBlockType = {
   id: 'img1',
   type: 'image',
   filtr: { color: 'Red' },
@@ -45,7 +45,7 @@ const imageBlockLink: ImageBlock = {
   },
 }
 
-const artBlockNote: ArtBlock = {
+const artBlockNote: ArtBlockType = {
   id: 'note',
   type: 'art',
   data: '',

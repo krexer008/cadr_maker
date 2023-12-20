@@ -1,0 +1,4 @@
+.imageblock {
+  grid-area: sb;
+  background-color: red;
+}

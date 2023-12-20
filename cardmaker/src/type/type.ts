@@ -27,7 +27,7 @@ type Block = {
   position: Position
 }
 
-type TextBlock = Block & {
+type TextBlockType = Block & {
   type: 'text'
   value: string
   fontSize: number
@@ -37,13 +37,13 @@ type TextBlock = Block & {
   bold: boolean
 }
 
-type ImageBlock = Block & {
+type ImageBlockType = Block & {
   type: 'image'
   filtr: ColorType
   background: ImageType
 }
 
-type ArtBlock = Block & {
+type ArtBlockType = Block & {
   type: 'art'
   data: string
   background: ColorType | ImageType
@@ -54,7 +54,7 @@ type ArtBlock = Block & {
 
 type CanvasType = {
   name: string
-  objects: Array<TextBlock | ImageBlock | ArtBlock>
+  objects: Array<TextBlockType | ImageBlockType | ArtBlockType>
   size: Size
   filtr: ColorType
   background: ColorType | ImageType
@@ -82,9 +82,9 @@ export type {
   ImageType,
   ColorType,
   Block,
-  TextBlock,
-  ImageBlock,
-  ArtBlock,
+  TextBlockType,
+  ImageBlockType,
+  ArtBlockType,
   CanvasType,
   EditorType,
   Template,
