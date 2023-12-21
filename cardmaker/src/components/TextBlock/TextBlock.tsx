@@ -1,16 +1,12 @@
-import React from 'react'
-import HeaderButton from '../Header/HeaderButton/HeaderButton'
-import css from './TextBlock.module.css'
+import React from "react";
+import HeaderButton from "../Header/HeaderButton/HeaderButton";
+import css from "./TextBlock.module.css";
 
 function TextBlock() {
-  return (
-    <div className={css.textBlock}>
-      <HeaderButton
-        text={'Image TextBlock'}
-        onClick={() => alert('TextBlock clicked')}
-      />
-      <div></div>
-    </div>
-  )
+    return (
+        <div className={css.textBlock}>
+            <div></div>
+        </div>
+    );
 }
-export default TextBlock
+export default TextBlock;

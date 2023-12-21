@@ -1,17 +1,16 @@
-import React from 'react'
-import css from './HeaderButton.module.css'
+import React from "react";
 
 type headerButtonProps = {
-  handler: () => void
-  icon: string
-  alt: string
-}
+    handler: () => void; //func
+    icon: string; //source
+    alt: string; // button name
+};
 
 function HeaderButton({ handler, icon, alt }: headerButtonProps) {
-  return (
-    <button className={css.button} onClick={handler}>
-      <img src={icon} alt={alt} />
-    </button>
-  )
+    return (
+        <button onClick={handler}>
+            <img src={icon} alt={alt} />
+        </button>
+    );
 }
-export default HeaderButton
+export default HeaderButton;
