@@ -1,11 +1,14 @@
 import React from 'react'
-import Button from '../Sidebar_button/Button'
+import HeaderButton from '../Header/HeaderButton/HeaderButton'
 import css from './ImageBlock.module.css'
 
 function ImageBlock() {
   return (
     <div className={css.imageblock}>
-      <Button text={'Image Button'} onClick={() => alert('Image clicked')} />
+      <HeaderButton
+        text={'Image Button'}
+        onClick={() => alert('Image clicked')}
+      />
       <div></div>
     </div>
   )

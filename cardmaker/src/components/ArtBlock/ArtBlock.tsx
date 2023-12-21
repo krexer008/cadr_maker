@@ -1,13 +1,13 @@
 import React from 'react'
-import Button from '../Sidebar_button/Button'
+import { ArtBlockType, ArtName } from '../../type/type'
+import HeaderButton from '../Header/HeaderButton/HeaderButton'
 import css from './ArtBlock.module.css'
 
+type artBlockProps = {
+  block: ArtBlockType
+}
+
 function ArtBlock() {
-  return (
-    <div className={css.sidebar}>
-      <Button text={'ArtBlockButton'} onClick={() => alert('button clicked')} />
-      <div></div>
-    </div>
-  )
+  return <div className={css.artblock} id=""></div>
 }
 export default ArtBlock
