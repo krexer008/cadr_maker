@@ -1,4 +1,6 @@
 .workspace {
-    grid-area: ws;
-    background-color: blue;
+  height: calc(100vh - 70px);
+  background-color: black;
+  position: relative;
+  z-index: 0;
   }
