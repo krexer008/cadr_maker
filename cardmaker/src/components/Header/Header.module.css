@@ -16,12 +16,12 @@
   border-radius: 10px;
   border: 2px outset #575770;
   text-align: center;
-  background-color: goldenrod;
+  background-color: rebeccapurple;
 }
 
 .logo span {
   font: bold 150% serif;
-  color: #00f;
+  color: yellowgreen;
 }
 
 .header button {
