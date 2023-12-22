@@ -1,23 +1,47 @@
-// Basic types
+enum ArtName {
+    arrow,
+    circle,
+    line,
+    quote,
+    rectangle,
+}
 
+enum TypeBlock {
+    art,
+    text,
+    image,
+    canvas,
+}
 type Position = {
     xPosition: number;
     yPosition: number;
 };
-
 type Size = {
     height: number;
     width: number;
 };
 
 type ImageType = {
-    type: "link" | "base64";
+    type: "link" | "base64" | "path" | "";
     data: string;
 };
 
 type ColorType = {
-    color: string;
+    r: number;
+    g: number;
+    b: number;
+    a: number
 };
+
+type TextType = {
+    value: string;
+    fontSize: number;
+    fontFamily: string;
+    color: ColorType;
+    italic: boolean;
+    bold: boolean;
+    decoration: boolean;
+}
 
 // Object type
 
@@ -28,24 +52,24 @@ type Block = {
 };
 
 type TextBlockType = Block & {
-    type: "text";
-    value: string;
-    fontSize: number;
-    fontFamily: string;
-    color: ColorType;
-    italic: boolean;
-    bold: boolean;
+    textPosition:{
+        justifyContent: "center"| "start"|"end";
+        alignItems: "center"| "start"|"end";
+    };
+    type: TypeBlock.text;
+    text: Text;
+    backgroundImage: ImageType;
+    backgroundColor: ColorType;
 };
 
 type ImageBlockType = Block & {
-    type: "image";
+    type: TypeBlock.image;
     filtr: ColorType;
-    background: ImageType;
 };
 
 type ArtBlockType = Block & {
-    type: "art";
-    data: string;
+    type: TypeBlock.art;
+    artName: ArtName;
     background: ColorType | ImageType;
     borderStyle: "solid" | "dotted" | "dashed" | "double";
     borederSize: number;
