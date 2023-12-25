@@ -1,9 +1,9 @@
 enum ArtName {
-    Arrow,
-    Circle,
-    Line,
-    Quote,
-    Rectangle,
+    arrow,
+    circle,
+    line,
+    quote,
+    rectangle,
 }
 
 enum TypeBlock {
@@ -38,7 +38,7 @@ type TextStyle = {
     fontFamily: string,
     fontWeight: number,
     fontStyle: "normal" | "italic",
-    textDecoration: "blink" | "line-through" | "overline" | "underline" | "none" | "inherit",
+    textDecoration: "underline" | "none",// | "blink" | "line-through" | "overline" | "inherit",
 };
 
 // Object type
@@ -83,7 +83,7 @@ type ArtBlockType = Block & {
 
 type CanvasType = {
     id: string,
-    type: TypeBlock.canvas,
+    type: TypeBlock.Canvas,
     size: Size,
     filtr: ColorType,
     backgroundImage: ImageType,
