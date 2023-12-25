@@ -1,4 +1,10 @@
-.imageblock {
-  grid-area: sb;
-  background-color: red;
+.image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.image img {
+  width: 100%;
+  height: 100%;
 }

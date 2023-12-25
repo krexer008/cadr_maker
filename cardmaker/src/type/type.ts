@@ -1,116 +1,125 @@
 enum ArtName {
-    arrow,
-    circle,
-    line,
-    quote,
-    rectangle,
+    Arrow,
+    Circle,
+    Line,
+    Quote,
+    Rectangle,
 }
 
 enum TypeBlock {
-    art,
-    text,
-    image,
-    canvas,
+    Art,
+    Text,
+    Image,
+    Canvas,
 }
 type Position = {
-    xPosition: number;
-    yPosition: number;
+    left: number,
+    top: number,
 };
 type Size = {
-    height: number;
-    width: number;
+    width: number,
+    height: number,
 };
 
 type ImageType = {
-    type: "link" | "base64" | "path" | "";
-    data: string;
+    type: "link" | "base64" | "path" | "",
+    data: string,
 };
 
 type ColorType = {
-    r: number;
-    g: number;
-    b: number;
-    a: number
+    r: number,
+    g: number,
+    b: number,
+    a: number,
 };
 
-type TextType = {
-    value: string;
-    fontSize: number;
-    fontFamily: string;
-    color: ColorType;
-    italic: boolean;
-    bold: boolean;
-    decoration: boolean;
-}
+type TextStyle = {
+    fontSize: number,
+    fontFamily: string,
+    fontWeight: number,
+    fontStyle: "normal" | "italic",
+    textDecoration: "blink" | "line-through" | "overline" | "underline" | "none" | "inherit",
+};
 
 // Object type
 
 type Block = {
-    id: string;
-    size: Size;
-    position: Position;
+    id: string,
+    size: Size,
+    position: Position,
 };
 
 type TextBlockType = Block & {
-    textPosition:{
-        justifyContent: "center"| "start"|"end";
-        alignItems: "center"| "start"|"end";
+    type: TypeBlock.Text,
+    value: string,
+    textStyle: TextStyle,
+    color: ColorType,
+    /*
+    textPosition: {
+        justifyContent: "center" | "start" | "end";
+        alignItems: "center" | "start" | "end";
     };
-    type: TypeBlock.text;
-    text: Text;
     backgroundImage: ImageType;
     backgroundColor: ColorType;
+    */
 };
 
 type ImageBlockType = Block & {
-    type: TypeBlock.image;
-    filtr: ColorType;
+    type: TypeBlock.Image,
+    image: ImageType,
+    color: ColorType,
 };
 
 type ArtBlockType = Block & {
-    type: TypeBlock.art;
-    artName: ArtName;
-    background: ColorType | ImageType;
+    type: TypeBlock.Art,
+    artName: ArtName,
+    background: ColorType,
+    borderColor: ColorType,
+    /*
     borderStyle: "solid" | "dotted" | "dashed" | "double";
-    borederSize: number;
-    borderColor: ColorType | "";
+    borederSize: number,
+    */
 };
 
 type CanvasType = {
-    name: string;
-    objects: Array<TextBlockType | ImageBlockType | ArtBlockType>;
-    size: Size;
-    filtr: ColorType;
-    background: ColorType | ImageType;
-};
-
-type Hystory = {
-    //
+    id: string,
+    type: TypeBlock.canvas,
+    size: Size,
+    filtr: ColorType,
+    backgroundImage: ImageType,
+    backgroundColor: ColorType,
 };
 
 type Template = {
-    id: string;
-    canvas: CanvasType;
+    id: string,
+    canvas: CanvasType,
+    objects: Array<TextBlockType | ImageBlockType | ArtBlockType>,
+};
+
+type Hystory = {
+    command: string,
+    time: number,
 };
 
 type EditorType = {
-    canvas: CanvasType;
-    selectObject: Array<string>;
-    hystory: Array<Hystory>;
-    template: Array<Template>;
+    canvas: CanvasType,
+    selectObject: Array<string>,
+    hystory: Array<Hystory>,
+    template: Array<Template>,
 };
 
 export type {
-    Position,
-    Size,
-    ImageType,
-    ColorType,
-    Block,
     TextBlockType,
     ImageBlockType,
     ArtBlockType,
-    CanvasType,
-    EditorType,
     Template,
+    CanvasType,
     Hystory,
+    EditorType,
+    ColorType,
+    Size,
+    Position,
+    ImageType,
 };
+
+export { ArtName, TypeBlock };

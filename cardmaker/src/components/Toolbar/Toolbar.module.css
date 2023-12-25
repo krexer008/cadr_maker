@@ -1,25 +1,12 @@
-.tools {
-  position: absolute;
-  width: 245px;
+.toolbar {
+  display: flex;
+  width: 250px;
   min-width: 100px;
-/*
-  height: 550px;
-*/
-  height: calc(100% - 110px);
-
-  left: 1vw;
-  top: 80px;
-
+  height: 600px;
   background-color: darkslategray;
-  border-bottom: 2px outset #575770;
-  border-right: 2px outset #575770;
   border-radius: 10px;
-
   border: 2px outset #575770;
-  display: flex;
 
-  z-index: 1;
-  display: flex;
   flex-direction: column;
   align-items: center;
   color: #cb9b51;

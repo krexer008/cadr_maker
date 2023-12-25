@@ -1,11 +1,30 @@
 import React from "react";
-import HeaderButton from "../Header/HeaderButton/HeaderButton";
 import css from "./TextBlock.module.css";
+import { TextBlockType } from "../../type/type";
+import GetRGBA from "../../utils/getRGBA";
 
-function TextBlock() {
+type textBlockProps = {
+    textBlock: TextBlockType,
+};
+
+function TextBlock({ textBlock }: textBlockProps) {
     return (
-        <div className={css.textBlock}>
-            <div></div>
+        <div
+            className={css.text}
+            id={textBlock.id}
+            style={{
+                ...textBlock.size,
+                ...textBlock.position,
+            }}
+        >
+            <p
+                style={{
+                    ...textBlock.textStyle,
+                    color: GetRGBA(textBlock.color),
+                }}
+            >
+                {textBlock.value}
+            </p>
         </div>
     );
 }

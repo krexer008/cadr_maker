@@ -1,4 +1,8 @@
-.textBlock {
-  grid-area: sb;
-  background-color: red;
+.text {
+  position: absolute;
+  box-sizing: content-box;
+}
+
+.text p {
+  position: absolute;
 }

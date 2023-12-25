@@ -1,11 +1,22 @@
 import React from "react";
-import HeaderButton from "../Header/HeaderButton/HeaderButton";
 import css from "./ImageBlock.module.css";
+import { ImageBlockType } from "../../type/type";
 
-function ImageBlock() {
+type ImageBlockProps = {
+    imageBlock: ImageBlockType,
+};
+
+function ImageBlock({ imageBlock }: ImageBlockProps) {
     return (
-        <div className={css.imageblock}>
-            <div></div>
+        <div
+            className={css.image}
+            id={imageBlock.id}
+            style={{
+                ...imageBlock.size,
+                ...imageBlock.position,
+            }}
+        >
+            <img src={imageBlock.image.data} alt="img"></img>
         </div>
     );
 }

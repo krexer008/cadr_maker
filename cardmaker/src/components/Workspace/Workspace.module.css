@@ -1,6 +1,4 @@
 .workspace {
-  height: calc(100vh - 70px);
-  background-color: black;
-  position: relative;
-  z-index: 0;
-  }
+    height: 100%;
+
+}
