@@ -4,7 +4,7 @@ import { CanvasType } from "../../type/type";
 import getRGBA from "../../utils/getRGBA";
 
 type CanvasBlockProps = {
-    canvasBlock: CanvasType,
+    canvasBlock: CanvasType;
 };
 
 function Canvas({ canvasBlock }: CanvasBlockProps) {

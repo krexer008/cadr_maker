@@ -1,11 +1,9 @@
 enum ArtName {
     Arrow,
     Circle,
-    Like,
     Line,
     Quote,
     Rectangle,
-    Square,
 }
 
 enum BlockType {
@@ -16,86 +14,86 @@ enum BlockType {
 }
 
 type Position = {
-    left: number,
-    top: number,
+    left: number;
+    top: number;
 };
 type Size = {
-    width: number,
-    height: number,
+    width: number;
+    height: number;
 };
 
 type ImageType = {
-    type: "link" | "base64" | "path" | "",
-    data: string,
+    type: "link" | "base64" | "path" | "";
+    data: string;
 };
 
 type ColorType = {
-    r: number,
-    g: number,
-    b: number,
-    a: number,
+    r: number;
+    g: number;
+    b: number;
+    a: number;
 };
 
 type TextStyle = {
-    fontSize: number,
-    fontFamily: string,
-    fontWeight: number,
-    fontStyle: "normal" | "italic",
-    textDecoration: "underline" | "none",
+    fontSize: number;
+    fontFamily: string;
+    fontWeight: number;
+    fontStyle: "normal" | "italic";
+    textDecoration: "underline" | "none";
 };
 
 // Object type
 
 type Block = {
-    id: string,
-    size: Size,
-    position: Position,
+    id: string;
+    size: Size;
+    position: Position;
 };
 
 type TextBlockType = Block & {
-    type: BlockType.Text,
-    value: string,
-    textStyle: TextStyle,
-    color: ColorType,
+    type: BlockType.Text;
+    value: string;
+    textStyle: TextStyle;
+    color: ColorType;
 };
 
 type ImageBlockType = Block & {
-    type: BlockType.Image,
-    image: ImageType,
-    color: ColorType,
+    type: BlockType.Image;
+    image: ImageType;
+    color: ColorType;
 };
 
 type ArtBlockType = Block & {
-    type: BlockType.Art,
-    artName: ArtName,
-    background: ColorType,
-    borderColor: ColorType,
+    type: BlockType.Art;
+    artName: ArtName;
+    background: ColorType;
+    borderColor: ColorType;
 };
 
 type CanvasType = {
-    id: string,
-    type: BlockType.Canvas,
-    size: Size,
-    filtr: ColorType,
-    backgroundImage: ImageType,
-    backgroundColor: ColorType,
+    id: string;
+    type: BlockType.Canvas;
+    size: Size;
+    filtr: ColorType;
+    backgroundImage: ImageType;
+    backgroundColor: ColorType;
 };
 
 type Template = {
-    id: string,
-    canvas: CanvasType,
-    objects: Array<TextBlockType | ImageBlockType | ArtBlockType>,
+    id: string;
+    canvas: CanvasType;
+    objects: Array<TextBlockType | ImageBlockType | ArtBlockType>;
 };
 
 type Hystory = {
-    command: string,
-    time: number,
+    command: string;
+    time: number;
 };
 
 type EditorType = {
-    selectObject: Array<string>,
-    hystory: Array<Hystory>,
-    template: Array<Template>,
+    selectObject: Array<string>;
+    hystory: Array<Hystory>;
+    template: Array<Template>;
 };
 
 export type {
