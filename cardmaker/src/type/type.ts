@@ -1,17 +1,20 @@
 enum ArtName {
-    arrow,
-    circle,
-    line,
-    quote,
-    rectangle,
+    Arrow,
+    Circle,
+    Like,
+    Line,
+    Quote,
+    Rectangle,
+    Square,
 }
 
-enum TypeBlock {
+enum BlockType {
     Art,
-    Text,
     Image,
+    Text,
     Canvas,
 }
+
 type Position = {
     left: number,
     top: number,
@@ -38,7 +41,7 @@ type TextStyle = {
     fontFamily: string,
     fontWeight: number,
     fontStyle: "normal" | "italic",
-    textDecoration: "underline" | "none",// | "blink" | "line-through" | "overline" | "inherit",
+    textDecoration: "underline" | "none",
 };
 
 // Object type
@@ -50,40 +53,28 @@ type Block = {
 };
 
 type TextBlockType = Block & {
-    type: TypeBlock.Text,
+    type: BlockType.Text,
     value: string,
     textStyle: TextStyle,
     color: ColorType,
-    /*
-    textPosition: {
-        justifyContent: "center" | "start" | "end";
-        alignItems: "center" | "start" | "end";
-    };
-    backgroundImage: ImageType;
-    backgroundColor: ColorType;
-    */
 };
 
 type ImageBlockType = Block & {
-    type: TypeBlock.Image,
+    type: BlockType.Image,
     image: ImageType,
     color: ColorType,
 };
 
 type ArtBlockType = Block & {
-    type: TypeBlock.Art,
+    type: BlockType.Art,
     artName: ArtName,
     background: ColorType,
     borderColor: ColorType,
-    /*
-    borderStyle: "solid" | "dotted" | "dashed" | "double";
-    borederSize: number,
-    */
 };
 
 type CanvasType = {
     id: string,
-    type: TypeBlock.Canvas,
+    type: BlockType.Canvas,
     size: Size,
     filtr: ColorType,
     backgroundImage: ImageType,
@@ -102,7 +93,6 @@ type Hystory = {
 };
 
 type EditorType = {
-    canvas: CanvasType,
     selectObject: Array<string>,
     hystory: Array<Hystory>,
     template: Array<Template>,
@@ -122,4 +112,4 @@ export type {
     ImageType,
 };
 
-export { ArtName, TypeBlock };
+export { ArtName, BlockType };

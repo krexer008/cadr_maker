@@ -22,10 +22,10 @@ function Line({ block }: ArtBlockProps) {
             fillOpacity={getOpacity(block.background)}
         >
             <g transform="translate(0.0, 640.0) scale(0.1, -0.1)">
-                <path d="M170 4090 l0 -70 6230 0 6230 0 0 70 0 70 -6230 0 0 -70z"/>
+                <path d="M170 4090 l0 -70 6230 0 6230 0 0 70 0 70 -6230 0 0 -70z" />
             </g>
         </svg>
-    )
-};
+    );
+}
 
 export default Line;

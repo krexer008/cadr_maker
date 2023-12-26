@@ -4,6 +4,7 @@ import Canvas from "../Canvas/Canvas";
 import css from "./Main.module.css";
 
 function Main() {
+    const editorData = 
     return (
         <div className={css.main}>
             <Toolbar />
