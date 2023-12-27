@@ -1,14 +1,13 @@
 import React from "react";
-import { templateArr } from "../../data/full_data";
-import Canvas from "../Canvas/Canvas";
 import Toolbar from "../Toolbar/Toolbar";
 import css from "./Main.module.css";
+import Workspace from "../Workspace/Workspace";
 
 function Main() {
     return (
         <div className={css.main}>
             <Toolbar />
-            <Canvas block={templateArr[0].canvas} />
+            <Workspace />
         </div>
     );
 }

@@ -2,7 +2,7 @@
   display: flex;
   width: 250px;
   min-width: 100px;
-  height: 600px;
+  height: calc(100vh - 90px);
   background-color: darkslategray;
   border-radius: 10px;
   border: 2px outset #575770;
