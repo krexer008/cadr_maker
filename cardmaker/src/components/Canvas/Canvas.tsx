@@ -4,22 +4,28 @@ import { CanvasType } from "../../type/type";
 import getRGBA from "../../utils/getRGBA";
 
 type CanvasBlockProps = {
-    canvasBlock: CanvasType;
+    block: CanvasType,
 };
 
-function Canvas({ canvasBlock }: CanvasBlockProps) {
-    const canvasId = canvasBlock.id;
+function Canvas({ block }: CanvasBlockProps) {
+    const canvasId = block.id;
     return (
         <div
             className={css.сanvas}
             id={canvasId}
             style={{
-                ...canvasBlock.size,
-                backgroundColor: getRGBA(canvasBlock.backgroundColor),
-                backgroundImage: canvasBlock.backgroundImage.data,
+                ...block.size,
+                backgroundColor: getRGBA(block.backgroundColor),
             }}
         >
-            <div> Canvas</div>
+            <img src={block.backgroundImage.data} alt="canvas" />
+            {/*
+                if(block.backgroundImage.type){
+            return (
+            
+            );
+            
+            }*/}
         </div>
     );
 }

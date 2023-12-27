@@ -4,7 +4,7 @@ import { TextBlockType } from "../../type/type";
 import GetRGBA from "../../utils/getRGBA";
 
 type textBlockProps = {
-    textBlock: TextBlockType;
+    textBlock: TextBlockType,
 };
 
 function TextBlock({ textBlock }: textBlockProps) {

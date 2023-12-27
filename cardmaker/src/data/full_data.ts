@@ -6,11 +6,11 @@ import {
     TextBlockType,
     BlockType,
     ArtName,
-} from "../type/type.js";
+} from "../type/type";
 
 import lucky from "./img/png/lucky.png";
 import sunrise from "./img/jpg/sunrise.jpg";
-import aurora from "./img/jpg/aurora.jpg";
+import aurora from "./img/jpg/aurora.jpeg";
 import mayabay from "./img/jpg/mayabay.jpg";
 
 export const textBlockArr: Array<TextBlockType> = [
@@ -211,7 +211,7 @@ export const templateArr: Array<Template> = [
                 data: sunrise,
             },
             backgroundColor: {
-                r: 0x00,
+                r: 0x050,
                 g: 0x00,
                 b: 0x80,
                 a: 1,

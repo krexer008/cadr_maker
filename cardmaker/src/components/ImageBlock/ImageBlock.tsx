@@ -3,7 +3,7 @@ import css from "./ImageBlock.module.css";
 import { ImageBlockType } from "../../type/type";
 
 type ImageBlockProps = {
-    imageBlock: ImageBlockType;
+    imageBlock: ImageBlockType,
 };
 
 function ImageBlock({ imageBlock }: ImageBlockProps) {

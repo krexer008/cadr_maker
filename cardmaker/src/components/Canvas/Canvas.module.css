@@ -8,3 +8,8 @@
   background-repeat: no repeat;
   cursor: initial;
 }
+
+.canvas img {
+  height: 100px;
+  width: 100px;
+}

@@ -8,7 +8,7 @@ import Quote from "./art/Quote/Quote";
 import Rectangle from "./art/Rectangle/Rectangle";
 
 type artBlockProps = {
-    block: ArtBlockType;
+    block: ArtBlockType,
 };
 
 const artBlockSource = {
@@ -20,8 +20,10 @@ const artBlockSource = {
 };
 
 function ArtBlock({ block }: artBlockProps) {
-    return <div className={css.art} id={block.id}>
-        {artBlockSource[block.artName]({block})}
-    </div>;
+    return (
+        <div className={css.art} id={block.id}>
+            {artBlockSource[block.artName]({ block })}
+        </div>
+    );
 }
 export default ArtBlock;
