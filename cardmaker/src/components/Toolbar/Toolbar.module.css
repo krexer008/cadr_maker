@@ -1,7 +1,7 @@
 .toolbar {
   display: flex;
   width: 250px;
-  min-width: 100px;
+  min-width: 200px;
   height: calc(100vh - 90px);
   background-color: darkslategray;
   border-radius: 10px;

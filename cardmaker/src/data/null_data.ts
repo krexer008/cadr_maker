@@ -5,7 +5,6 @@ import {
     CanvasType,
     EditorType,
     Template,
-    Hystory,
 } from "../type/type.js";
 
 let textBlockValue: TextBlockType;
@@ -14,7 +13,6 @@ let artBlockValue: ArtBlockType;
 let canvasValue: CanvasType;
 let editorValue: EditorType;
 let templateValue: Template;
-let hystoryValue: Hystory;
 
 export {
     textBlockValue,
@@ -22,6 +20,5 @@ export {
     artBlockValue,
     canvasValue,
     editorValue,
-    hystoryValue,
     templateValue,
 };

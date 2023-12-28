@@ -81,18 +81,13 @@ type CanvasType = {
 
 type Template = {
     id: string,
+    //activeOdject: string,
     canvas: CanvasType,
     objects: Array<TextBlockType | ImageBlockType | ArtBlockType>,
 };
 
-type Hystory = {
-    command: string,
-    time: number,
-};
-
 type EditorType = {
-    selectObject: Array<string>,
-    hystory: Array<Hystory>,
+    selectId: string,
     template: Array<Template>,
 };
 
@@ -102,7 +97,6 @@ export type {
     ArtBlockType,
     Template,
     CanvasType,
-    Hystory,
     EditorType,
     ColorType,
     Size,

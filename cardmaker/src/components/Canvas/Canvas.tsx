@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import css from "./Canvas.module.css";
 import { CanvasType } from "../../type/type";
 import getRGBA from "../../utils/getRGBA";
@@ -8,17 +8,26 @@ type CanvasBlockProps = {
 };
 
 function Canvas({ canvas }: CanvasBlockProps) {
-    const canvasId = canvas.id;
+    const {
+        id,
+        size: { width, height },
+        backgroundImage,
+        backgroundColor,
+    } = canvas;
     const styleCanvas = {
-        ...canvas.size,
-        backgroundColor: getRGBA(canvas.backgroundColor),
-        backgroundImage: `url("${canvas.backgroundImage.data}")`,
+        width,
+        height,
+        maxWidth: `100%`,
+        maxHeight: `100%`,
+        backgroundColor: getRGBA(backgroundColor),
+        backgroundImage: `url("${backgroundImage.data}")`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no repeat",
     };
-    const [count, setCount] = useState(0);
     return (
-        <div className={css.сanvas} id={canvasId} style={styleCanvas}>
-            <p>Вы нажали {count} раз</p>
-            <button onClick={() => setCount(count + 1)}>Нажми меня</button>
+        <div className={css.сanvas} id={id} style={styleCanvas}>
+            Canvas
         </div>
     );
 }

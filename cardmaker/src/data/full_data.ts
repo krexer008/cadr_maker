@@ -198,7 +198,7 @@ export const templateArr: Array<Template> = [
             type: BlockType.Canvas,
             size: {
                 width: 800,
-                height: 600,
+                height: 3000,
             },
             filtr: {
                 r: 0xff,
@@ -306,8 +306,7 @@ export const templateArr: Array<Template> = [
 ];
 
 const editor1: EditorType = {
-    selectObject: [],
-    hystory: [],
+    selectId: "templ4",
     template: templateArr,
 };
 

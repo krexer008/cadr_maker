@@ -4,26 +4,26 @@ import { TextBlockType } from "../../type/type";
 import GetRGBA from "../../utils/getRGBA";
 
 type textBlockProps = {
-    textBlock: TextBlockType,
+    block: TextBlockType,
 };
 
-function TextBlock({ textBlock }: textBlockProps) {
+function TextBlock({ block }: textBlockProps) {
     return (
         <div
             className={css.text}
-            id={textBlock.id}
+            id={block.id}
             style={{
-                ...textBlock.size,
-                ...textBlock.position,
+                ...block.size,
+                ...block.position,
             }}
         >
             <p
                 style={{
-                    ...textBlock.textStyle,
-                    color: GetRGBA(textBlock.color),
+                    ...block.textStyle,
+                    color: GetRGBA(block.color),
                 }}
             >
-                {textBlock.value}
+                {block.value}
             </p>
         </div>
     );

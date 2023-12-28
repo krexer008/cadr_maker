@@ -1,0 +1,15 @@
+.changetext {
+    display: flex;
+    flex-direction: column;
+    background: inherit;
+}
+
+.description {
+    background: inherit;
+}
+
+.changeTextStyle {
+    display: flex;
+    flex-direction: row;
+    background-color: inherit;
+}
