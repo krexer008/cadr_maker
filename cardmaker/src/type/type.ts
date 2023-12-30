@@ -75,8 +75,8 @@ type CanvasType = {
     type: BlockType.Canvas,
     size: Size,
     filtr: ColorType,
-    backgroundImage: ImageType,
-    backgroundColor: ColorType,
+    bgImage: ImageType,
+    bgColor: ColorType,
 };
 
 type Template = {

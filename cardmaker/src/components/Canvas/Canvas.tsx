@@ -11,16 +11,16 @@ function Canvas({ canvas }: CanvasBlockProps) {
     const {
         id,
         size: { width, height },
-        backgroundImage,
-        backgroundColor,
+        bgImage,
+        bgColor,
     } = canvas;
     const styleCanvas = {
         width,
         height,
         maxWidth: `100%`,
         maxHeight: `100%`,
-        backgroundColor: getRGBA(backgroundColor),
-        backgroundImage: `url("${backgroundImage.data}")`,
+        backgroundImage: `url("${bgImage.data}")`,
+        backgroundColor: getRGBA(bgColor),
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no repeat",

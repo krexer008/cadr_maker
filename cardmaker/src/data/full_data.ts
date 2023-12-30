@@ -206,11 +206,11 @@ export const templateArr: Array<Template> = [
                 b: 0xff,
                 a: 1,
             },
-            backgroundImage: {
+            bgImage: {
                 type: "path",
                 data: sunrise,
             },
-            backgroundColor: {
+            bgColor: {
                 r: 0x050,
                 g: 0x00,
                 b: 0x80,
@@ -234,11 +234,11 @@ export const templateArr: Array<Template> = [
                 b: 0x80,
                 a: 1,
             },
-            backgroundImage: {
+            bgImage: {
                 type: "path",
                 data: mayabay,
             },
-            backgroundColor: {
+            bgColor: {
                 r: 0x00,
                 g: 0x00,
                 b: 0x80,
@@ -262,11 +262,11 @@ export const templateArr: Array<Template> = [
                 b: 0x80,
                 a: 1,
             },
-            backgroundImage: {
+            bgImage: {
                 type: "path",
                 data: aurora,
             },
-            backgroundColor: {
+            bgColor: {
                 r: 0x00,
                 g: 0x00,
                 b: 0x80,
@@ -290,11 +290,11 @@ export const templateArr: Array<Template> = [
                 b: 0xff,
                 a: 1,
             },
-            backgroundImage: {
+            bgImage: {
                 type: "",
                 data: "",
             },
-            backgroundColor: {
+            bgColor: {
                 r: 0x00,
                 g: 0x00,
                 b: 0x00,

@@ -1,21 +1,22 @@
 import React from "react";
-import css from "./ChangeTextStyle.module.css";
+import css from "../../../../common/Common.module.css";
 import ToolbarButton from "../../ToolbarButton/ToolbarButton";
 import bold from "../../ToolbarButton/icons/bold.svg";
 import italic from "../../ToolbarButton/icons/italic.svg";
 import underline from "../../ToolbarButton/icons/underline.svg";
-import ChangeColor from "../ChangeColor/ChangeColor";
 
 type ChangeSizeProps = {
-    currentSize: number,
-    currentFamily: string,
+    currentTextSize: number,
+    currentFontFamily: string,
 };
 
-function ChangeTextStyle({ currentSize, currentFamily }: ChangeSizeProps) {
+function ChangeTextStyle({
+    currentTextSize,
+    currentFontFamily,
+}: ChangeSizeProps) {
     return (
-        <div className={css.changetext}>
-            <span className={css.description}>Свойства текста</span>
-            <div className={css.changeTextStyle}>
+        <div className={css.toolblock}>
+            <div className={css.tool}>
                 <ToolbarButton
                     handler={() => alert("bold text clicked")}
                     icon={bold}
@@ -32,16 +33,14 @@ function ChangeTextStyle({ currentSize, currentFamily }: ChangeSizeProps) {
                     alt="underline"
                 />
             </div>
-            <div>
-                <select id="text-style" defaultValue={currentSize}>
+            <div className={css.tool}>
+                <select id="drop-list" defaultValue={currentTextSize}>
                     <option value="Arial">Arial</option>
                     <option value="Calibri">Calibri</option>
                     <option value="Impact">Impact</option>
                     <option value="Times New Roman">Times New Roman</option>
                 </select>
-            </div>
-            <div>
-                <select id="text-size" defaultValue={currentFamily}>
+                <select id="drop-list" defaultValue={currentFontFamily}>
                     <option value="10">10</option>
                     <option value="12">12</option>
                     <option value="14">14</option>
@@ -50,7 +49,6 @@ function ChangeTextStyle({ currentSize, currentFamily }: ChangeSizeProps) {
                     <option value="20">20</option>
                     <option value="22">22</option>
                 </select>
-                <ChangeColor />
             </div>
         </div>
     );
