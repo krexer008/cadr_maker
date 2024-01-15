@@ -1,8 +1,12 @@
 import { Canvas, Editor } from "../model/types";
 
+function generateRandomID(){
+    return "id" + Math.random().toString(16).slice(2);
+}
+
 function getNewCanvas(): Canvas {
     return {
-        id: "",
+        id: generateRandomID(),
         size: {
             width: 800,
             height: 600,
