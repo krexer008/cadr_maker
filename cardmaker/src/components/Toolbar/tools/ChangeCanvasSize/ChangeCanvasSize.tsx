@@ -16,6 +16,8 @@ function ChangeCanvasSize() {
                         step="1"
                         defaultValue="800"
                     />
+                </div>
+                <div className={css.size}>
                     <label htmlFor="canvas-height">Height </label>
                     <input
                         id="canvas-height"

@@ -3,13 +3,13 @@ import css from "../../../../common/Common.module.css";
 
 type ChangeColorProps = {
     currentColor: {
-        hexColor: string,
-        opacity: number,
-    },
+        hexColor: string;
+        opacity: number;
+    };
     currentBGColor: {
-        hexColor: string,
-        opacity: number,
-    },
+        hexColor: string;
+        opacity: number;
+    };
 };
 
 function ChangeColor({ currentColor, currentBGColor }: ChangeColorProps) {

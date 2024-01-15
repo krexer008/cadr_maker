@@ -1,23 +1,10 @@
 {
-    "extends": [
-        "stylelint-config-standard"
-    ],
-    "plugins": [
-        "stylelint-order",
-        "stylelint-prettier"
-    ],
+    "extends": ["stylelint-config-standard"],
+    "plugins": ["stylelint-order", "stylelint-prettier"],
     "rules": {
-        "order/order": [
-            "custom-properties",
-            "declarations"
-        ],
-        "order/properties-order": [
-            "width",
-            "height"
-        ],
-        "prettier/prettier": true,
-        "color-hex-case": "lower",
-        "color-hex-length": "long",
-        "color-no-invalid-hex": true
+      "order/order": ["custom-properties", "declarations"],
+      "order/properties-order": ["width", "height"],
+      "prettier/prettier": true
     }
-}
+  }
+  

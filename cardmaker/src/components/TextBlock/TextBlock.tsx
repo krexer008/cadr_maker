@@ -1,30 +1,63 @@
-import React from "react";
+import { useState } from "react";
 import css from "./TextBlock.module.css";
-import { TextBlockType } from "../../type/type";
-import GetRGBA from "../../utils/getRGBA";
+import { TextBlockType } from "../../model/types";
+import getRGBA from "../../utils/getRGBA";
 
 type textBlockProps = {
-    block: TextBlockType,
+    block: TextBlockType;
+    /*
+    isSelected: boolean,
+    onClick: () => void;
+    */
 };
 
 function TextBlock({ block }: textBlockProps) {
+    const {
+        id,
+        size: { width, height },
+        position: { left, top },
+        textStyle: {
+            fontSize,
+            fontFamily,
+            fontWeight,
+            fontStyle,
+            textDecoration,
+            color,
+        },
+    } = block;
+    const textStyle = {
+        fontSize,
+        fontFamily,
+        fontWeight,
+        fontStyle,
+        textDecoration,
+        color: getRGBA(color),
+    };
+    const blockStyle = {
+        width,
+        height,
+        maxWidth: `100%`,
+        maxHeight: `100%`,
+        minHeight: fontSize * 1.1,
+        top,
+        left,
+    };
+    const [value, setValue] = useState(block.value);
+
     return (
-        <div
-            className={css.text}
-            id={block.id}
-            style={{
-                ...block.size,
-                ...block.position,
-            }}
-        >
-            <p
-                style={{
-                    ...block.textStyle,
-                    color: GetRGBA(block.color),
+        <div className={css.textblock} style={blockStyle}>
+            <textarea
+                className={css.textarea}
+                style={textStyle}
+                value={value}
+                placeholder={value}
+                onChange={(e) => {
+                    setValue(e.target.value);
                 }}
-            >
-                {block.value}
-            </p>
+                /*
+            onClick={onClick}                
+            */
+            />
         </div>
     );
 }

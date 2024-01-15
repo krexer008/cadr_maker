@@ -7,7 +7,11 @@ import addText from "./icons/addText.png";
 import addImg from "./icons/addImg.png";
 import addArt from "./icons/addArt.png";
 import deleteObj from "./icons/deleteObj.png";
-
+import makeCard from "./icons/makeCard.png";
+/*
+function openFileHandler() {
+}
+*/
 function Header() {
     return (
         <div className={css.header}>
@@ -48,6 +52,12 @@ function Header() {
                 handler={() => alert("DeleteObj clicked")}
                 icon={deleteObj}
                 alt="deleteObj"
+            />
+
+            <HeaderButton
+                handler={() => alert("Make card clicked")}
+                icon={makeCard}
+                alt="makeCard"
             />
         </div>
     );

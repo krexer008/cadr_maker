@@ -6,8 +6,8 @@ import italic from "../../ToolbarButton/icons/italic.svg";
 import underline from "../../ToolbarButton/icons/underline.svg";
 
 type ChangeSizeProps = {
-    currentTextSize: number,
-    currentFontFamily: string,
+    currentTextSize: number;
+    currentFontFamily: string;
 };
 
 function ChangeTextStyle({

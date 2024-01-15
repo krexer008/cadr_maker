@@ -1,4 +1,4 @@
-import { ColorType } from "../type/type";
+import { ColorType } from "../model/types";
 
 function getRGBA(color: ColorType): string {
     return (

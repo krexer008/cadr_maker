@@ -2,16 +2,16 @@ import {
     TextBlockType,
     ImageBlockType,
     ArtBlockType,
-    CanvasType,
-    EditorType,
+    Canvas,
+    Editor,
     Template,
-} from "../type/type.js";
+} from "../model/types.js";
 
 let textBlockValue: TextBlockType;
 let imageBlockValue: ImageBlockType;
 let artBlockValue: ArtBlockType;
-let canvasValue: CanvasType;
-let editorValue: EditorType;
+let canvasValue: Canvas;
+let editorValue: Editor;
 let templateValue: Template;
 
 export {

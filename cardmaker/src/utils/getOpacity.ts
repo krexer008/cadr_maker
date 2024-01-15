@@ -1,4 +1,4 @@
-import { ColorType } from "../type/type";
+import { ColorType } from "../model/types";
 
 function getOpacity(color: ColorType): string {
     return color.a.toString();

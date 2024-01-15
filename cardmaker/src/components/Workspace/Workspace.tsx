@@ -1,12 +1,17 @@
 import React from "react";
-import { templateArr } from "../../data/full_data";
-import Canvas from "../Canvas/Canvas";
+import { Canvas } from "../../model/types";
+import CanvasView from "../Canvas/CanvasView";
 import css from "./Workspace.module.css";
+
+type WorkspaceProps = {
+    canvasData: Canvas;
+    onSelectCanvas: () => void;
+};
 
 function Workspace() {
     return (
         <div className={css.workspace}>
-            <Canvas canvas={templateArr[0].canvas} />
+            <CanvasView />
         </div>
     );
 }

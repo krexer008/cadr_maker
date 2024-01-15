@@ -1,6 +1,5 @@
 .header {
   height: 70px;
-
   background-color: darkslategray;
   display: flex;
   flex-direction: row;
@@ -27,12 +26,12 @@
 
 .header button {
   cursor: pointer;
-  width: 35px;
-  height: 35px;
+  width: 42px;
+  height: 42px;
   border-radius: 10px;
-  margin-left: 20px;
+  margin-left: 30px;
   padding: 2px;
-  background-color: darkslategrey;
+  background-color: пкуут;
   text-align: center;
   vertical-align: middle;
 }
@@ -40,5 +39,4 @@
 .header button img {
   width: 100%;
   height: 100%;
-  background-color: inherit;
 }

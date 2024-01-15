@@ -1,6 +1,6 @@
 import React from "react";
 import css from "./ArtBlock.module.css";
-import { ArtBlockType, ArtName } from "../../type/type";
+import { ArtBlockType, ArtValue } from "../../model/types";
 import Arrow from "./art/Arrow/Arrow";
 import Circle from "./art/Circle/Circle";
 import Line from "./art/Line/Line";
@@ -8,21 +8,34 @@ import Quote from "./art/Quote/Quote";
 import Rectangle from "./art/Rectangle/Rectangle";
 
 type artBlockProps = {
-    block: ArtBlockType,
+    block: ArtBlockType;
 };
 
 const artBlockSource = {
-    [ArtName.Arrow]: Arrow, // объект с именем Arrow  типа Arrow ...
-    [ArtName.Circle]: Circle,
-    [ArtName.Line]: Line,
-    [ArtName.Quote]: Quote,
-    [ArtName.Rectangle]: Rectangle,
+    [ArtValue.Arrow]: Arrow, // объект с именем Arrow  типа Arrow ...
+    [ArtValue.Circle]: Circle,
+    [ArtValue.Line]: Line,
+    [ArtValue.Quote]: Quote,
+    [ArtValue.Rectangle]: Rectangle,
 };
 
 function ArtBlock({ block }: artBlockProps) {
+    const {
+        size: { width, height },
+        position: { left, top },
+    } = block;
+
+    const blockStyle = {
+        width,
+        height,
+        maxWidth: `100%`,
+        maxHeight: `100%`,
+        top,
+        left,
+    };
     return (
-        <div className={css.art} id={block.id}>
-            {artBlockSource[block.artName]({ block })}
+        <div style={blockStyle} id={block.id} className={css.container}>
+            {artBlockSource[block.value]({ block })}
         </div>
     );
 }

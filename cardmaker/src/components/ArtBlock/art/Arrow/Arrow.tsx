@@ -1,5 +1,5 @@
 import React from "react";
-import { ArtBlockType } from "../../../../type/type";
+import { ArtBlockType } from "../../../../model/types";
 import getOpacity from "../../../../utils/getOpacity";
 import getRGB from "../../../../utils/getRGB";
 
@@ -10,19 +10,19 @@ interface ArtBlockProps {
 function Arrow({ block }: ArtBlockProps) {
     return (
         <svg
+            width={block.size.width}
+            height={block.size.height}
             version="1.0"
             xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 800 600"
+            viewBox="0 0 1280 640"
             preserveAspectRatio="xMidYMid meet"
-            width="100%"
-            height="100%"
             stroke={getRGB(block.borderColor)}
             strokeOpacity={getOpacity(block.borderColor)}
-            fill={getRGB(block.background)}
-            fillOpacity={getOpacity(block.background)}
+            fill={getRGB(block.bgColor)}
+            fillOpacity={getOpacity(block.bgColor)}
         >
-            <g transform="translate(0.0, 640.0) scale(0.1, -0.1)">
-                <path d="M244.4,124.2l-53.6-53.6c-1.1-1.1-2.1-1.6-3.8-1.6c-3.2,0-5.4,2.1-5.4,5.4c0,1.6,0.5,2.7,1.6,3.8l44.5,44.5H15.4c-3.2,0-5.4,2.1-5.4,5.4c0,3.2,2.1,5.4,5.4,5.4h212.4l-44.5,44.5c-1.1,1.1-1.6,2.1-1.6,3.8c0,3.2,2.1,5.4,5.4,5.4c1.6,0,2.7-0.5,3.8-1.6l53.6-53.6c1.1-1.1,1.6-2.1,1.6-3.8C246,126.4,245.5,125.3,244.4,124.2z" />
+            <g transform="translate(0.000000,640.000000) scale(0.100000,-0.100000)">
+                <path d="M9280 5934 c-106 -21 -223 -80 -293 -150 -99 -97 -148 -196 -168 -336 -10 -72 -9 -97 5 -164 22 -108 75 -212 144 -282 33 -33 391 -297 851 -627 l794 -570 -5084 -5 c-4763 -5 -5087 -6 -5132 -22 -146 -52 -265 -152 -330 -275 -114 -217 -77 -472 93 -644 70 -71 126 -108 217 -142 l58 -22 5078 -5 5078 -5 -752 -615 c-414 -338 -776 -638 -804 -667 -29 -29 -68 -84 -89 -125 -112 -224 -73 -470 105 -649 104 -105 233 -159 382 -159 99 0 186 22 270 68 70 39 2847 2303 2942 2399 160 162 199 422 93 633 -46 94 -119 163 -324 311 -1086 782 -2701 1940 -2747 1970 -83 54 -166 80 -272 84 -49 2 -101 1 -115 -1z" />
             </g>
         </svg>
     );

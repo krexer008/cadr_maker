@@ -75,8 +75,13 @@
     border: none;
     outline: none;
     border-radius: 2px;
+    margin: 5px;
 }
 
 .tool .size {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
     margin: 5px 0;
 }
