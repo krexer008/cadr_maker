@@ -15,7 +15,7 @@ type NewCanvasAction = {
 type EmptyEditorAction = {
     type: EditorActionType.EMPTY_EDITOR;
     payload: {
-        emptyEditor: Editor;
+        newEditor: Editor;
     };
 };
 

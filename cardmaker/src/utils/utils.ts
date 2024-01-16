@@ -1,6 +1,6 @@
 import { Canvas, Editor } from "../model/types";
 
-function generateRandomID(){
+function generateRandomID() {
     return "id" + Math.random().toString(16).slice(2);
 }
 
