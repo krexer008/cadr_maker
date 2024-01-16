@@ -8,8 +8,8 @@ import { selectEditor } from "../../redux/selectors";
 import { useSelector } from "react-redux";
 
 function EditorView() {
-    const editorData = useSelector(selectEditor)
-    
+    const editorData = useSelector(selectEditor);
+
     return (
         <div>
             <Header />

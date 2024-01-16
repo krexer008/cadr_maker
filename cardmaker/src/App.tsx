@@ -1,5 +1,5 @@
 import { useState } from "react";
-import css from "./App.css"
+import css from "./App.css";
 import { EditorView } from "./components/EditorView/EditorView";
 import { editorData } from "./data/full_data";
 

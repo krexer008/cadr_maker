@@ -1,9 +1,6 @@
 import { Canvas, Editor } from "../model/types";
 import { EditorActionType } from "./editorActions";
 
-
-
-
 function createNewCanvas(newCanvas: Canvas) {
     return {
         type: EditorActionType.NEW_CANVAS,
@@ -11,7 +8,7 @@ function createNewCanvas(newCanvas: Canvas) {
             newCanvas,
         },
     };
-};
+}
 
 function createEmptyEditor(newEditor: Editor) {
     return {
@@ -20,4 +17,4 @@ function createEmptyEditor(newEditor: Editor) {
             newEditor,
         },
     };
-};
+}

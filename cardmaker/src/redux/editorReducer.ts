@@ -13,7 +13,7 @@ const editorReducer = (
             const { newCanvas } = action.payload;
             return {
                 ...state,
-                canvas: [...state.canvas, newCanvas]
+                canvas: [...state.canvas, newCanvas],
             };
         case EditorActionType.EMPTY_EDITOR:
             const { newEditor } = action.payload;
