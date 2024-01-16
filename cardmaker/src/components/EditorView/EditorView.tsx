@@ -4,12 +4,12 @@ import css from "./EditorView.module.css";
 import Workspace from "../Workspace/Workspace";
 import Header from "../Header/Header";
 import { Editor } from "../../model/types";
-
-type EditorViewProps = {
-    editorData: Editor;
-};
+import { selectEditor } from "../../redux/selectors";
+import { useSelector } from "react-redux";
 
 function EditorView() {
+    const editorData = useSelector(selectEditor)
+    
     return (
         <div>
             <Header />

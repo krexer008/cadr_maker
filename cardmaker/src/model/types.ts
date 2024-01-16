@@ -81,8 +81,9 @@ type Template = {
 };
 
 type Editor = {
-    canvas: Canvas;
+    canvas: Array<Canvas>;
     templates: Array<Template>;
+    active: ActiveCanvas;
 };
 
 export type {

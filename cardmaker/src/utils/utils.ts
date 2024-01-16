@@ -34,8 +34,9 @@ function getNewCanvas(): Canvas {
 
 function getEditorModel(): Editor {
     return {
-        canvas: getNewCanvas(),
+        canvas: [],
         templates: [],
+        active: "",
     };
 }
 

@@ -138,8 +138,9 @@ const template1: Template = {
 const activeCanvas = "cnvs1";
 
 const editorData: Editor = {
-    canvas: canvasData,
+    canvas: [canvasData],
     templates: [template1],
+    active: "Aurora",
 };
 
 export { editorData };
