@@ -2,23 +2,23 @@ import { Canvas, Editor } from "../model/types";
 
 enum EditorActionType {
     NEW_CANVAS = "NEW_CANVAS",
-    NEW_EDITOR = "NEW_EDITOR",
+    EMPTY_EDITOR = "NEW_EDITOR",
 }
 
-interface NewCanvasAction {
+type NewCanvasAction = {
     type: EditorActionType.NEW_CANVAS;
     payload: {
         newCanvas: Canvas;
     };
-}
+};
 
-interface NewEditorAction {
-    type: EditorActionType.NEW_EDITOR;
+type EmptyEditorAction = {
+    type: EditorActionType.EMPTY_EDITOR;
     payload: {
-        newEditor: Editor;
+        emptyEditor: Editor;
     };
-}
+};
 
-type EditorAction = NewCanvasAction | NewEditorAction;
+type EditorAction = NewCanvasAction | EmptyEditorAction;
 
 export { EditorActionType, type EditorAction };

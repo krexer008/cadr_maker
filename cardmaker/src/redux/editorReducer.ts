@@ -9,9 +9,11 @@ const editorReducer = (
     action: EditorAction,
 ): Editor => {
     switch (action.type) {
-        case EditorActionType.NEW_EDITOR:
-            const { newCanvas } = action.payload;
-            return { ...state, editor:  };
+        case EditorActionType.EMPTY_EDITOR:
+            return { 
+                ...state, 
+                editor: action.payload.emptyEditor ,
+            };
         default:
             return state;
     }
