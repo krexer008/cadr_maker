@@ -1,66 +1,81 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { selectEditor } from "../../redux/selectors";
 import css from "./Header.module.css";
 import HeaderButton from "./HeaderButton/HeaderButton";
-import openFile from "./icons/openFile.png";
-import saveFile from "./icons/saveFile.png";
-import addText from "./icons/addText.png";
-import addImg from "./icons/addImg.png";
-import addArt from "./icons/addArt.png";
-import deleteObj from "./icons/deleteObj.png";
-import makeCard from "./icons/makeCard.png";
-/*
-function openFileHandler() {
-}
-*/
-function Header() {
-    return (
-        <div className={css.header}>
-            <div className={css.logo}>
-                <span>Card Maker</span>
-            </div>
-            <HeaderButton
-                handler={() => alert("OpenFile clicked")}
-                icon={openFile}
-                alt="open file"
-            />
 
-            <HeaderButton
-                handler={() => alert("SaveFile clicked")}
-                icon={saveFile}
-                alt="save file"
-            />
+type MenuFileProps = {
+  saveToFile: () => void;
+  loadFromFile: () => void;
+  resetModelHandler: () => void;
+};
 
-            <HeaderButton
-                handler={() => alert("AddText clicked")}
-                icon={addText}
-                alt="Add Text"
-            />
+function Header({
+  saveToFile,
+  loadFromFile,
+  resetModelHandler,
+}: MenuFileProps) {
+  const editorModel = useSelector(selectEditor);
+  return (
+    <div className={css.header}>
+      <div className={css.logo}>
+        <span>Card Maker</span>
+      </div>
+      <HeaderButton
+        onClick={loadFromFile}
+        className={"button__main"}
+        text="Open File"
+      />
 
-            <HeaderButton
-                handler={() => alert("Add Img clicked")}
-                icon={addImg}
-                alt="Add IMG"
-            />
+      <HeaderButton
+        onClick={saveToFile}
+        className={"button__main"}
+        text="Save File"
+      />
 
-            <HeaderButton
-                handler={() => alert("Add Art clicked")}
-                icon={addArt}
-                alt="Add ART"
-            />
+      <HeaderButton
+        onClick={resetModelHandler}
+        className={"button__main"}
+        text="Clear Editor" //Очистить редактор
+      />
 
-            <HeaderButton
-                handler={() => alert("DeleteObj clicked")}
-                icon={deleteObj}
-                alt="deleteObj"
-            />
+      <HeaderButton
+        onClick={() => alert("Add Text clicked")}
+        className={"button__main"}
+        text="Add Text"
+      />
 
-            <HeaderButton
-                handler={() => alert("Make card clicked")}
-                icon={makeCard}
-                alt="makeCard"
-            />
-        </div>
-    );
+      <HeaderButton
+        onClick={() => alert("Add Img clicked")}
+        className={"button__main"}
+        text="Add Image"
+      />
+
+      <HeaderButton
+        onClick={() => alert("Add Art clicked")}
+        className={"button__main"}
+        text="Add ART"
+      />
+
+      <HeaderButton
+        onClick={() => alert("DeleteObj clicked")}
+        className={"button__main"}
+        text="Delete Item"
+      />
+
+      <HeaderButton
+        onClick={() => alert("SaveFile clicked")}
+        className={"button__dowload"}
+        text="Export to Image"
+      />
+
+      <HeaderButton
+        onClick={() => alert("SaveFile clicked")}
+        className={"button__dowload"}
+        text="Export to PDF"
+      />
+    </div>
+  );
 }
 
 export default Header;

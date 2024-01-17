@@ -1,18 +1,15 @@
 import React from "react";
-import { Canvas } from "../../model/types";
+import { useAppSelector } from "../../redux/hooks";
+import { selectEditor } from "../../redux/selectors";
 import CanvasView from "../Canvas/CanvasView";
 import css from "./Workspace.module.css";
 
-type WorkspaceProps = {
-    canvasData: Canvas;
-    onSelectCanvas: () => void;
-};
-
 function Workspace() {
-    return (
-        <div className={css.workspace}>
-            <CanvasView />
-        </div>
-    );
+  const editorData = useAppSelector(selectEditor);
+  return (
+    <div className={css.workspace}>
+      <CanvasView canvasData={editorData.canvas} />
+    </div>
+  );
 }
 export default Workspace;

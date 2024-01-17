@@ -5,27 +5,30 @@ import { EditorActionType, EditorAction } from "./editorActions";
 const initialEditorData = getEditorModel();
 
 const editorReducer = (
-    state: Editor = initialEditorData,
-    action: EditorAction,
+  state: Editor = initialEditorData,
+  action: EditorAction,
 ): Editor => {
-    switch (action.type) {
-        case EditorActionType.NEW_CANVAS:
-            const { newCanvas } = action.payload;
-            return {
-                ...state,
-                canvas: [...state.canvas, newCanvas],
-            };
-        case EditorActionType.EMPTY_EDITOR:
-            const { newEditor } = action.payload;
-            return {
-                ...state,
-                canvas: newEditor.canvas,
-                templates: newEditor.templates,
-                active: newEditor.active,
-            };
-        default:
-            return state;
-    }
+  switch (action.type) {
+    case EditorActionType.LOAD_CANVAS:
+      return {
+        ...state,
+        canvas: action.payload.loadCanvas,
+      };
+    case EditorActionType.NEW_CANVAS:
+      return {
+        ...state,
+        canvas: action.payload.newCanvas,
+      };
+    case EditorActionType.EMPTY_EDITOR:
+      return {
+        ...state,
+        canvas: action.payload.newEditor.canvas,
+        templates: action.payload.newEditor.templates,
+        active: action.payload.newEditor.active,
+      };
+    default:
+      return state;
+  }
 };
 
 export { editorReducer };

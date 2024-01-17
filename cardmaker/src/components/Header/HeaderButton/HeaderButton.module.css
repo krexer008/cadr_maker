@@ -1,4 +1,45 @@
-.button {
-    height: 32px;
-    width: 40px;
+.button__main {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  vertical-align: middle;
+  justify-content: center;
+  font: 400 18px/20px "Arial", sans-serif;
+  height: 42px;
+  border-style: none;
+  border-radius: 10px;
+  transition: 0.2s ease;
+  white-space: nowrap;
+  padding: 0 5px;
+  margin: 0 10px;
+  cursor: pointer;
+  background-color: #ffffff;
+}
+
+.button__main:hover {
+  background-color: #f6f6f6;
+  transition: 0.05s ease;
+}
+
+.button__dowload {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  vertical-align: middle;
+  justify-content: center;
+  font: 400 18px/20px "Arial", sans-serif;
+  height: 42px;
+  border-style: none;
+  border-radius: 10px;
+  transition: 0.2s ease;
+  white-space: nowrap;
+  padding: 0 5px;
+  margin: 0 10px;
+  cursor: pointer;
+  background-color: #ffc322;
+}
+
+.button__dowload:hover {
+  background-color: #ffdc5c;
+  transition: 0.2s ease;
 }

@@ -8,35 +8,35 @@ import Quote from "./art/Quote/Quote";
 import Rectangle from "./art/Rectangle/Rectangle";
 
 type artBlockProps = {
-    block: ArtBlockType;
+  block: ArtBlockType;
 };
 
 const artBlockSource = {
-    [ArtValue.Arrow]: Arrow, // объект с именем Arrow  типа Arrow ...
-    [ArtValue.Circle]: Circle,
-    [ArtValue.Line]: Line,
-    [ArtValue.Quote]: Quote,
-    [ArtValue.Rectangle]: Rectangle,
+  [ArtValue.Arrow]: Arrow, // объект с именем Arrow  типа Arrow ...
+  [ArtValue.Circle]: Circle,
+  [ArtValue.Line]: Line,
+  [ArtValue.Quote]: Quote,
+  [ArtValue.Rectangle]: Rectangle,
 };
 
 function ArtBlock({ block }: artBlockProps) {
-    const {
-        size: { width, height },
-        position: { left, top },
-    } = block;
+  const {
+    size: { width, height },
+    position: { left, top },
+  } = block;
 
-    const blockStyle = {
-        width,
-        height,
-        maxWidth: `100%`,
-        maxHeight: `100%`,
-        top,
-        left,
-    };
-    return (
-        <div style={blockStyle} id={block.id} className={css.container}>
-            {artBlockSource[block.value]({ block })}
-        </div>
-    );
+  const blockStyle = {
+    width,
+    height,
+    maxWidth: `100%`,
+    maxHeight: `100%`,
+    top,
+    left,
+  };
+  return (
+    <div style={blockStyle} id={block.id} className={css.container}>
+      {artBlockSource[block.value]({ block })}
+    </div>
+  );
 }
 export default ArtBlock;

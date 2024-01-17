@@ -3,35 +3,35 @@ import css from "./ImageBlock.module.css";
 import { ImageBlockType } from "../../model/types";
 
 type ImageBlockProps = {
-    block: ImageBlockType;
+  block: ImageBlockType;
 };
 
 function ImageBlock({ block }: ImageBlockProps) {
-    const {
-        size: { width, height },
-        position: { left, top },
-        image: { data },
-    } = block;
+  const {
+    size: { width, height },
+    position: { left, top },
+    image: { data },
+  } = block;
 
-    const blockStyle = {
-        width,
-        height,
-        maxWidth: `100%`,
-        maxHeight: `100%`,
-        top,
-        left,
-    };
+  const blockStyle = {
+    width,
+    height,
+    maxWidth: `100%`,
+    maxHeight: `100%`,
+    top,
+    left,
+  };
 
-    return (
-        <div className={css.container} style={blockStyle}>
-            <img
-                className={css.image}
-                src={data}
-                /*
+  return (
+    <div className={css.container} style={blockStyle}>
+      <img
+        className={css.image}
+        src={data}
+        /*
             onClick={onClick}                
             */
-            />
-        </div>
-    );
+      />
+    </div>
+  );
 }
 export default ImageBlock;

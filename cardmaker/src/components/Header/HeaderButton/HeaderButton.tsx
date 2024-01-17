@@ -1,16 +1,18 @@
 import React from "react";
+import css from "./HeaderButton.module.css";
 
 type headerButtonProps = {
-    handler: () => void; // func
-    icon: string; // source
-    alt: string; // button name
+  onClick: () => void; // func
+  text: string; // source
+  className?: string; // button name
 };
 
-function HeaderButton({ handler, icon, alt }: headerButtonProps) {
-    return (
-        <button onClick={handler}>
-            <img src={icon} alt={alt} />
-        </button>
-    );
+function HeaderButton({ onClick, className, text }: headerButtonProps) {
+  const classNames = `${css.button} ${className ? className : ""}`;
+  return (
+    <button className={classNames} type="button" onClick={onClick}>
+      {text}
+    </button>
+  );
 }
 export default HeaderButton;
