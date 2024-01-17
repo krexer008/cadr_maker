@@ -1,4 +1,4 @@
-.button__main {
+.button {
   display: flex;
   text-align: center;
   align-items: center;
@@ -13,11 +13,11 @@
   padding: 0 5px;
   margin: 0 10px;
   cursor: pointer;
-  background-color: #ffffff;
+  background-color: #b9b9b9;
 }
 
-.button__main:hover {
-  background-color: #f6f6f6;
+.button:hover {
+  background-color: #ffffff;
   transition: 0.05s ease;
 }
 
@@ -36,7 +36,7 @@
   padding: 0 5px;
   margin: 0 10px;
   cursor: pointer;
-  background-color: #ffc322;
+  background-color: #5a9e00;
 }
 
 .button__dowload:hover {

@@ -1,16 +1,20 @@
 .header {
+  margin-left: 10px;
+  margin-right: 10px;
   height: 70px;
   background-color: darkslategray;
   display: flex;
   flex-direction: row;
   align-items: center;
+  border: none;
+  border-radius: 15px;;
 }
 
 .logo {
   width: 170px;
   height: 35px;
   padding: 3px;
-  margin-left: 30px;
+  margin: 0 40px;
   border-radius: 10px;
   border: 2px outset #575770;
   text-align: center;

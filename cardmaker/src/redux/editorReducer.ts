@@ -9,6 +9,12 @@ const editorReducer = (
   action: EditorAction,
 ): Editor => {
   switch (action.type) {
+    case EditorActionType.UPDATE_EDITOR:
+      return {
+        ...state,
+        canvas: action.payload.tempEditor.canvas,
+        templates: action.payload.tempEditor.templates,
+      };
     case EditorActionType.LOAD_CANVAS:
       return {
         ...state,
@@ -24,7 +30,6 @@ const editorReducer = (
         ...state,
         canvas: action.payload.newEditor.canvas,
         templates: action.payload.newEditor.templates,
-        active: action.payload.newEditor.active,
       };
     default:
       return state;

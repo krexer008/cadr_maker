@@ -140,7 +140,6 @@ const activeCanvas = "cnvs1";
 const editorData: Editor = {
   canvas: canvasData,
   templates: [template1],
-  active: "Aurora",
 };
 
 export { editorData };

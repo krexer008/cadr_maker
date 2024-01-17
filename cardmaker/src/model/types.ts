@@ -63,7 +63,6 @@ type ArtBlockType = Block & {
 };
 
 type ActiveBlock = string;
-type ActiveCanvas = string;
 
 type Canvas = {
   id: string;
@@ -83,7 +82,6 @@ type Template = {
 type Editor = {
   canvas: Canvas;
   templates: Array<Template>;
-  active: ActiveCanvas;
 };
 
 export type {
@@ -98,7 +96,6 @@ export type {
   Size,
   Position,
   ActiveBlock,
-  ActiveCanvas,
 };
 
 export { ArtValue };

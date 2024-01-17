@@ -12,7 +12,6 @@ function EditorView() {
   const editorData = useSelector(selectEditor);
 
   const { createLoadCanvas, createEmptyEditor } = useAppActions();
-
   const resetModelHandler = () => {
     const emptyModel = getEditorModel();
     createEmptyEditor(emptyModel);

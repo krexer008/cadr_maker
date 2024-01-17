@@ -9,7 +9,6 @@ function ChangeArt() {
         <option value="quote">quote</option>
         <option value="line">line</option>
         <option value="circle">circle</option>
-        <option value="Times New Roman">Times New Roman</option>
       </select>
     </div>
   );

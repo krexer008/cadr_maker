@@ -38,6 +38,7 @@ function CanvasView({
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
   };
+  console.log(styleCanvas.backgroundColor);
   const classNames = `${css.canvas} ${isSelected ? css.selected : css.canvas}`;
 
   return (

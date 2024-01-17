@@ -23,43 +23,43 @@ function Header({
       </div>
       <HeaderButton
         onClick={loadFromFile}
-        className={"button__main"}
+        className={"button"}
         text="Open File"
       />
 
       <HeaderButton
         onClick={saveToFile}
-        className={"button__main"}
+        className={"button"}
         text="Save File"
       />
 
       <HeaderButton
         onClick={resetModelHandler}
-        className={"button__main"}
+        className={"button"}
         text="Clear Editor" //Очистить редактор
       />
 
       <HeaderButton
         onClick={() => alert("Add Text clicked")}
-        className={"button__main"}
+        className={"button"}
         text="Add Text"
       />
 
       <HeaderButton
         onClick={() => alert("Add Img clicked")}
-        className={"button__main"}
+        className={"button"}
         text="Add Image"
       />
 
       <HeaderButton
         onClick={() => alert("Add Art clicked")}
-        className={"button__main"}
+        className={"button"}
         text="Add ART"
       />
 
       <HeaderButton
         onClick={() => alert("DeleteObj clicked")}
-        className={"button__main"}
+        className={"button"}
         text="Delete Item"
       />
 

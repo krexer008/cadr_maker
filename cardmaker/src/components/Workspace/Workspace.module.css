@@ -1,6 +1,10 @@
 .workspace {
     margin: 10px;
     height: calc(100vh - 90px);
+    width: calc(100vw - 270px);
     position: relative;
     z-index: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

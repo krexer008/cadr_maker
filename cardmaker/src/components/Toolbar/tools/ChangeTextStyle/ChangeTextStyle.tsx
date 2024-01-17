@@ -5,15 +5,9 @@ import bold from "../../ToolbarButton/icons/bold.svg";
 import italic from "../../ToolbarButton/icons/italic.svg";
 import underline from "../../ToolbarButton/icons/underline.svg";
 
-type ChangeSizeProps = {
-  currentTextSize: number;
-  currentFontFamily: string;
-};
-
-function ChangeTextStyle({
-  currentTextSize,
-  currentFontFamily,
-}: ChangeSizeProps) {
+function ChangeTextStyle() {
+  const currentTextSize = 10;
+  const currentFontFamily = "Arial";
   return (
     <div className={css.toolblock}>
       <div className={css.tool}>

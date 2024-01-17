@@ -2,29 +2,17 @@ import React from "react";
 import css from "../../../../common/Common.module.css";
 
 type ChangeColorProps = {
-  currentColor: {
-    hexColor: string;
-    opacity: number;
-  };
-  currentBGColor: {
-    hexColor: string;
-    opacity: number;
-  };
+  text: string;
 };
 
-function ChangeColor({ currentColor, currentBGColor }: ChangeColorProps) {
-  // тутутут
-  /*changecolor*/
-  /*changeOpacity*/
+function ChangeColor({ text }: ChangeColorProps) {
+  const defaultValueOpacity = 1;
+  const defaultValueColor = "red";
   return (
     <div className={css.toolblock}>
       <div className={css.tool}>
-        <label htmlFor="bg-color">Color</label>
-        <input
-          id="bg-color"
-          type="color"
-          defaultValue={currentColor.hexColor}
-        />
+        <label htmlFor="bg-color">{text}</label>
+        <input id="bg-color" type="color" defaultValue={defaultValueColor} />
         <label htmlFor="bg-opacity">Opacity</label>
         <input
           id="bg-opacity"
@@ -32,24 +20,7 @@ function ChangeColor({ currentColor, currentBGColor }: ChangeColorProps) {
           min="0"
           max="1"
           step="0.1"
-          defaultValue={currentColor.opacity}
-        />
-      </div>
-      <div className={css.tool}>
-        <label htmlFor="bg-color">Field</label>
-        <input
-          id="bg-color"
-          type="color"
-          defaultValue={currentBGColor.hexColor}
-        />
-        <label htmlFor="bg-opacity">Opacity</label>
-        <input
-          id="bg-opacity"
-          type="number"
-          min="0"
-          max="1"
-          step="0.1"
-          defaultValue={currentBGColor.opacity}
+          defaultValue={defaultValueOpacity}
         />
       </div>
     </div>

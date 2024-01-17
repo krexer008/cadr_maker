@@ -1,10 +1,18 @@
 import { Canvas, Editor } from "../model/types";
 
 enum EditorActionType {
+  UPDATE_EDITOR,
   LOAD_CANVAS = "LOAD_CANVAS",
   NEW_CANVAS = "NEW_CANVAS",
   EMPTY_EDITOR = "NEW_EDITOR",
 }
+
+type updateCanvasAction = {
+  type: EditorActionType.UPDATE_EDITOR;
+  payload: {
+    tempEditor: Editor;
+  };
+};
 
 type LoadCanvasAction = {
   type: EditorActionType.LOAD_CANVAS;
@@ -27,6 +35,10 @@ type EmptyEditorAction = {
   };
 };
 
-type EditorAction = LoadCanvasAction | NewCanvasAction | EmptyEditorAction;
+type EditorAction =
+  | updateCanvasAction
+  | LoadCanvasAction
+  | NewCanvasAction
+  | EmptyEditorAction;
 
 export { EditorActionType, type EditorAction };

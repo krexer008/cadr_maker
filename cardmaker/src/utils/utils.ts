@@ -8,7 +8,7 @@ function getNewCanvas(): Canvas {
   return {
     id: generateRandomID(),
     size: {
-      width: 800,
+      width: 1000,
       height: 600,
     },
     filtr: {
@@ -18,9 +18,9 @@ function getNewCanvas(): Canvas {
       a: 1,
     },
     bgColor: {
-      r: 256,
-      g: 256,
-      b: 256,
+      r: 250,
+      g: 250,
+      b: 250,
       a: 1,
     },
     bgImage: {
@@ -36,7 +36,6 @@ function getEditorModel(): Editor {
   return {
     canvas: getNewCanvas(),
     templates: [],
-    active: "",
   };
 }
 
