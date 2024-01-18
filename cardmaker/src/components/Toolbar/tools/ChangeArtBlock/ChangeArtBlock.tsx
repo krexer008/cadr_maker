@@ -6,7 +6,7 @@ function ChangeArtBlock() {
   return (
     <div className={css.toolbar}>
       <ChangeArt />
-      <ChangeColor text={"Color"} />
+      <ChangeColor title={"Color"} color={{ r: 0, g: 0, b: 0, a: 0 }} />
     </div>
   );
 }

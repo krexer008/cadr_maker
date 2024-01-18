@@ -1,14 +1,19 @@
 import React from "react";
-import ChangeCanvasSize from "../ChangeCanvasSize/ChangeCanvasSize";
+import { useSelector } from "react-redux";
+import { selectEditor } from "../../../../redux/selectors";
+import ChangeSize from "../ChangeSize/ChangeSize";
 import ChangeColor from "../ChangeColor/ChangeColor";
 import ChangeImage from "../ChangeImage/ChangeImage";
 
 function ChangeCanvas() {
+  const editorData = useSelector(selectEditor);
+
+  const { size, bgImage, bgColor } = editorData.canvas;
   return (
     <div>
-      <ChangeColor text={"Color"} />
-      <ChangeImage />
-      <ChangeCanvasSize />
+      <ChangeColor title="Color" color={bgColor} />
+      <ChangeImage image={bgImage} />
+      <ChangeSize size={size} />
     </div>
   );
 }

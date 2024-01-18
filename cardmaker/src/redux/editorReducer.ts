@@ -6,9 +6,12 @@ const initialEditorData = getEditorModel();
 
 const editorReducer = (
   state: Editor = initialEditorData,
-  action: EditorAction,
+  action: EditorAction
 ): Editor => {
   switch (action.type) {
+    case EditorActionType.CHANGE_CANVAS_SIZE:
+      return {
+
     case EditorActionType.UPDATE_EDITOR:
       return {
         ...state,
