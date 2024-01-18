@@ -1,17 +1,23 @@
-import { Editor } from "../model/types";
+import { Editor, Canvas } from "../model/types";
 import { getEditorModel } from "../utils/utils";
 import { EditorActionType, EditorAction } from "./editorActions";
 
 const initialEditorData = getEditorModel();
 
-const editorReducer = (
-  state: Editor = initialEditorData,
-  action: EditorAction
-): Editor => {
+const editorReducer = (state: Editor = initialEditorData, action: EditorAction) => {
   switch (action.type) {
     case EditorActionType.CHANGE_CANVAS_SIZE:
+      const newSize = action.payload;
+      const newCanvas = () => {
+        return {
+          ...state.canvas,
+          size: newSize,
+        };
+      }
       return {
-
+        ...state,
+        canvas: newCanvas,
+      };
     case EditorActionType.UPDATE_EDITOR:
       return {
         ...state,
