@@ -65,6 +65,7 @@ type ArtBlockType = Block & {
 type ActiveBlock = string;
 
 type Canvas = {
+  active: boolean;
   id: string;
   size: Size;
   filtr: ColorType;

@@ -109,6 +109,7 @@ const activeblock1: ActiveBlock = "imgBlock1";
 
 const canvasData: Canvas = {
   id: "Aurora",
+  active: false,
   size: {
     width: 1400,
     height: 1500,
@@ -134,8 +135,6 @@ const template1: Template = {
   id: "tmpl1",
   canvas: canvasData,
 };
-
-const activeCanvas = "cnvs1";
 
 const editorData: Editor = {
   canvas: canvasData,

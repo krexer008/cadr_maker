@@ -1,17 +1,13 @@
-import React from "react";
 import css from "../../../../common/Common.module.css";
-import { ColorType } from "../../../../model/types";
-import getOpacity from "../../../../utils/getOpacity";
-import getRGB from "../../../../utils/getRGB";
 
 type ChangeColorProps = {
   title: string;
-  color: ColorType;
+  color: string;
 };
 
 function ChangeColor({ title, color }: ChangeColorProps) {
-  const defaultValueOpacity = getOpacity(color);
-  const defaultValueColor = getRGB(color);
+  const defaultValueOpacity = 1;
+  const defaultValueColor = color;
   return (
     <div className={css.toolblock}>
       <div className={css.tool}>

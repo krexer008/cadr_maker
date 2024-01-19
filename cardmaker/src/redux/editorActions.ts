@@ -1,15 +1,15 @@
 import { Canvas, Editor, Size } from "../model/types";
 
 enum EditorActionType {
-  CHANGE_CANVAS_SIZE = "CHANGE_CANVAS_SIZE",
+  CHANGE_SIZE = "CHANGE_SIZE",
   UPDATE_EDITOR = "UPDATE_EDITOR",
   LOAD_CANVAS = "LOAD_CANVAS",
   NEW_CANVAS = "NEW_CANVAS",
   EMPTY_EDITOR = "NEW_EDITOR",
 }
 
-type ChangeCanvasSizeAction = {
-  type: EditorActionType.CHANGE_CANVAS_SIZE;
+type ChangeSizeAction = {
+  type: EditorActionType.CHANGE_SIZE;
   payload: {
     newSize: Size;
   };
@@ -44,7 +44,7 @@ type EmptyEditorAction = {
 };
 
 type EditorAction =
-  | ChangeCanvasSizeAction
+  | ChangeSizeAction
   | updateCanvasAction
   | LoadCanvasAction
   | NewCanvasAction

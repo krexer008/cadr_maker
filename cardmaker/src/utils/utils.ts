@@ -7,6 +7,7 @@ function generateRandomID() {
 function getNewCanvas(): Canvas {
   return {
     id: generateRandomID(),
+    active: true,
     size: {
       width: 1000,
       height: 600,

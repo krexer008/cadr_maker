@@ -1,12 +1,7 @@
 import React from "react";
 import css from "../../../../common/Common.module.css";
-import { ImageType } from "../../../../model/types";
 
-type ImageProps = {
-  image?: ImageType;
-};
-
-function ChangeImage({ image }: ImageProps) {
+function ChangeImage() {
   return (
     <div className={css.tool}>
       <div>

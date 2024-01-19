@@ -1,9 +1,9 @@
 import { EditorActionType } from "./editorActions";
 import { Canvas, Editor, Size } from "../model/types";
 
-function createChangeCanvasSize(newSize: Size) {
+function createChangeSize(newSize: Size) {
   return {
-    type: EditorActionType.CHANGE_CANVAS_SIZE,
+    type: EditorActionType.CHANGE_SIZE,
     payload: { newSize },
   };
 }
@@ -37,7 +37,7 @@ function createEmptyEditor(newEditor: Editor) {
 }
 
 export {
-  createChangeCanvasSize,
+  createChangeSize,
   createUpdateCanvas,
   createLoadCanvas,
   createNewCanvas,
