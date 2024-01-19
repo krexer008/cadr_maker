@@ -62,17 +62,17 @@ type ArtBlockType = Block & {
   borderColor: ColorType;
 };
 
-type ActiveBlock = string;
+type ActiveElement = string;
 
 type Canvas = {
-  active: boolean;
   id: string;
+  type: "canvas";
   size: Size;
-  filtr: ColorType;
+  filter: ColorType;
   bgImage: ImageType;
   bgColor: ColorType;
   blocks: Array<TextBlockType | ImageBlockType | ArtBlockType>;
-  activeBlock: ActiveBlock;
+  active: ActiveElement;
 };
 
 type Template = {
@@ -96,7 +96,7 @@ export type {
   ImageType,
   Size,
   Position,
-  ActiveBlock,
+  ActiveElement,
 };
 
 export { ArtValue };

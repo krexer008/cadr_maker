@@ -5,26 +5,41 @@ import css from "./Toolbar.module.css";
 import ChangeArtBlock from "./tools/ChangeArtBlock/ChangeArtBlock";
 import ChangeCanvas from "./tools/ChangeCanvas/ChangeCanvas";
 import ChangeImage from "./tools/ChangeImage/ChangeImage";
-import ChanngeTemplates from "./tools/ChanngeTemplates/ChanngeTemplates";
+import ChangeTemplates from "./tools/ChangeTemplates/ChangeTemplates";
+import React from "react";
 
 function Toolbar() {
   const editorData = useSelector(selectEditor);
-  const { id, active, activeBlock, blocks } = editorData.canvas;
-
+  const { id, active, blocks } = editorData.canvas;
+  let blockType = "";
+  if (active) {
+    if (active == id) {
+      blockType = "canvas";
+    } else {
+      for (let i = 0; i < blocks.length; i++) {
+        if (blocks[i].id == active) {
+          blockType = blocks[i].type;
+          break;
+        }
+      }
+    }
+  }
   return (
     <div className={css.toolbar}>
-      {active ? (
+      <label>Features</label>
+      {blockType == "canvas" ? (
         <ChangeCanvas />
-      ) :
-        ((!activeBlock || activeBlock.length == 0)
-          ? <ChanngeTemplates />
-          : (const result = blocks.find(block => block.id === activeBlock)?.type
-      result&& (result === "image") ? <ChangeText />
-          : result && (result === "text") ? <ChangeImage />
-            : result && (result === "art") ? <ChangeArtBlock /> : "")
-      
-      );}
+      ) : blockType == "text" ? (
+        <ChangeText />
+      ) : blockType == "image" ? (
+        <ChangeImage />
+      ) : blockType == "art" ? (
+        <ChangeArtBlock />
+      ) : (
+        <ChangeTemplates />
+      )}
     </div>
   );
 }
+
 export default Toolbar;

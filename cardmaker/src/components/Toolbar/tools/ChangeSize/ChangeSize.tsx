@@ -1,38 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import css from "../../../../common/Common.module.css";
+import { useSelector } from "react-redux";
+import { selectEditor } from "../../../../redux/selectors";
+import { useAppActions } from "../../../../redux/hooks";
+import ChangeInput from "./ChangeInput/ChangeInput";
 
-type SizeProps = {
-  handleWidthChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  handleHeightChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-};
+function ChangeSize() {
+  const { createChangeSize } = useAppActions();
 
-function ChangeSize({ handleWidthChange, handleHeightChange }: SizeProps) {
+  const [width, setWidth] = useState("");
+  const [height, setHeight] = useState("");
+
+  const handleWidthChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    event.target.value ? setWidth(event.target.value) : setWidth("800");
+  };
+  const handleHeightChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    event.target.value ? setHeight(event.target.value) : setHeight("600");
+  };
+
+  const handleChangeApply = () => {
+    const newSize = {
+      width: width ? parseInt(width, 10) : 800,
+      height: height ? parseInt(height, 10) : 800,
+    };
+    createChangeSize(newSize);
+  };
+
   return (
     <div className={css.tool}>
       <div className={css.toolblock}>
-        <label>Canvas Size</label>
-        <div className={css.size}>
-          <label htmlFor="canvas-width">Width </label>
-          <input
-            id="canvas-width"
-            type="number"
-            min="10"
-            max="1980"
-            step="1"
-            onChange={handleWidthChange}
-          />
-        </div>
-        <div className={css.size}>
-          <label htmlFor="canvas-height">Height </label>
-          <input
-            id="canvas-height"
-            type="number"
-            min="10"
-            max="1080"
-            step="1"
-            onChange={handleHeightChange}
-          />
-        </div>
+        <ChangeInput
+          text={"Width"}
+          defaultValue={800}
+          onChange={handleWidthChange}
+        />
+        <ChangeInput
+          text={"Height"}
+          defaultValue={600}
+          onChange={handleHeightChange}
+        />
+        <button onClick={handleChangeApply}>"Apply size"</button>
       </div>
     </div>
   );

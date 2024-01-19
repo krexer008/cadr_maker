@@ -5,14 +5,16 @@ function generateRandomID() {
 }
 
 function getNewCanvas(): Canvas {
+  const id = generateRandomID();
   return {
-    id: generateRandomID(),
-    active: true,
+    id: id,
+    active: id,
+    type: "canvas",
     size: {
       width: 1000,
       height: 600,
     },
-    filtr: {
+    filter: {
       r: 256,
       g: 256,
       b: 256,
@@ -29,7 +31,6 @@ function getNewCanvas(): Canvas {
       data: "",
     },
     blocks: [],
-    activeBlock: "",
   };
 }
 

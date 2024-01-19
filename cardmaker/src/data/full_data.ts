@@ -7,7 +7,7 @@ import {
   Template,
   ImageBlockType,
   ImageType,
-  ActiveBlock,
+  ActiveElement,
 } from "../model/types";
 
 import sunrise from "./img/jpg/sunrise.jpg";
@@ -105,16 +105,16 @@ const artBlockData: ArtBlockType = {
   },
 };
 
-const activeblock1: ActiveBlock = "imgBlock1";
+const activeblock1: ActiveElement = "Aurora";
 
 const canvasData: Canvas = {
   id: "Aurora",
-  active: false,
+  type: "canvas",
   size: {
     width: 1400,
     height: 1500,
   },
-  filtr: {
+  filter: {
     r: 0xff,
     g: 0xff,
     b: 0xff,
@@ -128,7 +128,7 @@ const canvasData: Canvas = {
     a: 1,
   },
   blocks: [textData, artBlockData, imageBlockData1],
-  activeBlock: activeblock1,
+  active: "Aurora",
 };
 
 const template1: Template = {
