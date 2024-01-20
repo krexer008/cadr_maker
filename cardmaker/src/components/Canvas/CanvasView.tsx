@@ -47,6 +47,9 @@ function CanvasView({
       style={styleCanvas}
       onClick={onSelectCanvas}
     >
+      <div>
+        {canvasData.size.width}"px /// "{canvasData.size.height}px
+      </div>
       {blocks.map((block, index) => {
         switch (block.type) {
           case "art":

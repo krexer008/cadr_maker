@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 import css from "../../../../common/Common.module.css";
-import { useSelector } from "react-redux";
-import { selectEditor } from "../../../../redux/selectors";
 import { useAppActions } from "../../../../redux/hooks";
 import ChangeInput from "./ChangeInput/ChangeInput";
 
 function ChangeSize() {
   const { createChangeSize } = useAppActions();
-
   const [width, setWidth] = useState("");
   const [height, setHeight] = useState("");
 

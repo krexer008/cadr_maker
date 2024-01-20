@@ -19,9 +19,13 @@
       "jsx": true
     }
   },
-  "plugins": ["@typescript-eslint", "prettier", "react-hooks"],
-
+  "plugins": [
+    "@typescript-eslint",
+    "prettier",
+    "react-hooks"
+  ],
   "rules": {
+    "tab_width": 2,
     "prettier/prettier": "error",
     "no-duplicate-imports": "error",
     "no-self-compare": "error",

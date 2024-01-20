@@ -9,22 +9,28 @@ import { getEditorModel } from "../../utils/utils";
 import { loadDatalFromLocal, saveDataToLocal } from "../../utils/fileutils";
 
 function EditorView() {
-  const editorData = useSelector(selectEditor);
+  const editorModel = useSelector(selectEditor);
 
-  const { createLoadCanvas, createEmptyEditor } = useAppActions();
+  const {createChangeActiveAction, createSaveCanvasAction, createLoadCanvas, createEmptyEditor} =
+    useAppActions();
   const resetModelHandler = () => {
     const emptyModel = getEditorModel();
+    createSaveCanvasAction(emptyModel.canvas);
     createEmptyEditor(emptyModel);
   };
 
   const saveToFile = () => {
-    saveDataToLocal(editorData);
+    saveDataToLocal(editorModel);
   };
 
   const loadFromFile = () => {
     loadDatalFromLocal((model) => {
       createLoadCanvas(model);
     });
+  };
+
+  const handleSelectActiveElement = (activeElement: string) => {
+    createChangeActiveAction(activeElement);
   };
 
   return (
@@ -35,10 +41,14 @@ function EditorView() {
         resetModelHandler={resetModelHandler}
       />
       <div className={css.main}>
-        <Toolbar />
-        <Workspace />
+        <Toolbar/>
+        <Workspace
+          onSelectElement={handleSelectActiveElement}
+          selectedActiveId={editorModel.canvas.active}
+        />
       </div>
     </div>
   );
 }
+
 export { EditorView };

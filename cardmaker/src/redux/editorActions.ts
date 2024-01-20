@@ -1,12 +1,28 @@
-import { Canvas, Editor, Size } from "../model/types";
+import { ActiveElement, Canvas, Editor, Size } from "../model/types";
 
 enum EditorActionType {
+  CHANGE_ACTIVE = "CHANGE_ACTIVE",
+  SAVE_CANVAS = "SAVE_CANVAS",
   CHANGE_SIZE = "CHANGE_SIZE",
   UPDATE_EDITOR = "UPDATE_EDITOR",
   LOAD_CANVAS = "LOAD_CANVAS",
   NEW_CANVAS = "NEW_CANVAS",
   EMPTY_EDITOR = "NEW_EDITOR",
 }
+
+type ChangeActiveAction = {
+  type: EditorActionType.CHANGE_ACTIVE;
+  payload: {
+    activeElement: string;
+  };
+};
+
+type SaveCanvasAction = {
+  type: EditorActionType.SAVE_CANVAS;
+  payload: {
+    canvas: Canvas;
+  };
+};
 
 type ChangeSizeAction = {
   type: EditorActionType.CHANGE_SIZE;
@@ -44,6 +60,8 @@ type EmptyEditorAction = {
 };
 
 type EditorAction =
+  | ChangeActiveAction
+  | SaveCanvasAction
   | ChangeSizeAction
   | updateCanvasAction
   | LoadCanvasAction
