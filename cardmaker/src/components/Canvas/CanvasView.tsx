@@ -8,8 +8,8 @@ import TextBlock from "./TextBlock/TextBlock";
 type CanvasBlockProps = {
     canvasData: Canvas;
     isSelected: boolean;
-    onSelectCanvas?: () => void;
-    onBlockClick: () => void;
+    onSelectCanvas: () => void; // вернет ид канвас
+    onBlockClick: () => void; // вернет ид выбранного элемента
 };
 
 function CanvasView({
