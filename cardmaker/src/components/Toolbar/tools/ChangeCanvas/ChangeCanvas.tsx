@@ -4,13 +4,13 @@ import ChangeColor from "../ChangeColor/ChangeColor";
 import ChangeImage from "../ChangeImage/ChangeImage";
 
 function ChangeCanvas() {
-  return (
-    <div>
-      <ChangeColor title="Color" color="grey" />
-      <ChangeImage />
-      <ChangeSize />
-    </div>
-  );
+    return (
+        <div>
+            <ChangeColor title="Color" color="grey" />
+            <ChangeImage />
+            <ChangeSize />
+        </div>
+    );
 }
 
 export default ChangeCanvas;

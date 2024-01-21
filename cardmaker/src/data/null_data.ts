@@ -1,10 +1,10 @@
 import {
-  TextBlockType,
-  ImageBlockType,
-  ArtBlockType,
-  Canvas,
-  Editor,
-  Template,
+    TextBlockType,
+    ImageBlockType,
+    ArtBlockType,
+    Canvas,
+    Editor,
+    Template,
 } from "../model/types.js";
 
 let textBlockValue: TextBlockType;
@@ -15,10 +15,10 @@ let editorValue: Editor;
 let templateValue: Template;
 
 export {
-  textBlockValue,
-  imageBlockValue,
-  artBlockValue,
-  canvasValue,
-  editorValue,
-  templateValue,
+    textBlockValue,
+    imageBlockValue,
+    artBlockValue,
+    canvasValue,
+    editorValue,
+    templateValue,
 };

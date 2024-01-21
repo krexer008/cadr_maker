@@ -9,46 +9,47 @@ import { getEditorModel } from "../../utils/utils";
 import { loadDatalFromLocal, saveDataToLocal } from "../../utils/fileutils";
 
 function EditorView() {
-  const editorModel = useSelector(selectEditor);
+    const editorModel = useSelector(selectEditor);
 
-  const {createChangeActiveAction, createSaveCanvasAction, createLoadCanvas, createEmptyEditor} =
-    useAppActions();
-  const resetModelHandler = () => {
-    const emptyModel = getEditorModel();
-    createSaveCanvasAction(emptyModel.canvas);
-    createEmptyEditor(emptyModel);
-  };
+    const {
+        createChangeActiveAction,
+        createSaveCanvasAction,
+        createLoadCanvas,
+        createEmptyEditor,
+    } = useAppActions();
 
-  const saveToFile = () => {
-    saveDataToLocal(editorModel);
-  };
+    const loadFromFile = () => {
+        loadDatalFromLocal((model) => {
+            createLoadCanvas(model);
+        });
+    };
 
-  const loadFromFile = () => {
-    loadDatalFromLocal((model) => {
-      createLoadCanvas(model);
-    });
-  };
+    const saveToFile = () => {
+        saveDataToLocal(editorModel);
+    };
 
-  const handleSelectActiveElement = (activeElement: string) => {
-    createChangeActiveAction(activeElement);
-  };
+    const resetModelHandler = () => {
+        const emptyModel = getEditorModel();
+        createEmptyEditor(emptyModel);
+    };
 
-  return (
-    <div>
-      <Header
-        saveToFile={saveToFile}
-        loadFromFile={loadFromFile}
-        resetModelHandler={resetModelHandler}
-      />
-      <div className={css.main}>
-        <Toolbar/>
-        <Workspace
-          onSelectElement={handleSelectActiveElement}
-          selectedActiveId={editorModel.canvas.active}
-        />
-      </div>
-    </div>
-  );
+    const handleSelectActiveElement = (activeElement: string) => {
+        createChangeActiveAction(activeElement);
+    };
+
+    return (
+        <div>
+            <Header
+                saveToFile={saveToFile}
+                loadFromFile={loadFromFile}
+                resetModelHandler={resetModelHandler}
+            />
+            <div className={css.main}>
+                <Toolbar />
+                <Workspace />
+            </div>
+        </div>
+    );
 }
 
 export { EditorView };
