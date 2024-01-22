@@ -2,23 +2,27 @@ import React from "react";
 import css from "./ActiveObjectView.module.css";
 import { useAppSelector } from "../../../redux/hooks";
 import { selectEditor } from "../../../redux/selectors";
+import { Transform } from "../../../model/types"
 
 type ActiveObjectViewProps = {
     isSelected: boolean;
     position: { top: number; left: number };
     size: { width: number; height: number };
-    background?: string;
+    background: string;
     blockId: string;
     className: string;
+    children: React.ReactNode;
+    transform: Transform;
 };
 
 function ActiveObjectView({
     isSelected,
-    position,
-    size,
+    className,
+    children,
+    position:{ top, left },
+    size: {width, height},
     background,
     blockId,
-    className,
 }: ActiveObjectViewProps) {
     const editorData = useAppSelector(selectEditor);
     const activeCanvasId = editorData.canvas.id;

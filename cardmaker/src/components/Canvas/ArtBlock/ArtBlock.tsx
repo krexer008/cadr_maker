@@ -19,56 +19,56 @@ type artBlockProps = {
 function ArtBlock({ block, isSelected, onClick }: artBlockProps) {
     const { value, bgColor, borderColor, size, position, transform } = block;
 
-    let ArtOjectContent;
+    let ArtObjectContent;
     switch (value) {
         case ArtValue.Arrow:
-            ArtOjectContent = (
+            ArtObjectContent = (
                 <ArtObjectArrow color={borderColor} size={size} />
             );
             break;
         case ArtValue.Circle:
-            ArtOjectContent = (
+            ArtObjectContent = (
                 <ArtObjectCircle color={borderColor} size={size} />
             );
             break;
         case ArtValue.Chat:
-            ArtOjectContent = <ArtObjectChat color={borderColor} size={size} />;
+            ArtObjectContent = <ArtObjectChat color={borderColor} size={size} />;
             break;
         case ArtValue.Clock:
-            ArtOjectContent = (
+            ArtObjectContent = (
                 <ArtObjectCircle color={borderColor} size={size} />
             );
             break;
         case ArtValue.Flower:
-            ArtOjectContent = (
+            ArtObjectContent = (
                 <ArtObjectClock color={borderColor} size={size} />
             );
             break;
         case ArtValue.Gift:
-            ArtOjectContent = <ArtObjectGift color={borderColor} size={size} />;
+            ArtObjectContent = <ArtObjectGift color={borderColor} size={size} />;
             break;
         case ArtValue.Heart:
-            ArtOjectContent = (
+            ArtObjectContent = (
                 <ArtObjectHeart color={borderColor} size={size} />
             );
             break;
         case ArtValue.Square:
-            ArtOjectContent = (
+            ArtObjectContent = (
                 <ArtObjectSquare color={borderColor} size={size} />
             );
             break;
         case ArtValue.ThugLife:
-            ArtOjectContent = (
+            ArtObjectContent = (
                 <ArtObjectThugLife color={borderColor} size={size} />
             );
             break;
         case ArtValue.ThumbsUp:
-            ArtOjectContent = (
+            ArtObjectContent = (
                 <ArtObjectThumbsUp color={borderColor} size={size} />
             );
             break;
         default:
-            ArtOjectContent = null;
+            ArtObjectContent = null;
     }
     return (
         <ActiveObjectView
@@ -80,7 +80,7 @@ function ArtBlock({ block, isSelected, onClick }: artBlockProps) {
             blockId={block.id}
             transform={transform}
         >
-            <div onClick={onClick}>{ArtOjectContent}</div>
+            <div onClick={onClick}>{ArtObjectContent}</div>
         </ActiveObjectView>
     );
 }

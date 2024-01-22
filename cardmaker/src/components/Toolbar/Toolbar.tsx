@@ -1,5 +1,5 @@
-import { useSelector } from "react-redux";
-import { selectEditor } from "../../redux/selectors";
+import {useSelector} from "react-redux";
+import {selectEditor} from "../../redux/selectors";
 import ChangeText from "./tools/ChangeText/ChangeText";
 import css from "./Toolbar.module.css";
 import ChangeArtBlock from "./tools/ChangeArtBlock/ChangeArtBlock";
@@ -10,7 +10,7 @@ import React from "react";
 
 function Toolbar() {
     const editorData = useSelector(selectEditor);
-    const { id, active, blocks } = editorData.canvas;
+    const {id, active, blocks} = editorData.canvas;
     let blockType = "";
     if (active) {
         if (active == id) {
@@ -24,22 +24,29 @@ function Toolbar() {
             }
         }
     }
+    let menu;
+    switch (blockType) {
+        case "":
+            menu = <ChangeTemplates />
+            break;
+        case "canvas":
+            menu = <ChangeCanvas/>;
+            break;
+        case "text":
+            menu = <ChangeText id={active}/>;
+            break;
+        case "image":
+            menu = <ChangeImage id={active}/>;
+            break;
+        case "art":
+            menu = <ChangeArtBlock id={active}/>;
+            break;
+    }
     return (
         <div className={css.toolbar}>
             <label>Features</label>
-            {blockType == "canvas" ? (
-                <ChangeCanvas />
-            ) : blockType == "text" ? (
-                <ChangeText />
-            ) : blockType == "image" ? (
-                <ChangeImage />
-            ) : blockType == "art" ? (
-                <ChangeArtBlock />
-            ) : (
-                <ChangeTemplates />
-            )}
+            {menu}
         </div>
     );
 }
-
 export default Toolbar;

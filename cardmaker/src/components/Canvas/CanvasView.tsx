@@ -8,14 +8,13 @@ import TextBlock from "./TextBlock/TextBlock";
 type CanvasBlockProps = {
     canvasData: Canvas;
     isSelected: boolean;
-    onSelectCanvas: () => void; // вернет ид канвас
-    onBlockClick: () => void; // вернет ид выбранного элемента
+    onSelectActive: (activeID:string) => void; // вернет ид канвас
 };
 
 function CanvasView({
     canvasData,
     isSelected,
-    onSelectCanvas,
+    onSelectActive,
 }: CanvasBlockProps) {
     if (!canvasData) {
         return null;
@@ -27,6 +26,7 @@ function CanvasView({
         bgImage,
         bgColor,
         blocks,
+        active,
     } = canvasData;
     const styleCanvas = {
         width,
@@ -40,7 +40,6 @@ function CanvasView({
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
     };
-
     const classNames = `${css.canvas} ${
         isSelected ? css.selected : css.canvas
     }`;
@@ -49,14 +48,14 @@ function CanvasView({
         <div
             className={classNames}
             style={styleCanvas}
-            onClick={onSelectCanvas}
+            onClick={()=>onSelectActive(id)}
             id={id}
         >
             {canvasData.size.width}px {canvasData.size.height}px
             {blocks.map((block, index) => {
-                const isBlockSelected = block.id === canvasData.active;
+                const isBlockSelected = block.id === active;
                 const handleClick = () => {
-                    onBlockClick(block.id);
+                    onSelectActive(block.id);
                 };
                 switch (block.type) {
                     case "art":
@@ -68,7 +67,6 @@ function CanvasView({
                                 onClick={handleClick}
                             />
                         );
-                        break;
                     case "image":
                         return (
                             <ImageBlock
@@ -78,7 +76,6 @@ function CanvasView({
                                 onClick={handleClick}
                             />
                         );
-                        break;
                     case "text":
                         return (
                             <TextBlock
@@ -88,7 +85,6 @@ function CanvasView({
                                 onClick={handleClick}
                             />
                         );
-                        break;
                     default:
                         return null;
                 }

@@ -22,7 +22,7 @@ const textData: TextBlockType = {
     fontFamily: "san-serif",
     color: "#000000",
     bold: false,
-    coursive: false,
+    cursive: false,
     underline: false,
     size: {
         width: 100,

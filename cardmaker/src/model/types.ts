@@ -48,7 +48,7 @@ type TextBlockType = Block & {
     fontFamily: string;
     color: ColorType;
     bold: boolean;
-    coursive: boolean;
+    cursive: boolean;
     underline: boolean;
 };
 
@@ -99,4 +99,5 @@ export type {
     Size,
     Position,
     ActiveElement,
+    Transform,
 };

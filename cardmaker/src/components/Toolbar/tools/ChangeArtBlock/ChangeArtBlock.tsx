@@ -2,7 +2,10 @@ import ChangeArt from "../ChangeArt/ChangeArt";
 import ChangeColor from "../ChangeColor/ChangeColor";
 import css from "./ChangeArtBlock.module.css";
 
-function ChangeArtBlock() {
+type ChangeProps = {
+    id:string;
+}
+function ChangeArtBlock({id}:ChangeProps) {
     return (
         <div className={css.toolbar}>
             <ChangeArt />

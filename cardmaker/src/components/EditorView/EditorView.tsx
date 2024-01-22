@@ -12,8 +12,6 @@ function EditorView() {
     const editorModel = useSelector(selectEditor);
 
     const {
-        createChangeActiveAction,
-        createSaveCanvasAction,
         createLoadCanvas,
         createEmptyEditor,
     } = useAppActions();
@@ -31,10 +29,6 @@ function EditorView() {
     const resetModelHandler = () => {
         const emptyModel = getEditorModel();
         createEmptyEditor(emptyModel);
-    };
-
-    const handleSelectActiveElement = (activeElement: string) => {
-        createChangeActiveAction(activeElement);
     };
 
     return (

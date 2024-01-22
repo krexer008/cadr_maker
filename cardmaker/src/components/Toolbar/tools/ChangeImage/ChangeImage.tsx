@@ -1,7 +1,10 @@
 import React from "react";
 import css from "../../../../common/Common.module.css";
 
-function ChangeImage() {
+type ChangeProps = {
+    id:string;
+}
+function ChangeImage({id}:ChangeProps) {
     return (
         <div className={css.tool}>
             <div>

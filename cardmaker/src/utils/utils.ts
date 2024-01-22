@@ -49,7 +49,7 @@ function getNewText(): TextBlockType {
         fontFamily: "san-serif",
         color: "#000000",
         bold: false,
-        coursive: false,
+        cursive: false,
         underline: false,
         transform: {
             type: "scale",

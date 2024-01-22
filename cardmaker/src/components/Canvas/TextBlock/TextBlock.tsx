@@ -21,7 +21,7 @@ function TextBlock({ block, isSelected, onClick }: textBlockProps) {
         fontFamily,
         color,
         bold,
-        coursive,
+        cursive,
         underline,
         transform,
     } = block;
@@ -31,7 +31,7 @@ function TextBlock({ block, isSelected, onClick }: textBlockProps) {
         fontFamily,
         color,
         fontWeight: bold ? "bold" : "normal",
-        fontStyle: coursive ? "italic" : "normal",
+        fontStyle: cursive ? "italic" : "normal",
         textDecoration: underline ? "underline" : "none",
     };
     return (
