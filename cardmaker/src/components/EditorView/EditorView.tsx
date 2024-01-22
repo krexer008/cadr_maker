@@ -11,10 +11,7 @@ import { loadDatalFromLocal, saveDataToLocal } from "../../utils/fileutils";
 function EditorView() {
     const editorModel = useSelector(selectEditor);
 
-    const {
-        createLoadCanvas,
-        createEmptyEditor,
-    } = useAppActions();
+    const { createLoadCanvas, createEmptyEditor } = useAppActions();
 
     const loadFromFile = () => {
         loadDatalFromLocal((model) => {

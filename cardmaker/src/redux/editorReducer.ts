@@ -9,10 +9,10 @@ const editorReducer = (
     action: EditorAction
 ) => {
     switch (action.type) {
-        case EditorActionType.CHANGE_ACTIVE:
+        case EditorActionType.UPDATE_BLOCKS:
             return {
                 ...state,
-                active: action.payload,
+                blocks: action.payload,
             };
         case EditorActionType.CHANGE_SIZE:
             return {

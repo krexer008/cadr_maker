@@ -8,7 +8,7 @@ import TextBlock from "./TextBlock/TextBlock";
 type CanvasBlockProps = {
     canvasData: Canvas;
     isSelected: boolean;
-    onSelectActive: (activeID:string) => void; // вернет ид канвас
+    onSelectActive: (activeID: string) => void; // вернет ид канвас
 };
 
 function CanvasView({
@@ -48,7 +48,7 @@ function CanvasView({
         <div
             className={classNames}
             style={styleCanvas}
-            onClick={()=>onSelectActive(id)}
+            onClick={() => onSelectActive(id)}
             id={id}
         >
             {canvasData.size.width}px {canvasData.size.height}px

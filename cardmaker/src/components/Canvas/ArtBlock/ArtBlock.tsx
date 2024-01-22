@@ -32,7 +32,9 @@ function ArtBlock({ block, isSelected, onClick }: artBlockProps) {
             );
             break;
         case ArtValue.Chat:
-            ArtObjectContent = <ArtObjectChat color={borderColor} size={size} />;
+            ArtObjectContent = (
+                <ArtObjectChat color={borderColor} size={size} />
+            );
             break;
         case ArtValue.Clock:
             ArtObjectContent = (
@@ -45,7 +47,9 @@ function ArtBlock({ block, isSelected, onClick }: artBlockProps) {
             );
             break;
         case ArtValue.Gift:
-            ArtObjectContent = <ArtObjectGift color={borderColor} size={size} />;
+            ArtObjectContent = (
+                <ArtObjectGift color={borderColor} size={size} />
+            );
             break;
         case ArtValue.Heart:
             ArtObjectContent = (
@@ -75,7 +79,7 @@ function ArtBlock({ block, isSelected, onClick }: artBlockProps) {
             isSelected={isSelected}
             position={position}
             size={size}
-            background={bgColor}
+            //background={bgColor}
             className="artobject"
             blockId={block.id}
             transform={transform}

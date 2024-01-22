@@ -2,9 +2,9 @@ import React from "react";
 import css from "../../../../common/Common.module.css";
 
 type ChangeProps = {
-    id:string;
-}
-function ChangeImage({id}:ChangeProps) {
+    id?: string;
+};
+function ChangeImage({ id }: ChangeProps) {
     return (
         <div className={css.tool}>
             <div>

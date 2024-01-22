@@ -1,6 +1,14 @@
-import { Canvas, Editor, Size } from "../model/types";
+import {
+    ArtBlockType,
+    Canvas,
+    Editor,
+    ImageBlockType,
+    Size,
+    TextBlockType,
+} from "../model/types";
 
 enum EditorActionType {
+    UPDATE_BLOCKS = "UPDATE_BLOCKS",
     CHANGE_ACTIVE = "CHANGE_ACTIVE",
     CHANGE_SIZE = "CHANGE_SIZE",
     UPDATE_EDITOR = "UPDATE_EDITOR",
@@ -9,6 +17,13 @@ enum EditorActionType {
     SAVE_CANVAS = "SAVE_CANVAS",
     EMPTY_EDITOR = "NEW_EDITOR",
 }
+
+type UpdateBlocksAction = {
+    type: EditorActionType.UPDATE_BLOCKS;
+    payload: {
+        updateBlocks: Array<ImageBlockType | TextBlockType | ArtBlockType>;
+    };
+};
 
 type ChangeActiveAction = {
     type: EditorActionType.CHANGE_ACTIVE;
@@ -60,6 +75,7 @@ type EmptyEditorAction = {
 };
 
 type EditorAction =
+    | UpdateBlocksAction
     | ChangeActiveAction
     | SaveCanvasAction
     | ChangeSizeAction

@@ -1,10 +1,26 @@
 import { EditorActionType } from "./editorActions";
-import { Canvas, Editor, Size } from "../model/types";
+import {
+    ArtBlockType,
+    Canvas,
+    Editor,
+    ImageBlockType,
+    Size,
+    TextBlockType,
+} from "../model/types";
 
 function createChangeActiveAction(activeElement: string) {
     return {
         type: EditorActionType.CHANGE_ACTIVE,
         payload: activeElement,
+    };
+}
+
+function createUpdateBlocks(
+    updateBlocks: Array<ImageBlockType | TextBlockType | ArtBlockType>
+) {
+    return {
+        type: EditorActionType.UPDATE_BLOCKS,
+        payload: { updateBlocks },
     };
 }
 
@@ -51,6 +67,7 @@ function createEmptyEditor(newEditor: Editor) {
 }
 
 export {
+    createUpdateBlocks,
     createChangeActiveAction,
     createSaveCanvasAction,
     createChangeSize,
