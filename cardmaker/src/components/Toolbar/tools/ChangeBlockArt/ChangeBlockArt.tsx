@@ -1,11 +1,11 @@
 import ChangeArt from "../ChangeArt/ChangeArt";
 import ChangeColor from "../ChangeColor/ChangeColor";
-import css from "./ChangeArtBlock.module.css";
+import css from "./ChangeBlockArt.module.css";
 
 type ChangeProps = {
     id: string;
 };
-function ChangeArtBlock({ id }: ChangeProps) {
+function ChangeBlockArt({ id }: ChangeProps) {
     return (
         <div className={css.toolbar}>
             <ChangeArt />
@@ -13,4 +13,4 @@ function ChangeArtBlock({ id }: ChangeProps) {
         </div>
     );
 }
-export default ChangeArtBlock;
+export default ChangeBlockArt;

@@ -3,6 +3,7 @@ import css from "../../../../common/Common.module.css";
 type ChangeColorProps = {
     title: string;
     color: string;
+    handleChangeColor:
 };
 
 function ChangeColor({ title, color }: ChangeColorProps) {

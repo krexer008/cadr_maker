@@ -1,3 +1,8 @@
+.textbar {
+    display: flex;
+    flex-direction: column;
+}
+
 .toolblock {
     margin: 0;
     padding: 0;

@@ -1,13 +1,13 @@
 import React from "react";
-import ChangeSize from "../ChangeSize/ChangeSize";
 import ChangeColor from "../ChangeColor/ChangeColor";
-import ChangeImage from "../ChangeImage/ChangeImage";
+import ChangeCanvasImage from "./ChangeCanvasImage/ChangeCanvasImage";
+import ChangeSize from "./ChangeSize/ChangeSize";
 
-function ChangeCanvas() {
+function ChangeCanvas() {    
     return (
         <div>
             <ChangeColor title="Color" color="grey" />
-            <ChangeImage />
+            <ChangeCanvasImage />
             <ChangeSize />
         </div>
     );

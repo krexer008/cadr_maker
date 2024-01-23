@@ -2,9 +2,9 @@ import React from "react";
 import css from "../../../../common/Common.module.css";
 
 type ChangeProps = {
-    id?: string;
+    id: string;
 };
-function ChangeImage({ id }: ChangeProps) {
+function ChangeBlockImage({ id }: ChangeProps) {
     return (
         <div className={css.tool}>
             <div>
@@ -24,4 +24,4 @@ function ChangeImage({ id }: ChangeProps) {
     );
 }
 
-export default ChangeImage;
+export default ChangeBlockImage;

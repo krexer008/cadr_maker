@@ -2,9 +2,9 @@ import { useSelector } from "react-redux";
 import { selectEditor } from "../../redux/selectors";
 import ChangeText from "./tools/ChangeText/ChangeText";
 import css from "./Toolbar.module.css";
-import ChangeArtBlock from "./tools/ChangeArtBlock/ChangeArtBlock";
+import ChangeBlockArt from "./tools/ChangeBlockArt/ChangeBlockArt";
 import ChangeCanvas from "./tools/ChangeCanvas/ChangeCanvas";
-import ChangeImage from "./tools/ChangeImage/ChangeImage";
+import ChangeBlockImage from "./tools/ChangeBlockImage/ChangeBlockImage";
 import ChangeTemplates from "./tools/ChangeTemplates/ChangeTemplates";
 import React from "react";
 
@@ -36,10 +36,10 @@ function Toolbar() {
             menu = <ChangeText id={active} />;
             break;
         case "image":
-            menu = <ChangeImage id={active} />;
+            menu = <ChangeBlockImage id={active} />;
             break;
         case "art":
-            menu = <ChangeArtBlock id={active} />;
+            menu = <ChangeBlockArt id={active} />;
             break;
     }
     return (
