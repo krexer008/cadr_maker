@@ -12,7 +12,7 @@ type ChangeProps = {
 
 function ChangeBlockArt({ index, id }: ChangeProps) {
     const editorData = useAppSelector(selectEditor);
-    const { createUpdateBlocks } = useAppActions();
+    const { createSaveCanvasAction } = useAppActions();
 
     const block = editorData.canvas.blocks[index] as ArtBlockType;
 
@@ -23,7 +23,8 @@ function ChangeBlockArt({ index, id }: ChangeProps) {
             }
             return block;
         });
-        createUpdateBlocks(updateBlocks);
+        editorData.canvas.blocks = updateBlocks;
+        createSaveCanvasAction(editorData.canvas);
     };
 
     const handleChangeBGColor = (newColor: string) => {
@@ -33,7 +34,8 @@ function ChangeBlockArt({ index, id }: ChangeProps) {
             }
             return block;
         });
-        createUpdateBlocks(updateBlocks);
+        editorData.canvas.blocks = updateBlocks;
+        createSaveCanvasAction(editorData.canvas);
     };
 
     return (

@@ -12,26 +12,15 @@ function Toolbar() {
     const editorData = useSelector(selectEditor);
     const { id, active, blocks } = editorData.canvas;
 
-    let index = NaN;
-
-    const block = () => {
-        for (let i = 0; i < blocks.length; i++) {
-            if (blocks[i].id === active) {
-                index = i;
-                return;
-            }
-        }
-    };
-
-    //const block = blocks.find((block) => block.id === active);
-
     let blockType = "";
+
+    const block = blocks.find((elem) => elem.id === active);
 
     if (active == id) {
         blockType = "canvas";
     } else {
-        if (blocks[index]) {
-            blockType = blocks[index]?.id;
+        if (block) {
+            blockType = block.type;
         }
     }
 
@@ -41,13 +30,13 @@ function Toolbar() {
             menu = <ChangeCanvas canvas={editorData.canvas} />;
             break;
         case "text":
-            menu = <ChangeText index={index} id={active} />;
+            menu = <ChangeText block={block as TextBlockType} id={active} />;
             break;
         case "image":
-            menu = <ChangeBlockImage id={active} />;
+            menu = "image"; //<ChangeBlockImage id={active} />;
             break;
         case "art":
-            menu = <ChangeBlockArt index={index} id={active} />;
+            menu = "art"; //<ChangeBlockArt index={index} id={active} />;
             break;
         default:
             menu = <ChangeTemplates />;

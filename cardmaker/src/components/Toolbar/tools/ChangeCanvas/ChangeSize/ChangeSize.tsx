@@ -1,42 +1,27 @@
-import React, { useState } from "react";
-import { useAppActions } from "../../../../../redux/hooks";
 import css from "../../../../../common/Common.module.css";
+import { Size } from "../../../../../model/types";
 import ChangeInput from "./ChangeInput/ChangeInput";
 
-function ChangeSize() {
-    const { createChangeSize } = useAppActions();
-    const [width, setWidth] = useState("");
-    const [height, setHeight] = useState("");
+type ChangeSizeProps = {
+    size: Size;
+    setValueWidth: (newWidth: string) => void;
+    setValueHeight: (newHeight: string) => void;
+};
 
-    const handleWidthChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        event.target.value ? setWidth(event.target.value) : setWidth("800");
-    };
-    const handleHeightChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        event.target.value ? setHeight(event.target.value) : setHeight("600");
-    };
-
-    const handleChangeApply = () => {
-        const newSize = {
-            width: width ? parseInt(width, 10) : 800,
-            height: height ? parseInt(height, 10) : 800,
-        };
-        createChangeSize(newSize);
-    };
-
+function ChangeSize({ size, setValueWidth, setValueHeight }: ChangeSizeProps) {
     return (
         <div className={css.tool}>
             <div className={css.toolblock}>
                 <ChangeInput
                     text={"Width"}
-                    defaultValue={800}
-                    onChange={handleWidthChange}
+                    defaultValue={size.width}
+                    onChange={(e) => setValueWidth(e.target.value)}
                 />
                 <ChangeInput
                     text={"Height"}
-                    defaultValue={600}
-                    onChange={handleHeightChange}
+                    defaultValue={size.height}
+                    onChange={(e) => setValueHeight(e.target.value)}
                 />
-                <button onClick={handleChangeApply}>Apply size</button>
             </div>
         </div>
     );

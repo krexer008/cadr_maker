@@ -1,4 +1,3 @@
-import React from "react";
 import css from "./CanvasView.module.css";
 import { Canvas } from "../../model/types";
 import ImageBlock from "./ImageBlock/ImageBlock";

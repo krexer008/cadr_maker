@@ -1,35 +1,5 @@
 import { EditorActionType } from "./editorActions";
-import {
-    ArtBlockType,
-    Canvas,
-    Editor,
-    ImageBlockType,
-    Size,
-    TextBlockType,
-} from "../model/types";
-
-function createUpdateCanvasBGAction(newColor: string) {
-    return {
-        type: EditorActionType.CHANGE_CANVAS_BG,
-        payload: newColor,
-    };
-}
-
-function createChangeActiveAction(activeElement: string) {
-    return {
-        type: EditorActionType.CHANGE_ACTIVE,
-        payload: activeElement,
-    };
-}
-
-function createUpdateBlocks(
-    updateBlocks: Array<ImageBlockType | TextBlockType | ArtBlockType>
-) {
-    return {
-        type: EditorActionType.UPDATE_BLOCKS,
-        payload: { updateBlocks },
-    };
-}
+import { Canvas, Editor, Size } from "../model/types";
 
 function createChangeSize(newSize: Size) {
     return {
@@ -74,9 +44,6 @@ function createEmptyEditor(newEditor: Editor) {
 }
 
 export {
-    createUpdateCanvasBGAction,
-    createUpdateBlocks,
-    createChangeActiveAction,
     createSaveCanvasAction,
     createChangeSize,
     createUpdateCanvas,

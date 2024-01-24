@@ -1,16 +1,6 @@
-import {
-    ArtBlockType,
-    Canvas,
-    Editor,
-    ImageBlockType,
-    Size,
-    TextBlockType,
-} from "../model/types";
+import { Canvas, Editor, Size } from "../model/types";
 
 enum EditorActionType {
-    CHANGE_CANVAS_BG = "CHANGE_CANVAS_BG",
-    UPDATE_BLOCKS = "UPDATE_BLOCKS",
-    CHANGE_ACTIVE = "CHANGE_ACTIVE",
     CHANGE_SIZE = "CHANGE_SIZE",
     UPDATE_EDITOR = "UPDATE_EDITOR",
     LOAD_CANVAS = "LOAD_CANVAS",
@@ -18,27 +8,6 @@ enum EditorActionType {
     SAVE_CANVAS = "SAVE_CANVAS",
     EMPTY_EDITOR = "NEW_EDITOR",
 }
-
-type UpdateCanvasBGAction = {
-    type: EditorActionType.CHANGE_CANVAS_BG;
-    payload: {
-        newColor: string;
-    };
-};
-
-type UpdateBlocksAction = {
-    type: EditorActionType.UPDATE_BLOCKS;
-    payload: {
-        updateBlocks: Array<ImageBlockType | TextBlockType | ArtBlockType>;
-    };
-};
-
-type ChangeActiveAction = {
-    type: EditorActionType.CHANGE_ACTIVE;
-    payload: {
-        activeElement: string;
-    };
-};
 
 type ChangeSizeAction = {
     type: EditorActionType.CHANGE_SIZE;
@@ -50,7 +19,7 @@ type ChangeSizeAction = {
 type SaveCanvasAction = {
     type: EditorActionType.SAVE_CANVAS;
     payload: {
-        canvas: Canvas;
+        updatedCanvas: Canvas;
     };
 };
 
@@ -83,9 +52,6 @@ type EmptyEditorAction = {
 };
 
 type EditorAction =
-    | UpdateCanvasBGAction
-    | UpdateBlocksAction
-    | ChangeActiveAction
     | SaveCanvasAction
     | ChangeSizeAction
     | updateCanvasAction

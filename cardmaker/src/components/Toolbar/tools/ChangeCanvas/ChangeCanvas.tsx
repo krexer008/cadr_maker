@@ -9,17 +9,30 @@ type ChangeCanvasProps = {
 };
 
 function ChangeCanvas({ canvas }: ChangeCanvasProps) {
-    const { createUpdateCanvasBGAction } = useAppActions();
+    const { createSaveCanvasAction } = useAppActions();
 
     const handleChangeColor = (newColor: string) => {
-        createUpdateCanvasBGAction(newColor);
+        canvas.bgColor = newColor;
+        createSaveCanvasAction(canvas);
+    };
+    const handleChangeWidth = (newWidth: string) => {
+        canvas.size.width = parseInt(newWidth);
+        createSaveCanvasAction(canvas);
+    };
+    const handleChangeHeight = (newHeight: string) => {
+        canvas.size.height = parseInt(newHeight);
+        createSaveCanvasAction(canvas);
     };
 
     return (
         <div>
             <ChangeColor value={canvas.bgColor} setValue={handleChangeColor} />
             <ChangeCanvasImage />
-            <ChangeSize />
+            <ChangeSize
+                size={canvas.size}
+                setValueWidth={handleChangeWidth}
+                setValueHeight={handleChangeHeight}
+            />
         </div>
     );
 }

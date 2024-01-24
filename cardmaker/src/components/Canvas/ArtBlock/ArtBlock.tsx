@@ -84,7 +84,7 @@ function ArtBlock({ block, isSelected, onClick }: artBlockProps) {
             blockId={block.id}
             transform={transform}
         >
-            <div onClick={onClick}>{ArtObjectContent}</div>
+            <div onClick={() => onClick}>{ArtObjectContent}</div>
         </ActiveObjectView>
     );
 }

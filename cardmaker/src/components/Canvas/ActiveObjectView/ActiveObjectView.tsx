@@ -26,9 +26,9 @@ function ActiveObjectView({
     blockId,
     transform,
 }: ActiveObjectViewProps) {
-    const { createUpdateBlocks } = useAppActions();
+    const { createSaveCanvasAction } = useAppActions();
     const editorData = useAppSelector(selectEditor);
-    const activeCanvasId = editorData.canvas.id;
+    const canvas = editorData.canvas;
     const activeBlockId = editorData.canvas.active === blockId ? blockId : "";
     const classNames = `${active.container} ${
         isSelected ? active.selected : active[className]
@@ -48,6 +48,11 @@ function ActiveObjectView({
 
     const ref = useRef<HTMLDivElement>(null);
 
+    const handleClick = () => {
+        canvas.active = blockId;
+        createSaveCanvasAction(canvas);
+    };
+
     const { isDragging } = useDragAndDrop(
         { elementRef: ref, isActive: isSelected },
         {
@@ -62,7 +67,7 @@ function ActiveObjectView({
                     top: top + delta.top,
                 };
 
-                const updateBlocks = editorData.canvas.blocks.map((block) => {
+                const updateBlocks = canvas.blocks.map((block) => {
                     if (block.id === activeBlockId) {
                         block.size = blockSize;
                         block.position = blockPosition;
@@ -70,7 +75,8 @@ function ActiveObjectView({
                     return block;
                 });
 
-                createUpdateBlocks(updateBlocks);
+                canvas.blocks = updateBlocks;
+                createSaveCanvasAction(canvas);
             },
         }
     );
@@ -89,7 +95,7 @@ function ActiveObjectView({
                     top: top + delta.top,
                 };
 
-                const updateBlocks = editorData.canvas.blocks.map((block) => {
+                const updateBlocks = canvas.blocks.map((block) => {
                     if (block.id === activeBlockId) {
                         block.size = blockSize;
                         block.position = blockPosition;
@@ -97,7 +103,8 @@ function ActiveObjectView({
                     return block;
                 });
 
-                createUpdateBlocks(updateBlocks);
+                canvas.blocks = updateBlocks;
+                createSaveCanvasAction(canvas);
             },
         }
     );
@@ -116,7 +123,7 @@ function ActiveObjectView({
                     top,
                 };
 
-                const updateBlocks = editorData.canvas.blocks.map((block) => {
+                const updateBlocks = canvas.blocks.map((block) => {
                     if (block.id === activeBlockId) {
                         block.size = blockSize;
                         block.position = blockPosition;
@@ -124,7 +131,8 @@ function ActiveObjectView({
                     return block;
                 });
 
-                createUpdateBlocks(updateBlocks);
+                canvas.blocks = updateBlocks;
+                createSaveCanvasAction(canvas);
             },
         }
     );
@@ -143,7 +151,7 @@ function ActiveObjectView({
                     top,
                 };
 
-                const updateBlocks = editorData.canvas.blocks.map((block) => {
+                const updateBlocks = canvas.blocks.map((block) => {
                     if (block.id === activeBlockId) {
                         block.size = blockSize;
                         block.position = blockPosition;
@@ -151,7 +159,8 @@ function ActiveObjectView({
                     return block;
                 });
 
-                createUpdateBlocks(updateBlocks);
+                canvas.blocks = updateBlocks;
+                createSaveCanvasAction(canvas);
             },
         }
     );
@@ -170,7 +179,7 @@ function ActiveObjectView({
                     top: top + delta.top,
                 };
 
-                const updateBlocks = editorData.canvas.blocks.map((block) => {
+                const updateBlocks = canvas.blocks.map((block) => {
                     if (block.id === activeBlockId) {
                         block.size = blockSize;
                         block.position = blockPosition;
@@ -178,7 +187,8 @@ function ActiveObjectView({
                     return block;
                 });
 
-                createUpdateBlocks(updateBlocks);
+                canvas.blocks = updateBlocks;
+                createSaveCanvasAction(canvas);
             },
         }
     );
@@ -197,7 +207,7 @@ function ActiveObjectView({
                     top,
                 };
 
-                const updateBlocks = editorData.canvas.blocks.map((block) => {
+                const updateBlocks = canvas.blocks.map((block) => {
                     if (block.id === activeBlockId) {
                         block.size = blockSize;
                         block.position = blockPosition;
@@ -205,7 +215,8 @@ function ActiveObjectView({
                     return block;
                 });
 
-                createUpdateBlocks(updateBlocks);
+                canvas.blocks = updateBlocks;
+                createSaveCanvasAction(canvas);
             },
         }
     );
@@ -224,7 +235,7 @@ function ActiveObjectView({
                     top,
                 };
 
-                const updateBlocks = editorData.canvas.blocks.map((block) => {
+                const updateBlocks = canvas.blocks.map((block) => {
                     if (block.id === activeBlockId) {
                         block.size = blockSize;
                         block.position = blockPosition;
@@ -232,7 +243,8 @@ function ActiveObjectView({
                     return block;
                 });
 
-                createUpdateBlocks(updateBlocks);
+                canvas.blocks = updateBlocks;
+                createSaveCanvasAction(canvas);
             },
         }
     );
@@ -251,7 +263,7 @@ function ActiveObjectView({
                     top,
                 };
 
-                const updateBlocks = editorData.canvas.blocks.map((block) => {
+                const updateBlocks = canvas.blocks.map((block) => {
                     if (block.id === activeBlockId) {
                         block.size = blockSize;
                         block.position = blockPosition;
@@ -259,7 +271,8 @@ function ActiveObjectView({
                     return block;
                 });
 
-                createUpdateBlocks(updateBlocks);
+                canvas.blocks = updateBlocks;
+                createSaveCanvasAction(canvas);
             },
         }
     );
@@ -278,7 +291,7 @@ function ActiveObjectView({
                     top: top + delta.top,
                 };
 
-                const updateBlocks = editorData.canvas.blocks.map((block) => {
+                const updateBlocks = canvas.blocks.map((block) => {
                     if (block.id === activeBlockId) {
                         block.size = blockSize;
                         block.position = blockPosition;
@@ -286,7 +299,8 @@ function ActiveObjectView({
                     return block;
                 });
 
-                createUpdateBlocks(updateBlocks);
+                canvas.blocks = updateBlocks;
+                createSaveCanvasAction(canvas);
             },
         }
     );
@@ -359,7 +373,15 @@ function ActiveObjectView({
     };
 
     return (
-        <div className={classNames} style={activeStyles} ref={ref}>
+        <div
+            className={classNames}
+            style={activeStyles}
+            ref={ref}
+            onClick={(event) => {
+                handleClick();
+                event.stopPropagation();
+            }}
+        >
             {isSelected && (
                 <div
                     className={active.resize}

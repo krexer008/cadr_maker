@@ -5,19 +5,17 @@ import bold from "../../ToolbarButton/icons/bold.svg";
 import italic from "../../ToolbarButton/icons/italic.svg";
 import underline from "../../ToolbarButton/icons/underline.svg";
 import { selectEditor } from "../../../../redux/selectors";
-import { TextBlockType } from "../../../../model/types";
 import { useAppActions, useAppSelector } from "../../../../redux/hooks";
+import { TextBlockType } from "../../../../model/types";
 
 type ChangeProps = {
-    index: number;
     id: string;
+    block: TextBlockType;
 };
 
-function ChangeText({ index, id }: ChangeProps) {
+function ChangeText({ id, block }: ChangeProps) {
     const editorData = useAppSelector(selectEditor);
-    const { createUpdateBlocks } = useAppActions();
-
-    const block = editorData.canvas.blocks[index] as TextBlockType;
+    const { createSaveCanvasAction } = useAppActions();
 
     const handleChangeColor = (newColor: string) => {
         const updateBlocks = editorData.canvas.blocks.map((block) => {
@@ -26,7 +24,8 @@ function ChangeText({ index, id }: ChangeProps) {
             }
             return block;
         });
-        createUpdateBlocks(updateBlocks);
+        editorData.canvas.blocks = updateBlocks;
+        createSaveCanvasAction(editorData.canvas);
     };
 
     const currentTextSize = 10;

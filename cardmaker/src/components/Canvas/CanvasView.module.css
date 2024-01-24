@@ -1,7 +1,6 @@
 .canvas {
   position: relative;
   margin: auto;
-  box-sizing: content-box;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -9,6 +8,5 @@
 }
 
 .selected {
-  box-sizing: border-box;
-  border: 2px solid red;
+  outline: 2px solid red;
 }

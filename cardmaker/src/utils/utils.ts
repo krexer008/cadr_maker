@@ -37,12 +37,12 @@ function getNewText(): TextBlockType {
         id: id,
         type: "text",
         size: {
-            width: 1000,
-            height: 600,
+            width: 100,
+            height: 32,
         },
         position: {
-            left: 50,
-            top: 50,
+            left: 100,
+            top: 100,
         },
         value: "New Text",
         fontSize: 16,

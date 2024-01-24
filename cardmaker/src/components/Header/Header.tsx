@@ -1,8 +1,9 @@
-import React from "react";
 import { useSelector } from "react-redux";
 import { selectEditor } from "../../redux/selectors";
 import css from "./Header.module.css";
 import HeaderButton from "./HeaderButton/HeaderButton";
+import { getNewText } from "../../utils/utils";
+import { useAppActions } from "../../redux/hooks";
 
 type MenuFileProps = {
     saveToFile: () => void;
@@ -16,6 +17,16 @@ function Header({
     resetModelHandler,
 }: MenuFileProps) {
     const editorModel = useSelector(selectEditor);
+    const { createSaveCanvasAction } = useAppActions();
+    const canvas = editorModel.canvas;
+
+    const handleAddNewText = () => {
+        const newTextBlock = getNewText();
+        canvas.blocks.push(newTextBlock);
+        canvas.active = newTextBlock.id;
+        createSaveCanvasAction(canvas);
+    };
+
     return (
         <div className={css.header}>
             <div className={css.logo}>
@@ -40,7 +51,9 @@ function Header({
             />
 
             <HeaderButton
-                onClick={() => alert("Add Text clicked")}
+                onClick={() => {
+                    handleAddNewText();
+                }}
                 className={"button"}
                 text="Add Text"
             />
