@@ -8,6 +8,7 @@ import {
 } from "../model/types";
 
 enum EditorActionType {
+    CHANGE_CANVAS_BG = "CHANGE_CANVAS_BG",
     UPDATE_BLOCKS = "UPDATE_BLOCKS",
     CHANGE_ACTIVE = "CHANGE_ACTIVE",
     CHANGE_SIZE = "CHANGE_SIZE",
@@ -17,6 +18,13 @@ enum EditorActionType {
     SAVE_CANVAS = "SAVE_CANVAS",
     EMPTY_EDITOR = "NEW_EDITOR",
 }
+
+type UpdateCanvasBGAction = {
+    type: EditorActionType.CHANGE_CANVAS_BG;
+    payload: {
+        newColor: string;
+    };
+};
 
 type UpdateBlocksAction = {
     type: EditorActionType.UPDATE_BLOCKS;
@@ -75,6 +83,7 @@ type EmptyEditorAction = {
 };
 
 type EditorAction =
+    | UpdateCanvasBGAction
     | UpdateBlocksAction
     | ChangeActiveAction
     | SaveCanvasAction

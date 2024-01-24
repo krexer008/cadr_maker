@@ -8,6 +8,13 @@ import {
     TextBlockType,
 } from "../model/types";
 
+function createUpdateCanvasBGAction(newColor: string) {
+    return {
+        type: EditorActionType.CHANGE_CANVAS_BG,
+        payload: newColor,
+    };
+}
+
 function createChangeActiveAction(activeElement: string) {
     return {
         type: EditorActionType.CHANGE_ACTIVE,
@@ -67,6 +74,7 @@ function createEmptyEditor(newEditor: Editor) {
 }
 
 export {
+    createUpdateCanvasBGAction,
     createUpdateBlocks,
     createChangeActiveAction,
     createSaveCanvasAction,

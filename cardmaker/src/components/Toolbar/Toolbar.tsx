@@ -11,34 +11,46 @@ import { TextBlockType } from "../../model/types";
 function Toolbar() {
     const editorData = useSelector(selectEditor);
     const { id, active, blocks } = editorData.canvas;
-    const block = blocks.find((block) => block.id === active);
+
+    let index = NaN;
+
+    const block = () => {
+        for (let i = 0; i < blocks.length; i++) {
+            if (blocks[i].id === active) {
+                index = i;
+                return;
+            }
+        }
+    };
+
+    //const block = blocks.find((block) => block.id === active);
 
     let blockType = "";
 
     if (active == id) {
         blockType = "canvas";
     } else {
-        if (block) {
-            blockType = block?.id;
+        if (blocks[index]) {
+            blockType = blocks[index]?.id;
         }
     }
 
     let menu;
     switch (blockType) {
-        case "":
-            menu = <ChangeTemplates />;
-            break;
         case "canvas":
-            menu = <ChangeCanvas />;
+            menu = <ChangeCanvas canvas={editorData.canvas} />;
             break;
         case "text":
-            menu = <ChangeText block={block as TextBlockType} />;
+            menu = <ChangeText index={index} id={active} />;
             break;
         case "image":
             menu = <ChangeBlockImage id={active} />;
             break;
         case "art":
-            menu = <ChangeBlockArt id={active} />;
+            menu = <ChangeBlockArt index={index} id={active} />;
+            break;
+        default:
+            menu = <ChangeTemplates />;
             break;
     }
     return (

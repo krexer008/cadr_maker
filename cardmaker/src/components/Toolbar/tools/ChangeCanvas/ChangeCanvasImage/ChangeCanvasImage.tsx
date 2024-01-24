@@ -1,5 +1,5 @@
 import React from "react";
-import css from "../../../../common/Common.module.css";
+import css from "../../../../../common/Common.module.css";
 
 function ChangeCanvasImage() {
     return (

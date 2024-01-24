@@ -4,20 +4,29 @@ import ToolbarButton from "../../ToolbarButton/ToolbarButton";
 import bold from "../../ToolbarButton/icons/bold.svg";
 import italic from "../../ToolbarButton/icons/italic.svg";
 import underline from "../../ToolbarButton/icons/underline.svg";
-import { useSelector } from "react-redux";
 import { selectEditor } from "../../../../redux/selectors";
-import {TextBlockType} from "../../../../model/types";
-import { color } from "html2canvas/dist/types/css/types/color";
+import { TextBlockType } from "../../../../model/types";
+import { useAppActions, useAppSelector } from "../../../../redux/hooks";
 
 type ChangeProps = {
-    block: TextBlockType;
+    index: number;
+    id: string;
 };
 
-function ChangeText({ block }: ChangeProps) {
-    const editorData = useSelector(selectEditor);
+function ChangeText({ index, id }: ChangeProps) {
+    const editorData = useAppSelector(selectEditor);
+    const { createUpdateBlocks } = useAppActions();
 
-    handleChangeColor(newColor: string){
-        block.color = newColor;
+    const block = editorData.canvas.blocks[index] as TextBlockType;
+
+    const handleChangeColor = (newColor: string) => {
+        const updateBlocks = editorData.canvas.blocks.map((block) => {
+            if (block.id === id && "color" in block) {
+                block.color = newColor;
+            }
+            return block;
+        });
+        createUpdateBlocks(updateBlocks);
     };
 
     const currentTextSize = 10;
@@ -25,7 +34,7 @@ function ChangeText({ block }: ChangeProps) {
 
     return (
         <div className={css.textbar}>
-            <ChangeColor title="Color" color={block.color} handleChangeColor={handleChangeColor} />
+            <ChangeColor value={block.color} setValue={handleChangeColor} />
             <div className={css.toolblock}>
                 <div className={css.tool}>
                     <ToolbarButton

@@ -9,15 +9,20 @@ const editorReducer = (
     action: EditorAction
 ) => {
     switch (action.type) {
+        case EditorActionType.CHANGE_CANVAS_BG:
+            return {
+                ...state,
+                bgColor: action.payload.newColor,
+            };
         case EditorActionType.UPDATE_BLOCKS:
             return {
                 ...state,
-                blocks: action.payload,
+                blocks: action.payload.updateBlocks,
             };
         case EditorActionType.CHANGE_SIZE:
             return {
                 ...state,
-                size: action.payload,
+                size: action.payload.newSize,
             };
         case EditorActionType.SAVE_CANVAS:
             return {

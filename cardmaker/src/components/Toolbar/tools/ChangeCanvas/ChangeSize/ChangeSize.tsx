@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import css from "../../../../common/Common.module.css";
-import { useAppActions } from "../../../../redux/hooks";
+import { useAppActions } from "../../../../../redux/hooks";
+import css from "../../../../../common/Common.module.css";
 import ChangeInput from "./ChangeInput/ChangeInput";
 
 function ChangeSize() {

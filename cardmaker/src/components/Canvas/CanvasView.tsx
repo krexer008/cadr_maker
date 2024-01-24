@@ -43,12 +43,14 @@ function CanvasView({
     const classNames = `${css.canvas} ${
         isSelected ? css.selected : css.canvas
     }`;
-
     return (
         <div
             className={classNames}
             style={styleCanvas}
-            onClick={() => onSelectActive(id)}
+            onClick={(event) => {
+                onSelectActive(id);
+                event.stopPropagation();
+            }}
             id={id}
         >
             {canvasData.size.width}px {canvasData.size.height}px

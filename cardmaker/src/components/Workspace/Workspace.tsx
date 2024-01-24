@@ -16,7 +16,10 @@ function Workspace() {
         createChangeActiveAction(activeID);
     };
     return (
-        <div className={css.workspace} onClick={handleResetActive}>
+        <div
+            className={css.workspace}
+            onClick={() => { handleResetActive }}
+        >
             <CanvasView
                 canvasData={canvasData}
                 isSelected={canvasData.active === canvasData.id}
