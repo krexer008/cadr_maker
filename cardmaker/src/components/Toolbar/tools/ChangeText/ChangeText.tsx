@@ -6,23 +6,18 @@ import italic from "../../ToolbarButton/icons/italic.svg";
 import underline from "../../ToolbarButton/icons/underline.svg";
 import { useSelector } from "react-redux";
 import { selectEditor } from "../../../../redux/selectors";
-import TextBlockType from "../../../../model/types";
+import {TextBlockType} from "../../../../model/types";
+import { color } from "html2canvas/dist/types/css/types/color";
 
 type ChangeProps = {
-    id: string;
+    block: TextBlockType;
 };
 
-function ChangeText({ id }: ChangeProps) {
+function ChangeText({ block }: ChangeProps) {
     const editorData = useSelector(selectEditor);
 
-    const block = editorData.canvas.blocks.find(block => {
-        if (block instanceof TextBlockType && block.id===id ){
-            return  block;
-        }
-    });
-
-    handleChangeColor(color: string){
-
+    handleChangeColor(newColor: string){
+        block.color = newColor;
     };
 
     const currentTextSize = 10;

@@ -6,24 +6,23 @@ import ChangeBlockArt from "./tools/ChangeBlockArt/ChangeBlockArt";
 import ChangeCanvas from "./tools/ChangeCanvas/ChangeCanvas";
 import ChangeBlockImage from "./tools/ChangeBlockImage/ChangeBlockImage";
 import ChangeTemplates from "./tools/ChangeTemplates/ChangeTemplates";
-import React from "react";
+import { TextBlockType } from "../../model/types";
 
 function Toolbar() {
     const editorData = useSelector(selectEditor);
     const { id, active, blocks } = editorData.canvas;
+    const block = blocks.find((block) => block.id === active);
+
     let blockType = "";
-    if (active) {
-        if (active == id) {
-            blockType = "canvas";
-        } else {
-            for (let i = 0; i < blocks.length; i++) {
-                if (blocks[i].id == active) {
-                    blockType = blocks[i].type;
-                    break;
-                }
-            }
+
+    if (active == id) {
+        blockType = "canvas";
+    } else {
+        if (block) {
+            blockType = block?.id;
         }
     }
+
     let menu;
     switch (blockType) {
         case "":
@@ -33,7 +32,7 @@ function Toolbar() {
             menu = <ChangeCanvas />;
             break;
         case "text":
-            menu = <ChangeText id={active} />;
+            menu = <ChangeText block={block as TextBlockType} />;
             break;
         case "image":
             menu = <ChangeBlockImage id={active} />;
