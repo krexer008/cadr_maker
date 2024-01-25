@@ -1,8 +1,9 @@
 import css from "./CanvasView.module.css";
-import { Canvas } from "../../model/types";
+import { Canvas, TextBlockType } from "../../model/types";
 import ImageBlock from "./ImageBlock/ImageBlock";
 import ArtBlock from "./ArtBlock/ArtBlock";
 import TextBlock from "./TextBlock/TextBlock";
+import { createSaveCanvasAction } from "../../redux/actionCreators";
 
 type CanvasBlockProps = {
     canvasData: Canvas;
@@ -42,6 +43,17 @@ function CanvasView({
     const classNames = `${css.canvas} ${
         isSelected ? css.selected : css.canvas
     }`;
+
+    let ind = -1;
+
+    const handleChangeText = (newText: string) => {
+        const textBlock = canvasData.blocks[ind] as TextBlockType;
+        textBlock.value = newText;
+        canvasData.blocks[ind] = textBlock;
+        onSelectActive(canvasData.blocks[ind].id);
+        createSaveCanvasAction(canvasData);
+    };
+
     return (
         <div
             className={classNames}
@@ -55,6 +67,7 @@ function CanvasView({
             {canvasData.size.width}px {canvasData.size.height}px
             {blocks.map((block, index) => {
                 const isBlockSelected = block.id === active;
+                if (isBlockSelected) ind = index;
                 const handleClick = () => {
                     onSelectActive(block.id);
                 };
@@ -83,7 +96,7 @@ function CanvasView({
                                 block={block}
                                 key={index}
                                 isSelected={isBlockSelected}
-                                onClick={handleClick}
+                                setValue={handleChangeText}
                             />
                         );
                     default:

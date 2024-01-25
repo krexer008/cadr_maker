@@ -61,8 +61,6 @@ function ChangeText({ id, block }: ChangeProps) {
         createSaveCanvasAction(editorData.canvas);
     };
 
-    const currentTextSize = 10;
-
     return (
         <div className={css.textbar}>
             <ChangeColor value={block.color} setValue={handleChangeColor} />

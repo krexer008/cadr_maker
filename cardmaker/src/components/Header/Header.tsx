@@ -2,28 +2,44 @@ import { useSelector } from "react-redux";
 import { selectEditor } from "../../redux/selectors";
 import css from "./Header.module.css";
 import HeaderButton from "./HeaderButton/HeaderButton";
-import { getNewText } from "../../utils/utils";
+import { getNewArt, getNewCanvas, getNewText } from "../../utils/utils";
 import { useAppActions } from "../../redux/hooks";
 
 type MenuFileProps = {
     saveToFile: () => void;
     loadFromFile: () => void;
-    resetModelHandler: () => void;
 };
 
-function Header({
-    saveToFile,
-    loadFromFile,
-    resetModelHandler,
-}: MenuFileProps) {
+function Header({ saveToFile, loadFromFile }: MenuFileProps) {
     const editorModel = useSelector(selectEditor);
     const { createSaveCanvasAction } = useAppActions();
     const canvas = editorModel.canvas;
+
+    const resetModelHandler = () => {
+        const newCanvas = getNewCanvas();
+        createSaveCanvasAction(newCanvas);
+    };
 
     const handleAddNewText = () => {
         const newTextBlock = getNewText();
         canvas.blocks.push(newTextBlock);
         canvas.active = newTextBlock.id;
+        createSaveCanvasAction(canvas);
+    };
+
+    const handleAddNewArt = () => {
+        const newArtBlock = getNewArt();
+        canvas.blocks.push(newArtBlock);
+        canvas.active = newArtBlock.id;
+        createSaveCanvasAction(canvas);
+    };
+
+    const handleDeleteItem = () => {
+        console.log("handleDeleteItem");
+        const updateBlocks = canvas.blocks.filter(
+            (block) => block.id !== canvas.active
+        );
+        canvas.blocks = updateBlocks;
         createSaveCanvasAction(canvas);
     };
 
@@ -45,15 +61,13 @@ function Header({
             />
 
             <HeaderButton
-                onClick={resetModelHandler}
+                onClick={() => resetModelHandler()}
                 className={"button"}
                 text="Clear Editor" //Очистить редактор
             />
 
             <HeaderButton
-                onClick={() => {
-                    handleAddNewText();
-                }}
+                onClick={handleAddNewText}
                 className={"button"}
                 text="Add Text"
             />
@@ -65,13 +79,13 @@ function Header({
             />
 
             <HeaderButton
-                onClick={() => alert("Add Art clicked")}
+                onClick={handleAddNewArt}
                 className={"button"}
                 text="Add ART"
             />
 
             <HeaderButton
-                onClick={() => alert("DeleteObj clicked")}
+                onClick={() => handleDeleteItem()}
                 className={"button"}
                 text="Delete Item"
             />

@@ -1,10 +1,9 @@
-import React from "react";
 import css from "./HeaderButton.module.css";
 
 type headerButtonProps = {
     onClick: () => void; // func
-    text: string; // source
-    className: string; // button name
+    text: string; // button name
+    className: string; // className
 };
 
 function HeaderButton({ onClick, className, text }: headerButtonProps) {

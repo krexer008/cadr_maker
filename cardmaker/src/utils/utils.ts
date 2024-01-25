@@ -88,8 +88,8 @@ function getNewArt(): ArtBlockType {
         id: id,
         type: "art",
         size: {
-            width: 1000,
-            height: 600,
+            width: 100,
+            height: 100,
         },
         position: {
             left: 50,

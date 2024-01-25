@@ -10,7 +10,7 @@ function ArtObjectArrow({ color, size: { width, height } }: ArtBlockProps) {
         <svg
             width={width}
             height={height}
-            viewBox="0 0 45 45"
+            viewBox="0 0 16 16"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
         >

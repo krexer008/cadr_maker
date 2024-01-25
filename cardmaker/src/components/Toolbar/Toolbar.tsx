@@ -6,7 +6,7 @@ import ChangeBlockArt from "./tools/ChangeBlockArt/ChangeBlockArt";
 import ChangeCanvas from "./tools/ChangeCanvas/ChangeCanvas";
 import ChangeBlockImage from "./tools/ChangeBlockImage/ChangeBlockImage";
 import ChangeTemplates from "./tools/ChangeTemplates/ChangeTemplates";
-import { TextBlockType } from "../../model/types";
+import { ArtBlockType, TextBlockType } from "../../model/types";
 
 function Toolbar() {
     const editorData = useSelector(selectEditor);
@@ -36,7 +36,7 @@ function Toolbar() {
             menu = "image"; //<ChangeBlockImage id={active} />;
             break;
         case "art":
-            menu = "art"; //<ChangeBlockArt index={index} id={active} />;
+            menu = <ChangeBlockArt block={block as ArtBlockType} id={active} />;
             break;
         default:
             menu = <ChangeTemplates />;

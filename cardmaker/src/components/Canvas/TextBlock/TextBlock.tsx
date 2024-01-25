@@ -1,17 +1,14 @@
 import css from "./TextBlock.module.css";
 import { TextBlockType } from "../../../model/types";
 import { ActiveObjectView } from "../ActiveObjectView/ActiveObjectView";
-import { useAppActions } from "../../../redux/hooks";
 
 type textBlockProps = {
     block: TextBlockType;
     isSelected: boolean;
-    onClick: () => void;
+    setValue: (newText: string) => void;
 };
 
-function TextBlock({ block, isSelected, onClick }: textBlockProps) {
-    //const { createChangeTextValue } = useAppActions;
-    const blockId = block.id;
+function TextBlock({ block, isSelected, setValue }: textBlockProps) {
     const {
         id,
         size,
@@ -48,9 +45,8 @@ function TextBlock({ block, isSelected, onClick }: textBlockProps) {
                 style={textStyle}
                 value={value}
                 placeholder={value}
-                onClick={onClick}
-                onChange={(e) => {
-                    //createChangeTextValue(block.id, e.target.value);
+                onChange={(event) => {
+                    setValue(event.target.value);
                 }}
             />
         </ActiveObjectView>

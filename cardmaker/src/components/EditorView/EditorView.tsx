@@ -5,13 +5,12 @@ import Toolbar from "../Toolbar/Toolbar";
 import css from "./EditorView.module.css";
 import Workspace from "../Workspace/Workspace";
 import Header from "../Header/Header";
-import { getEditorModel } from "../../utils/utils";
 import { loadDatalFromLocal, saveDataToLocal } from "../../utils/fileutils";
 
 function EditorView() {
     const editorModel = useSelector(selectEditor);
 
-    const { createLoadCanvas, createEmptyEditor } = useAppActions();
+    const { createLoadCanvas } = useAppActions();
 
     const loadFromFile = () => {
         loadDatalFromLocal((model) => {
@@ -23,18 +22,9 @@ function EditorView() {
         saveDataToLocal(editorModel);
     };
 
-    const resetModelHandler = () => {
-        const emptyModel = getEditorModel();
-        createEmptyEditor(emptyModel);
-    };
-
     return (
         <div>
-            <Header
-                saveToFile={saveToFile}
-                loadFromFile={loadFromFile}
-                resetModelHandler={resetModelHandler}
-            />
+            <Header saveToFile={saveToFile} loadFromFile={loadFromFile} />
             <div className={css.main}>
                 <Toolbar />
                 <Workspace />

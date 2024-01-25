@@ -37,8 +37,7 @@ const editorReducer = (
             };
         case EditorActionType.EMPTY_EDITOR:
             return {
-                ...state,
-                editor: action.payload.newEditor,
+                state: action.payload.newEditor,
             };
         default:
             return state;

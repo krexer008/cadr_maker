@@ -1,55 +1,45 @@
-import { ArtBlockType } from "../../../../model/types";
+import { ArtBlockType, ArtValue } from "../../../../model/types";
 import { useAppActions, useAppSelector } from "../../../../redux/hooks";
 import { selectEditor } from "../../../../redux/selectors";
 import ChangeArt from "../ChangeArt/ChangeArt";
 import ChangeColor from "../ChangeColor/ChangeColor";
 import css from "./ChangeBlockArt.module.css";
 
-type ChangeProps = {
-    index: number;
-    id: string;
-};
+type ChangeProps = { id: string; block: ArtBlockType };
 
-function ChangeBlockArt({ index, id }: ChangeProps) {
+function ChangeBlockArt({ id, block }: ChangeProps) {
     const editorData = useAppSelector(selectEditor);
     const { createSaveCanvasAction } = useAppActions();
 
-    const block = editorData.canvas.blocks[index] as ArtBlockType;
+    let ind: number;
+
+    const updateBlocks = editorData.canvas.blocks.map((block, index) => {
+        if (block.id === id && "bgColor" in block && "borderColor" in block) {
+            ind = index;
+        }
+    });
 
     const handleChangeBorderColor = (newColor: string) => {
-        const updateBlocks = editorData.canvas.blocks.map((block) => {
-            if (block.id === id && "borderColor" in block) {
-                block.borderColor = newColor;
-            }
-            return block;
-        });
-        editorData.canvas.blocks = updateBlocks;
+        block.borderColor = newColor;
+        editorData.canvas.blocks[ind] = block;
         createSaveCanvasAction(editorData.canvas);
     };
-
-    const handleChangeBGColor = (newColor: string) => {
-        const updateBlocks = editorData.canvas.blocks.map((block) => {
-            if (block.id === id && "bgColor" in block) {
-                block.bgColor = newColor;
-            }
-            return block;
-        });
-        editorData.canvas.blocks = updateBlocks;
+    const handleChangeArtObject = (newArt: ArtValue) => {
+        block.value = newArt;
+        editorData.canvas.blocks[ind] = block;
         createSaveCanvasAction(editorData.canvas);
     };
 
     return (
         <div className={css.toolbar}>
-            <ChangeArt />
+            <ChangeArt
+                artValue={block.value}
+                setValue={handleChangeArtObject}
+            />
             <ChangeColor
                 title="Border color"
                 value={block.borderColor}
                 setValue={handleChangeBorderColor}
-            />
-            <ChangeColor
-                title="Backgroud color"
-                value={block.bgColor}
-                setValue={handleChangeBGColor}
             />
         </div>
     );
