@@ -1,12 +1,31 @@
 .button {
     cursor: pointer;
-    width: 35px;
-    height: 35px;
+    width: 42px;
+    height: 42px;    
+    padding: 2px;    
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 28px;
+    text-align: center;
+    align-items: center;
     border-radius: 10px;
-    padding: 2px;
-    background-color: inherit;
 }
 
-.button img {
-    border-radius: 5px;
+.unchanged{
+    background-color: #858585;
+}
+
+.changed {
+    background-color: #60c454;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.cursive{
+    font-style: italic;
+}
+
+.underline {
+    text-decoration: underline;
 }

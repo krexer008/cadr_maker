@@ -1,35 +1,67 @@
 import ChangeColor from "../ChangeColor/ChangeColor";
 import css from "../../../../common/Common.module.css";
 import ToolbarButton from "../../ToolbarButton/ToolbarButton";
-import bold from "../../ToolbarButton/icons/bold.svg";
-import italic from "../../ToolbarButton/icons/italic.svg";
-import underline from "../../ToolbarButton/icons/underline.svg";
 import { selectEditor } from "../../../../redux/selectors";
 import { useAppActions, useAppSelector } from "../../../../redux/hooks";
 import { TextBlockType } from "../../../../model/types";
 
-type ChangeProps = {
-    id: string;
-    block: TextBlockType;
-};
+type ChangeProps = { id: string; block: TextBlockType };
+
+const Fonts = ["Arial", "Calibri", "Impact", "Times New Roman", "Symbol"];
+const FontSize = [8, 10, 12, 14, 16, 18, 20, 24, 28, 32, 36, 40];
 
 function ChangeText({ id, block }: ChangeProps) {
     const editorData = useAppSelector(selectEditor);
     const { createSaveCanvasAction } = useAppActions();
 
+    let ind: number;
+    const updateBlocks = editorData.canvas.blocks.map((block, index) => {
+        if (
+            block.id === id &&
+            "fontSize" in block &&
+            "fontFamily" in block &&
+            "color" in block &&
+            "bold" in block &&
+            "cursive" in block &&
+            "underline" in block
+        ) {
+            ind = index;
+        }
+    });
+
     const handleChangeColor = (newColor: string) => {
-        const updateBlocks = editorData.canvas.blocks.map((block) => {
-            if (block.id === id && "color" in block) {
-                block.color = newColor;
-            }
-            return block;
-        });
-        editorData.canvas.blocks = updateBlocks;
+        block.color = newColor;
+        editorData.canvas.blocks[ind] = block;
+        createSaveCanvasAction(editorData.canvas);
+    };
+
+    const handlerChangeBold = (bold: boolean) => {
+        block.bold = bold;
+        editorData.canvas.blocks[ind] = block;
+        createSaveCanvasAction(editorData.canvas);
+    };
+    const handlerChangeCursive = (cursive: boolean) => {
+        block.cursive = cursive;
+        editorData.canvas.blocks[ind] = block;
+        createSaveCanvasAction(editorData.canvas);
+    };
+    const handlerChangeUnderline = (underline: boolean) => {
+        block.underline = underline;
+        editorData.canvas.blocks[ind] = block;
+        createSaveCanvasAction(editorData.canvas);
+    };
+    const handlerChangeFontFamily = (font: string) => {
+        block.fontFamily = font;
+        editorData.canvas.blocks[ind] = block;
+        createSaveCanvasAction(editorData.canvas);
+    };
+    const handlerChangeFontSize = (font: string) => {
+        block.fontSize = parseInt(font);
+        editorData.canvas.blocks[ind] = block;
         createSaveCanvasAction(editorData.canvas);
     };
 
     const currentTextSize = 10;
-    const currentFontFamily = "Arial";
 
     return (
         <div className={css.textbar}>
@@ -37,36 +69,47 @@ function ChangeText({ id, block }: ChangeProps) {
             <div className={css.toolblock}>
                 <div className={css.tool}>
                     <ToolbarButton
-                        handler={() => alert("bold text clicked")}
-                        icon={bold}
-                        alt="bold"
+                        handler={handlerChangeBold}
+                        alt="B"
+                        isClicked={block.bold}
                     />
                     <ToolbarButton
-                        handler={() => alert("italic text clicked")}
-                        icon={italic}
-                        alt="italic"
+                        handler={handlerChangeCursive}
+                        alt="I"
+                        isClicked={block.cursive}
                     />
                     <ToolbarButton
-                        handler={() => alert("underline text clicked")}
-                        icon={underline}
-                        alt="underline"
+                        handler={handlerChangeUnderline}
+                        alt="U"
+                        isClicked={block.underline}
                     />
                 </div>
                 <div className={css.tool}>
-                    <select id="drop-list" defaultValue={currentTextSize}>
-                        <option value="Arial">Arial</option>
-                        <option value="Calibri">Calibri</option>
-                        <option value="Impact">Impact</option>
-                        <option value="Times New Roman">Times New Roman</option>
+                    <select
+                        id="drop-list"
+                        defaultValue={block.fontFamily}
+                        onChange={(event) => {
+                            handlerChangeFontFamily(event.target.value);
+                        }}
+                    >
+                        {Fonts.map((font, index) => (
+                            <option value={font} key={index}>
+                                {font}
+                            </option>
+                        ))}
                     </select>
-                    <select id="drop-list" defaultValue={currentFontFamily}>
-                        <option value="10">10</option>
-                        <option value="12">12</option>
-                        <option value="14">14</option>
-                        <option value="16">16</option>
-                        <option value="18">18</option>
-                        <option value="20">20</option>
-                        <option value="22">22</option>
+                    <select
+                        id="drop-list"
+                        defaultValue={block.fontSize}
+                        onChange={(event) => {
+                            handlerChangeFontSize(event.target.value);
+                        }}
+                    >
+                        {FontSize.map((sizeValue, index) => (
+                            <option value={sizeValue} key={index}>
+                                {sizeValue}
+                            </option>
+                        ))}
                     </select>
                 </div>
             </div>
