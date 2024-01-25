@@ -2,7 +2,12 @@ import { useSelector } from "react-redux";
 import { selectEditor } from "../../redux/selectors";
 import css from "./Header.module.css";
 import HeaderButton from "./HeaderButton/HeaderButton";
-import { getNewArt, getNewCanvas, getNewText } from "../../utils/utils";
+import {
+    getNewArt,
+    getNewCanvas,
+    getNewImage,
+    getNewText,
+} from "../../utils/utils";
 import { useAppActions } from "../../redux/hooks";
 
 type MenuFileProps = {
@@ -31,6 +36,13 @@ function Header({ saveToFile, loadFromFile }: MenuFileProps) {
         const newArtBlock = getNewArt();
         canvas.blocks.push(newArtBlock);
         canvas.active = newArtBlock.id;
+        createSaveCanvasAction(canvas);
+    };
+
+    const handleAddNewImageBlock = () => {
+        const newImageBlock = getNewImage();
+        canvas.blocks.push(newImageBlock);
+        canvas.active = newImageBlock.id;
         createSaveCanvasAction(canvas);
     };
 
@@ -73,7 +85,7 @@ function Header({ saveToFile, loadFromFile }: MenuFileProps) {
             />
 
             <HeaderButton
-                onClick={() => alert("Add Img clicked")}
+                onClick={() => handleAddNewImageBlock()}
                 className={"button"}
                 text="Add Image"
             />

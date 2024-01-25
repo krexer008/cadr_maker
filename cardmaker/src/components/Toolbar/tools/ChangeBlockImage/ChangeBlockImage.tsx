@@ -1,10 +1,11 @@
-import React from "react";
 import css from "../../../../common/Common.module.css";
+import { ImageBlockType } from "../../../../model/types";
 
 type ChangeProps = {
     id: string;
+    block: ImageBlockType;
 };
-function ChangeBlockImage({ id }: ChangeProps) {
+function ChangeBlockImage({ id, block }: ChangeProps) {
     return (
         <div className={css.tool}>
             <div>

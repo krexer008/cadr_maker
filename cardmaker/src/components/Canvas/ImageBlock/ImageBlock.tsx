@@ -11,6 +11,16 @@ type ImageBlockProps = {
 function ImageBlock({ block, isSelected, onClick }: ImageBlockProps) {
     const { size, position, image, transform } = block;
 
+    const styleImageBlock = {
+        width: `100%`,
+        height: `100%`,
+        backgroundImage: `url("${image.source}")`,
+        backgroundColor: "#a1f2ff",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+    };
+
     return (
         <ActiveObjectView
             isSelected={isSelected}
@@ -20,7 +30,11 @@ function ImageBlock({ block, isSelected, onClick }: ImageBlockProps) {
             blockId={block.id}
             transform={transform}
         >
-            <img className={css.image} src={image.source} onClick={onClick} />
+            <div
+                className={css.image}
+                style={styleImageBlock}
+                onClick={onClick}
+            ></div>
         </ActiveObjectView>
     );
 }

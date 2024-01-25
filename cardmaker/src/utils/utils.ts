@@ -64,8 +64,8 @@ function getNewImage(): ImageBlockType {
         id: id,
         type: "image",
         size: {
-            width: 1000,
-            height: 600,
+            width: 100,
+            height: 100,
         },
         position: {
             left: 50,
