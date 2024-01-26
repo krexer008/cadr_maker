@@ -1,3 +1,4 @@
+import { ChangeEvent, useState } from "react";
 import css from "../../../../common/Common.module.css";
 import { ImageBlockType } from "../../../../model/types";
 
@@ -6,6 +7,14 @@ type ChangeProps = {
     block: ImageBlockType;
 };
 function ChangeBlockImage({ id, block }: ChangeProps) {
+    const [file, setFile] = useState<File>();
+
+    const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files) {
+            setFile(e.target.files[0]);
+        }
+    };
+
     return (
         <div className={css.tool}>
             <div>
@@ -19,6 +28,7 @@ function ChangeBlockImage({ id, block }: ChangeProps) {
                     id="image-upload"
                     type="file"
                     accept="image/png, image/jpeg"
+                    onChange={handleFileChange}
                 />
             </div>
         </div>
