@@ -9,6 +9,7 @@ import ArtObjectHeart from "./artObject/ArtObjectHeart/ArtObjectHeart";
 import ArtObjectSquare from "./artObject/ArtObjectSquare/ArtObjectSquare";
 import ArtObjectThugLife from "./artObject/ArtObjectThugLife/ArtObjectThugLife";
 import ArtObjectThumbsUp from "./artObject/ArtObjectThumbsUp/ArtObjectThumbsUp";
+import ArtObjectFlower from "./artObject/ArtObjectFlower/ArtObjectFlower";
 
 type artBlockProps = {
     block: ArtBlockType;
@@ -17,7 +18,7 @@ type artBlockProps = {
 };
 
 function ArtBlock({ block, isSelected, onClick }: artBlockProps) {
-    const { value, bgColor, borderColor, size, position, transform } = block;
+    const { value, borderColor, size, position, transform } = block;
 
     let ArtObjectContent;
     switch (value) {
@@ -38,12 +39,12 @@ function ArtBlock({ block, isSelected, onClick }: artBlockProps) {
             break;
         case ArtValue.Clock:
             ArtObjectContent = (
-                <ArtObjectCircle color={borderColor} size={size} />
+                <ArtObjectClock color={borderColor} size={size} />
             );
             break;
         case ArtValue.Flower:
             ArtObjectContent = (
-                <ArtObjectClock color={borderColor} size={size} />
+                <ArtObjectFlower color={borderColor} size={size} />
             );
             break;
         case ArtValue.Gift:

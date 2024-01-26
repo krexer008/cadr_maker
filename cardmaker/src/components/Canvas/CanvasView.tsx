@@ -64,7 +64,6 @@ function CanvasView({
             }}
             id={id}
         >
-            {canvasData.size.width}px {canvasData.size.height}px
             {blocks.map((block, index) => {
                 const isBlockSelected = block.id === active;
                 if (isBlockSelected) ind = index;

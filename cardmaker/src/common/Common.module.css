@@ -33,7 +33,8 @@
     ;
 }
 
-.tool label[for="image-upload"] {
+.tool label[for="image-upload"],
+.tool label[for="image-link"]  {
     background-color: rgb(31, 143, 102);
     border-radius: 5px;
     display: block;

@@ -24,7 +24,6 @@ function getNewCanvas(): Canvas {
         filter: "",
         bgColor: "#ffffff",
         bgImage: {
-            type: "",
             source: "",
         },
         blocks: [],
@@ -72,7 +71,6 @@ function getNewImage(): ImageBlockType {
             top: 50,
         },
         image: {
-            type: "",
             source: "",
         },
         transform: {

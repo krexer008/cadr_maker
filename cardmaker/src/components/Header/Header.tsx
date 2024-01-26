@@ -47,7 +47,6 @@ function Header({ saveToFile, loadFromFile }: MenuFileProps) {
     };
 
     const handleDeleteItem = () => {
-        console.log("handleDeleteItem");
         const updateBlocks = canvas.blocks.filter(
             (block) => block.id !== canvas.active
         );

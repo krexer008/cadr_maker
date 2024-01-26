@@ -27,7 +27,6 @@ type Size = {
 };
 
 type ImageType = {
-    type: "link" | "base64" | "";
     source: string;
 };
 

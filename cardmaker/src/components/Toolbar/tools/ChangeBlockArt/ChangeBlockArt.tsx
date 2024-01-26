@@ -1,7 +1,7 @@
 import { ArtBlockType, ArtValue } from "../../../../model/types";
 import { useAppActions, useAppSelector } from "../../../../redux/hooks";
 import { selectEditor } from "../../../../redux/selectors";
-import ChangeArt from "../ChangeArt/ChangeArt";
+import ChangeArt from "./ChangeArt/ChangeArt";
 import ChangeColor from "../ChangeColor/ChangeColor";
 import css from "./ChangeBlockArt.module.css";
 

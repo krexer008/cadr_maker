@@ -1,5 +1,5 @@
-import css from "../../../../common/Common.module.css";
-import { ArtValue } from "../../../../model/types";
+import css from "../../../../../common/Common.module.css";
+import { ArtValue } from "../../../../../model/types";
 
 type ChangeProps = {
     artValue: ArtValue;

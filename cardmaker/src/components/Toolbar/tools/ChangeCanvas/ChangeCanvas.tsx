@@ -1,7 +1,7 @@
-import { Canvas, Size } from "../../../../model/types";
+import { Canvas } from "../../../../model/types";
 import { useAppActions } from "../../../../redux/hooks";
 import ChangeColor from "../ChangeColor/ChangeColor";
-import ChangeCanvasImage from "./ChangeCanvasImage/ChangeCanvasImage";
+import ChangeImage from "../ChangeImage/ChangeImage";
 import ChangeSize from "./ChangeSize/ChangeSize";
 
 type ChangeCanvasProps = {
@@ -27,7 +27,7 @@ function ChangeCanvas({ canvas }: ChangeCanvasProps) {
     return (
         <div>
             <ChangeColor value={canvas.bgColor} setValue={handleChangeColor} />
-            <ChangeCanvasImage />
+            <ChangeImage />
             <ChangeSize
                 size={canvas.size}
                 setValueWidth={handleChangeWidth}
