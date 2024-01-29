@@ -7,6 +7,7 @@ function ChangeImage() {
     const editorData = useSelector(selectEditor);
     let ind: number;
     let link = "";
+    let value = "";
 
     const saveImageToElement = (image: string) => {
         const updateCanvas = editorData.canvas;
@@ -29,36 +30,42 @@ function ChangeImage() {
         link = url;
     };
 
-    const toDataURL = (url: string) =>
-        fetch(url)
-            .then((response) => response.blob())
-            .then(
-                (blob) =>
-                    new Promise((resolve, reject) => {
-                        const reader = new FileReader();
-                        reader.onloadend = () => resolve(reader.result);
-                        reader.onerror = reject;
-                        reader.readAsDataURL(blob);
-                    })
-            );
+    function toDataURL(url: string) {
+        const xhr = new XMLHttpRequest();
+        xhr.onload = function () {
+            const reader = new FileReader();
+            reader.onloadend = function () {
+                saveImageToElement(
+                    reader.result ? reader.result.toString() : ""
+                );
+            };
+            reader.readAsDataURL(xhr.response);
+        };
+        xhr.open("GET", url);
+        xhr.responseType = "blob";
+        xhr.send();
+    }
 
     const onClickURL = () => {
-        if (!link) {
-            console.log("enter URL");
+        if (link.length) {
+            toDataURL(link);
         } else {
-            toDataURL(link).then((dataURL) => {
-                saveImageToElement(dataURL ? dataURL.toString() : "");
-            });
+            console.log("enter URL");
         }
+        value = "";
     };
 
     const handleFileChange = (e: any) => {
-        const file = e.target.files[0];
-        const reader = new FileReader();
-        reader.onloadend = function () {
-            saveImageToElement(reader.result ? reader.result.toString() : "");
-        };
-        reader.readAsDataURL(file);
+        if (e.target.files.length) {
+            const file = e.target.files[0];
+            const reader = new FileReader();
+            reader.onloadend = function () {
+                saveImageToElement(
+                    reader.result ? reader.result.toString() : ""
+                );
+            };
+            reader.readAsDataURL(file);
+        }
     };
 
     return (
@@ -68,6 +75,7 @@ function ChangeImage() {
                     id="image-link"
                     type="text"
                     placeholder="Insert URL and press enter"
+                    defaultValue={value}
                     onChange={(e) => {
                         e.preventDefault();
                         e.stopPropagation();
