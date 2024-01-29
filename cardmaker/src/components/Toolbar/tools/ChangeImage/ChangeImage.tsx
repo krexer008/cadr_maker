@@ -2,9 +2,11 @@ import css from "../../../../common/Common.module.css";
 import { useSelector } from "react-redux";
 import { selectEditor } from "../../../../redux/selectors";
 import { createSaveCanvasAction } from "../../../../redux/actionCreators";
+import { rejects } from "assert";
 
 function ChangeImage() {
     const editorData = useSelector(selectEditor);
+
     let ind: number;
     let link = "";
     let value = "";
@@ -45,6 +47,23 @@ function ChangeImage() {
         xhr.responseType = "blob";
         xhr.send();
     }
+
+    // const toDataURL = (url: string) => {
+    //     fetch(url)
+    //         .then((response) => response.blob())
+    //         .then(
+    //             (blob) =>
+    //                 new Promise((resolve, reject) => {
+    //                     const reader = new FileReader();
+    //                     reader.onloadend = () =>
+    //                         saveImageToElement(
+    //                             reader.result ? reader.result.toString() : ""
+    //                         ); //resolve(reader.result);
+    //                     reader.onerror = reject;
+    //                     reader.readAsDataURL(blob);
+    //                 })
+    //         );
+    // };
 
     const onClickURL = () => {
         if (link.length) {
