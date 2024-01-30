@@ -2,7 +2,6 @@ import css from "../../../../common/Common.module.css";
 import { useSelector } from "react-redux";
 import { selectEditor } from "../../../../redux/selectors";
 import { createSaveCanvasAction } from "../../../../redux/actionCreators";
-import { rejects } from "assert";
 
 function ChangeImage() {
     const editorData = useSelector(selectEditor);

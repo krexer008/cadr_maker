@@ -1,20 +1,21 @@
 import { Editor } from "../model/types";
 
-function saveDataToLocal(model: Editor) {
-    const text = JSON.stringify(model);
-    const tagValue = document.querySelector(
-        ".MenuBarPencil_menu-bar-pencil__text__NSDLu"
-    );
-    const name = tagValue?.textContent + ".json";
+function saveJsonObjToFile(data: Editor /*, fileName: string*/) {
+    const saveObj = data; // tmp
+
+    // file setting
+    const text = JSON.stringify(saveObj);
+    const name = /*fileName ? fileName + ".json" :*/ "sample.json";
     const type = "text/plain";
+
+    // create file
     const a = document.createElement("a");
     const file = new Blob([text], { type: type });
     a.href = URL.createObjectURL(file);
     a.download = name;
     document.body.appendChild(a);
     a.click();
-    document.body.removeChild(a);
-    console.log("Модель успешно сохранена на локальном диске.");
+    a.remove();
 }
 
 function loadDatalFromLocal(onLoad: (model: Editor) => void) {
@@ -41,4 +42,4 @@ function loadDatalFromLocal(onLoad: (model: Editor) => void) {
     console.log("Модель успешно загружена из файла.");
 }
 
-export { saveDataToLocal, loadDatalFromLocal };
+export { saveJsonObjToFile, loadDatalFromLocal };

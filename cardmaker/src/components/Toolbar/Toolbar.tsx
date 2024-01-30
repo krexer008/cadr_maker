@@ -42,11 +42,6 @@ function Toolbar() {
             menu = <ChangeTemplates />;
             break;
     }
-    return (
-        <div className={css.toolbar}>
-            <label>Features</label>
-            {menu}
-        </div>
-    );
+    return <div className={css.toolbar}>{menu}</div>;
 }
 export default Toolbar;

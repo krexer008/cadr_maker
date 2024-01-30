@@ -5,7 +5,7 @@ import Toolbar from "../Toolbar/Toolbar";
 import css from "./EditorView.module.css";
 import Workspace from "../Workspace/Workspace";
 import Header from "../Header/Header";
-import { loadDatalFromLocal, saveDataToLocal } from "../../utils/fileutils";
+import { loadDatalFromLocal, saveJsonObjToFile } from "../../utils/fileutils";
 
 function EditorView() {
     const editorModel = useSelector(selectEditor);
@@ -19,7 +19,7 @@ function EditorView() {
     };
 
     const saveToFile = () => {
-        saveDataToLocal(editorModel);
+        saveJsonObjToFile(editorModel);
     };
 
     return (
