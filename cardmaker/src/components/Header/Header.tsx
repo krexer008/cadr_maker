@@ -9,6 +9,7 @@ import {
     getNewText,
 } from "../../utils/utils";
 import { useAppActions } from "../../redux/hooks";
+import { exportToImage } from "../../utils/exportToImage";
 
 type MenuFileProps = {
     saveToFile: () => void;
@@ -52,6 +53,10 @@ function Header({ saveToFile, loadFromFile }: MenuFileProps) {
         );
         canvas.blocks = updateBlocks;
         createSaveCanvasAction(canvas);
+    };
+
+    const handleExportToImage = () => {
+        exportToImage(canvas.id);
     };
 
     return (
@@ -102,7 +107,7 @@ function Header({ saveToFile, loadFromFile }: MenuFileProps) {
             />
 
             <HeaderButton
-                onClick={() => alert("SaveFile clicked")}
+                onClick={() => handleExportToImage()}
                 className={"button__dowload"}
                 text="Export to Image"
             />
