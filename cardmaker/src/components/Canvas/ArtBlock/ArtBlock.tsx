@@ -13,8 +13,8 @@ import ArtObjectFlower from "./artObject/ArtObjectFlower/ArtObjectFlower";
 
 type artBlockProps = {
     block: ArtBlockType;
-    preview?: boolean;
-    isSelected?: boolean;
+    preview: boolean;
+    isSelected: boolean;
     onClick?: () => void;
 };
 
@@ -76,6 +76,7 @@ function ArtBlock({ block, preview, isSelected, onClick }: artBlockProps) {
         default:
             ArtObjectContent = null;
     }
+
     if (!preview) {
         return (
             <ActiveObjectView
@@ -91,15 +92,25 @@ function ArtBlock({ block, preview, isSelected, onClick }: artBlockProps) {
             </ActiveObjectView>
         );
     } else {
-        <PreviewObject
-            position={position}
-            size={size}
-            //background={bgColor}
-            className="artobject"
-            blockId={block.id}
-        >
-            {ArtObjectContent}
-        </PreviewObject>;
+        const top = position.top * 0.1;
+        const left = position.left * 0.1;
+        const width = size.width * 0.1;
+        const height = size.height * 0.1;
+        const stylePreview = {
+            top,
+            left,
+            width,
+            height,
+        };
+        return (
+            <div
+                style={stylePreview}
+                //background={bgColor}
+                className="artobject"
+            >
+                {ArtObjectContent}
+            </div>
+        );
     }
 }
 

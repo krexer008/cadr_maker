@@ -1,5 +1,4 @@
-import { Canvas, TextBlockType } from "../../../../../model/types";
-import { createSaveCanvasAction } from "../../../../../redux/actionCreators";
+import { Canvas } from "../../../../../model/types";
 import ArtBlock from "../../../../Canvas/ArtBlock/ArtBlock";
 import ImageBlock from "../../../../Canvas/ImageBlock/ImageBlock";
 import TextBlock from "../../../../Canvas/TextBlock/TextBlock";
@@ -8,10 +7,10 @@ import css from "./TemplateView.module.module.css";
 type TemplateProps = {
     canvasData: Canvas;
     key: number;
-    onClick: (selectedIndex: string) => void; // вернет ид канвас
+    onSelectTemplate: (selectedIndex: number) => void; // вернет ид канвас
 };
 
-function Template({ canvasData, key, onClick }: TemplateProps) {
+function Template({ canvasData, key, onSelectTemplate }: TemplateProps) {
     if (!canvasData) {
         return null;
     }
@@ -22,7 +21,6 @@ function Template({ canvasData, key, onClick }: TemplateProps) {
         bgImage,
         bgColor,
         blocks,
-        active,
     } = canvasData;
     const styleCanvas = {
         width,
@@ -37,32 +35,25 @@ function Template({ canvasData, key, onClick }: TemplateProps) {
         backgroundRepeat: "no-repeat",
     };
 
-    let ind = -1;
-
     return (
         <div
             className={css.canvas}
             style={styleCanvas}
             onClick={(event) => {
+                onSelectTemplate(key);
                 event.stopPropagation();
-                selectedIndex = key;
             }}
             id={id}
         >
             {blocks.map((block, index) => {
-                const isBlockSelected = block.id === active;
-                if (isBlockSelected) ind = index;
-                const handleClick = () => {
-                    onSelectActive(block.id);
-                };
                 switch (block.type) {
                     case "art":
                         return (
                             <ArtBlock
                                 key={index}
                                 block={block}
-                                isSelected={isBlockSelected}
-                                onClick={handleClick}
+                                preview={true}
+                                isSelected={false}
                             />
                         );
                     case "image":
@@ -70,8 +61,8 @@ function Template({ canvasData, key, onClick }: TemplateProps) {
                             <ImageBlock
                                 block={block}
                                 key={index}
-                                isSelected={isBlockSelected}
-                                onClick={handleClick}
+                                preview={true}
+                                isSelected={false}
                             />
                         );
                     case "text":
@@ -79,8 +70,8 @@ function Template({ canvasData, key, onClick }: TemplateProps) {
                             <TextBlock
                                 block={block}
                                 key={index}
-                                isSelected={isBlockSelected}
-                                setValue={handleChangeText}
+                                preview={true}
+                                isSelected={false}
                             />
                         );
                     default:

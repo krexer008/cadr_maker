@@ -1,7 +1,6 @@
 import css from "../../../../common/Common.module.css";
 import { Template } from "../../../../model/types";
-import { useAppSelector } from "../../../../redux/hooks";
-import { selectEditor } from "../../../../redux/selectors";
+import { useAppActions } from "../../../../redux/hooks";
 import TemplateView from "./TemplateView/TemplateView";
 
 type ChangeTemplatesProps = {
@@ -9,9 +8,10 @@ type ChangeTemplatesProps = {
 };
 
 function ChangeTemplates({ templates }: ChangeTemplatesProps) {
-    const editorData = useAppSelector(selectEditor);
-    const onClick = (selectedIndex: string) => {
-        editorData.canvas = templates[parseInt(selectedIndex)].canvas;
+    const { createSaveCanvasAction } = useAppActions();
+    const handleChangeTemplate = (selectedIndex: number) => {
+        const canvasData = templates[selectedIndex].canvas;
+        createSaveCanvasAction(canvasData);
     };
     return (
         <div className={css.toolblock}>
@@ -21,7 +21,7 @@ function ChangeTemplates({ templates }: ChangeTemplatesProps) {
                     <TemplateView
                         key={index}
                         canvasData={template.canvas}
-                        onClick={onClick}
+                        onSelectTemplate={handleChangeTemplate}
                     />
                 );
             })}

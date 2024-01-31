@@ -76,6 +76,7 @@ function CanvasView({
                             <ArtBlock
                                 key={index}
                                 block={block}
+                                preview={false}
                                 isSelected={isBlockSelected}
                                 onClick={handleClick}
                             />
@@ -85,6 +86,7 @@ function CanvasView({
                             <ImageBlock
                                 block={block}
                                 key={index}
+                                preview={false}
                                 isSelected={isBlockSelected}
                                 onClick={handleClick}
                             />
@@ -94,6 +96,7 @@ function CanvasView({
                             <TextBlock
                                 block={block}
                                 key={index}
+                                preview={false}
                                 isSelected={isBlockSelected}
                                 setValue={handleChangeText}
                             />
