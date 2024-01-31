@@ -111,12 +111,6 @@ function Header({ saveToFile, loadFromFile }: MenuFileProps) {
                 className={"button__dowload"}
                 text="Export to Image"
             />
-
-            <HeaderButton
-                onClick={() => alert("SaveFile clicked")}
-                className={"button__dowload"}
-                text="Export to PDF"
-            />
         </div>
     );
 }

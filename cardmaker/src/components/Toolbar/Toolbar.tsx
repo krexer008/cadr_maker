@@ -39,7 +39,7 @@ function Toolbar() {
             menu = <ChangeBlockArt block={block as ArtBlockType} id={active} />;
             break;
         default:
-            menu = <ChangeTemplates />;
+            menu = <ChangeTemplates templates={editorData.templates}/>;
             break;
     }
     return <div className={css.toolbar}>{menu}</div>;

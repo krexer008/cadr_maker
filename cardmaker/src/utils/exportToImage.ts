@@ -17,4 +17,3 @@ export const exportToImage = (canvasId: string) => {
     });
     console.log("image create");
 };
-

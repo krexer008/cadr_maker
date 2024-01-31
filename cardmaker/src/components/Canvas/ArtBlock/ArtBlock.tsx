@@ -13,11 +13,12 @@ import ArtObjectFlower from "./artObject/ArtObjectFlower/ArtObjectFlower";
 
 type artBlockProps = {
     block: ArtBlockType;
-    isSelected: boolean;
-    onClick: () => void;
+    preview?: boolean;
+    isSelected?: boolean;
+    onClick?: () => void;
 };
 
-function ArtBlock({ block, isSelected, onClick }: artBlockProps) {
+function ArtBlock({ block, preview, isSelected, onClick }: artBlockProps) {
     const { value, borderColor, size, position, transform } = block;
 
     let ArtObjectContent;
@@ -75,19 +76,31 @@ function ArtBlock({ block, isSelected, onClick }: artBlockProps) {
         default:
             ArtObjectContent = null;
     }
-    return (
-        <ActiveObjectView
-            isSelected={isSelected}
+    if (!preview) {
+        return (
+            <ActiveObjectView
+                isSelected={isSelected}
+                position={position}
+                size={size}
+                //background={bgColor}
+                className="artobject"
+                blockId={block.id}
+                transform={transform}
+            >
+                <div onClick={() => onClick}>{ArtObjectContent}</div>
+            </ActiveObjectView>
+        );
+    } else {
+        <PreviewObject
             position={position}
             size={size}
             //background={bgColor}
             className="artobject"
             blockId={block.id}
-            transform={transform}
         >
-            <div onClick={() => onClick}>{ArtObjectContent}</div>
-        </ActiveObjectView>
-    );
+            {ArtObjectContent}
+        </PreviewObject>;
+    }
 }
 
 export default ArtBlock;
