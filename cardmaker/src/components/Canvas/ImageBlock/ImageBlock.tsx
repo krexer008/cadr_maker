@@ -40,10 +40,10 @@ function ImageBlock({ block, isSelected, preview, onClick }: ImageBlockProps) {
             </ActiveObjectView>
         );
     } else {
-        const top = position.top * 0.1;
-        const left = position.left * 0.1;
-        const width = size.width * 0.1;
-        const height = size.height * 0.1;
+        const top = position.top;
+        const left = position.left;
+        const width = size.width;
+        const height = size.height;
         const stylePreview = {
             top,
             left,

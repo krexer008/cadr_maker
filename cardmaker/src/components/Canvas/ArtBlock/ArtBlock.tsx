@@ -20,7 +20,6 @@ type artBlockProps = {
 
 function ArtBlock({ block, preview, isSelected, onClick }: artBlockProps) {
     const { value, borderColor, size, position, transform } = block;
-
     let ArtObjectContent;
     switch (value) {
         case ArtValue.Arrow:
@@ -92,10 +91,10 @@ function ArtBlock({ block, preview, isSelected, onClick }: artBlockProps) {
             </ActiveObjectView>
         );
     } else {
-        const top = position.top * 0.1;
-        const left = position.left * 0.1;
-        const width = size.width * 0.1;
-        const height = size.height * 0.1;
+        const top = position.top;
+        const left = position.left;
+        const width = size.width;
+        const height = size.height;
         const stylePreview = {
             top,
             left,

@@ -6,6 +6,8 @@ import {
     ImageBlockType,
     TextBlockType,
 } from "./../model/types";
+import templates from "../data/templates/templates.json";
+import { getTemplates } from "./getTemplates";
 
 function generateRandomID() {
     return "id" + Math.random().toString(16).slice(2);
@@ -106,7 +108,7 @@ function getNewArt(): ArtBlockType {
 function getEditorModel(): Editor {
     return {
         canvas: getNewCanvas(),
-        templates: [],
+        templates: getTemplates(templates),
     };
 }
 
