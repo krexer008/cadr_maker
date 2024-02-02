@@ -16,7 +16,7 @@
             }
         },
         {
-            "id": "summerbeach",
+            "id": "springday",
             "canvas": {
                 "id": "ida2f8ad7f47693",
                 "active": "",
@@ -31,7 +31,7 @@
                     {
                         "id": "id4a6e94f037c88",
                         "type": "text",
-                        "size": { "width": 475, "height": 139 },
+                        "size": { "width": 475, "height": 400 },
                         "position": { "left": 213, "top": 62 },
                         "value": "С весенним праздником!",
                         "fontSize": 40,
@@ -76,7 +76,7 @@
             }
         },
         {
-            "id": "springday",
+            "id": "summerbeach",
             "canvas": {
                 "id": "id7225c12f5afd8",
                 "active": "",

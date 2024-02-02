@@ -25,8 +25,8 @@ function Template({ canvasData, key, onSelectTemplate }: TemplateProps) {
     const styleCanvas = {
         width: width * 0.23,
         height: height * 0.23,
-        maxWidth: `0.23`,
-        maxHeight: `0.23`,
+        maxWidth: `100%`,
+        maxHeight: `100%`,
         filter,
         backgroundImage: `url("${bgImage.source}")`,
         backgroundColor: bgColor,
@@ -48,8 +48,9 @@ function Template({ canvasData, key, onSelectTemplate }: TemplateProps) {
             {blocks.map((block, index) => {
                 block.size.width = block.size.width * 0.5;
                 block.size.height = block.size.height * 0.5;
+                /*
                 block.position.left = block.position.left * 0.5;
-                block.position.top = block.position.top * 0.5;
+                block.position.top = block.position.top * 0.5;*/
                 switch (block.type) {
                     case "art":
                         return (
