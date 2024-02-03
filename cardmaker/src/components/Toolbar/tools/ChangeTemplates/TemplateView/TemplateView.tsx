@@ -6,11 +6,11 @@ import css from "./TemplateView.module.module.css";
 
 type TemplateProps = {
     canvasData: Canvas;
-    key: number;
+    index: number;
     onSelectTemplate: (selectedIndex: number) => void; // вернет ид канвас
 };
 
-function Template({ canvasData, key, onSelectTemplate }: TemplateProps) {
+function Template({ canvasData, index, onSelectTemplate }: TemplateProps) {
     if (!canvasData) {
         return null;
     }
@@ -34,28 +34,21 @@ function Template({ canvasData, key, onSelectTemplate }: TemplateProps) {
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
     };
-
     return (
         <div
             className={css.canvas}
             style={styleCanvas}
             onClick={(event) => {
-                onSelectTemplate(key);
+                onSelectTemplate(index);
+                console.log({ index });
                 event.stopPropagation();
             }}
-            id={id}
         >
-            {blocks.map((block, index) => {
-                block.size.width = block.size.width * 0.5;
-                block.size.height = block.size.height * 0.5;
-                /*
-                block.position.left = block.position.left * 0.5;
-                block.position.top = block.position.top * 0.5;*/
+            {blocks.map((block) => {
                 switch (block.type) {
                     case "art":
                         return (
                             <ArtBlock
-                                key={index}
                                 block={block}
                                 preview={true}
                                 isSelected={false}
@@ -65,17 +58,14 @@ function Template({ canvasData, key, onSelectTemplate }: TemplateProps) {
                         return (
                             <ImageBlock
                                 block={block}
-                                key={index}
                                 preview={true}
                                 isSelected={false}
                             />
                         );
                     case "text":
-                        block.fontSize = block.fontSize * 0.3;
                         return (
                             <TextBlock
                                 block={block}
-                                key={index}
                                 preview={true}
                                 isSelected={false}
                             />

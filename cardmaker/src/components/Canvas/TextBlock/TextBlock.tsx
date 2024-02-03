@@ -53,12 +53,12 @@ function TextBlock({ block, isSelected, preview, setValue }: textBlockProps) {
             </ActiveObjectView>
         );
     } else {
-        const top = position.top;
-        const left = position.left;
-        const width = size.width;
-        const height = size.height;
         const padding = 2;
-        const fontSize: number = block.fontSize;
+        const fontSize: number = block.fontSize * 0.23;
+        const top = position.top * 0.23;
+        const left = position.left * 0.23;
+        const width = size.width * 0.23;
+        const height = size.height * 0.23;
         const stylePreview = {
             top,
             left,
@@ -79,13 +79,12 @@ function TextBlock({ block, isSelected, preview, setValue }: textBlockProps) {
             <div
                 style={stylePreview}
                 //background={bgColor}
-                className="artobject"
+                className={css.container}
             >
                 <textarea
-                    className={`${css.textarea}`}
+                    className={css.textarea__preview}
                     style={textStyle}
                     value={value}
-                    placeholder={value}
                 />
             </div>
         );

@@ -1,5 +1,5 @@
 import { ActiveObjectView } from "../ActiveObjectView/ActiveObjectView";
-import { ArtBlockType, ArtValue } from "../../../model/types";
+import { ArtBlockType, ArtValue, Size } from "../../../model/types";
 import ArtObjectArrow from "./artObject/ArtObjectArrow/ArtObjectArrow";
 import ArtObjectCircle from "./artObject/ArtObjectCircle/ArtObjectCircle";
 import ArtObjectChat from "./artObject/ArtObjectChat/ArtObjectChat";
@@ -10,6 +10,7 @@ import ArtObjectSquare from "./artObject/ArtObjectSquare/ArtObjectSquare";
 import ArtObjectThugLife from "./artObject/ArtObjectThugLife/ArtObjectThugLife";
 import ArtObjectThumbsUp from "./artObject/ArtObjectThumbsUp/ArtObjectThumbsUp";
 import ArtObjectFlower from "./artObject/ArtObjectFlower/ArtObjectFlower";
+import css from "../ActiveObjectView/ActiveObjectView.module.css";
 
 type artBlockProps = {
     block: ArtBlockType;
@@ -21,55 +22,60 @@ type artBlockProps = {
 function ArtBlock({ block, preview, isSelected, onClick }: artBlockProps) {
     const { value, borderColor, size, position, transform } = block;
     let ArtObjectContent;
+    const sizeArt: Size = {
+        width: preview ? size.width * 0.23 : size.width,
+        height: preview ? size.height * 0.23 : size.height,
+    };
+
     switch (value) {
         case ArtValue.Arrow:
             ArtObjectContent = (
-                <ArtObjectArrow color={borderColor} size={size} />
+                <ArtObjectArrow color={borderColor} size={sizeArt} />
             );
             break;
         case ArtValue.Circle:
             ArtObjectContent = (
-                <ArtObjectCircle color={borderColor} size={size} />
+                <ArtObjectCircle color={borderColor} size={sizeArt} />
             );
             break;
         case ArtValue.Chat:
             ArtObjectContent = (
-                <ArtObjectChat color={borderColor} size={size} />
+                <ArtObjectChat color={borderColor} size={sizeArt} />
             );
             break;
         case ArtValue.Clock:
             ArtObjectContent = (
-                <ArtObjectClock color={borderColor} size={size} />
+                <ArtObjectClock color={borderColor} size={sizeArt} />
             );
             break;
         case ArtValue.Flower:
             ArtObjectContent = (
-                <ArtObjectFlower color={borderColor} size={size} />
+                <ArtObjectFlower color={borderColor} size={sizeArt} />
             );
             break;
         case ArtValue.Gift:
             ArtObjectContent = (
-                <ArtObjectGift color={borderColor} size={size} />
+                <ArtObjectGift color={borderColor} size={sizeArt} />
             );
             break;
         case ArtValue.Heart:
             ArtObjectContent = (
-                <ArtObjectHeart color={borderColor} size={size} />
+                <ArtObjectHeart color={borderColor} size={sizeArt} />
             );
             break;
         case ArtValue.Square:
             ArtObjectContent = (
-                <ArtObjectSquare color={borderColor} size={size} />
+                <ArtObjectSquare color={borderColor} size={sizeArt} />
             );
             break;
         case ArtValue.ThugLife:
             ArtObjectContent = (
-                <ArtObjectThugLife color={borderColor} size={size} />
+                <ArtObjectThugLife color={borderColor} size={sizeArt} />
             );
             break;
         case ArtValue.ThumbsUp:
             ArtObjectContent = (
-                <ArtObjectThumbsUp color={borderColor} size={size} />
+                <ArtObjectThumbsUp color={borderColor} size={sizeArt} />
             );
             break;
         default:
@@ -91,10 +97,10 @@ function ArtBlock({ block, preview, isSelected, onClick }: artBlockProps) {
             </ActiveObjectView>
         );
     } else {
-        const top = position.top;
-        const left = position.left;
-        const width = size.width;
-        const height = size.height;
+        const top = position.top * 0.23;
+        const left = position.left * 0.23;
+        const width = sizeArt.width;
+        const height = sizeArt.height;
         const stylePreview = {
             top,
             left,
@@ -102,11 +108,7 @@ function ArtBlock({ block, preview, isSelected, onClick }: artBlockProps) {
             height,
         };
         return (
-            <div
-                style={stylePreview}
-                //background={bgColor}
-                className="artobject"
-            >
+            <div style={stylePreview} className={css.container}>
                 {ArtObjectContent}
             </div>
         );

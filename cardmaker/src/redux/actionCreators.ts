@@ -1,24 +1,10 @@
 import { EditorActionType } from "./editorActions";
-import { Canvas, Editor, Size } from "../model/types";
-
-function createChangeSize(newSize: Size) {
-    return {
-        type: EditorActionType.CHANGE_SIZE,
-        payload: { newSize },
-    };
-}
+import { Canvas, Editor } from "../model/types";
 
 function createSaveCanvasAction(updatedCanvas: Canvas) {
     return {
         type: EditorActionType.SAVE_CANVAS,
         payload: { updatedCanvas },
-    };
-}
-
-function createNewCanvas(newCanvas: Canvas) {
-    return {
-        type: EditorActionType.NEW_CANVAS,
-        payload: { newCanvas },
     };
 }
 
@@ -45,9 +31,7 @@ function createEmptyEditor(newEditor: Editor) {
 
 export {
     createSaveCanvasAction,
-    createChangeSize,
     createUpdateCanvas,
     createLoadCanvas,
-    createNewCanvas,
     createEmptyEditor,
 };

@@ -16,11 +16,13 @@ function ChangeTemplates({ templates }: ChangeTemplatesProps) {
     return (
         <div className={css.toolblock}>
             Templates
-            {templates.map((template, index) => {
+            {templates.map((val, index) => {
+                console.log(index);
                 return (
                     <TemplateView
                         key={index}
-                        canvasData={template.canvas}
+                        index={index}
+                        canvasData={val.canvas}
                         onSelectTemplate={handleChangeTemplate}
                     />
                 );

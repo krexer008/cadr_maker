@@ -9,20 +9,10 @@ const editorReducer = (
     action: EditorAction
 ) => {
     switch (action.type) {
-        case EditorActionType.CHANGE_SIZE:
-            return {
-                ...state,
-                size: action.payload.newSize,
-            };
         case EditorActionType.SAVE_CANVAS:
             return {
                 ...state,
                 canvas: action.payload.updatedCanvas,
-            };
-        case EditorActionType.NEW_CANVAS:
-            return {
-                ...state,
-                canvas: action.payload.newCanvas,
             };
         case EditorActionType.UPDATE_EDITOR:
             return {

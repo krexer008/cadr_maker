@@ -40,27 +40,20 @@ function ImageBlock({ block, isSelected, preview, onClick }: ImageBlockProps) {
             </ActiveObjectView>
         );
     } else {
-        const top = position.top;
-        const left = position.left;
-        const width = size.width;
-        const height = size.height;
+        const top = position.top * 0.23;
+        const left = position.left * 0.23;
+        const width = size.width * 0.23;
+        const height = size.height * 0.23;
         const stylePreview = {
             top,
             left,
             width,
             height,
-            backgroundImage: `url("${image.source}")`,
-            //backgroundColor: "#a1f2ff",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
         };
         return (
-            <div
-                className={css.image}
-                style={stylePreview}
-                onClick={onClick}
-            ></div>
+            <div className={css.container} style={stylePreview}>
+                <div className={css.image} style={styleImageBlock}></div>
+            </div>
         );
     }
 }
