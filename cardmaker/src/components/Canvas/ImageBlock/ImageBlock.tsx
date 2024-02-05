@@ -16,7 +16,6 @@ function ImageBlock({ block, isSelected, preview, onClick }: ImageBlockProps) {
         width: `100%`,
         height: `100%`,
         backgroundImage: `url("${image.source}")`,
-        //backgroundColor: "#a1f2ff",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",

@@ -12,6 +12,60 @@ const editorReducer = (
     action: EditorAction
 ) => {
     switch (action.type) {
+        case EditorActionType.DRAG_N_DROP: {
+            const { activeBlockId, blockSize, blockPosition } = action.payload;
+            const newBlocksState = state.canvas.blocks.map((block) => {
+                if (block.id === activeBlockId) {
+                    return {
+                        ...block,
+                        size: blockSize,
+                        position: blockPosition,
+                    } as TextBlockType;
+                }
+                return block;
+            });
+            const newCanvas = {
+                ...state.canvas,
+                blocks: newBlocksState,
+            };
+            const updateState = {
+                ...state,
+                canvas: newCanvas,
+            };
+            history.addHistoryItem(updateState);
+            return updateState;
+        }
+
+        case EditorActionType.DELETE_BLOCK: {
+            const { deleteBlockId } = action.payload;
+            const newBlocks = [...state.canvas.blocks].filter(
+                (block) => block.id !== deleteBlockId
+            );
+            const newCanvas = {
+                ...state.canvas,
+                blocks: newBlocks,
+            };
+            const updateState = {
+                ...state,
+                canvas: newCanvas,
+            };
+            history.addHistoryItem(updateState);
+            return updateState;
+        }
+        case EditorActionType.ADD_BLOCK: {
+            const { newBlock } = action.payload;
+            const newCanvas = {
+                ...state.canvas,
+                blocks: [...state.canvas.blocks, newBlock],
+            };
+            const updateState = {
+                ...state,
+                canvas: newCanvas,
+            };
+            history.addHistoryItem(updateState);
+            return updateState;
+        }
+
         case EditorActionType.CHANGE_TEXT_VALUE: {
             const { textValue, blockIndex } = action.payload;
             const newBlocksState = state.canvas.blocks.map((block, index) => {
@@ -27,12 +81,28 @@ const editorReducer = (
                 ...state.canvas,
                 blocks: newBlocksState,
             };
-            const newState = {
+            const updateState = {
                 ...state,
                 canvas: newCanvas,
             };
-            history.addHistoryItem(newState);
-            return newState;
+            history.addHistoryItem(updateState);
+            return updateState;
+        }
+
+        case EditorActionType.CHANGE_CANVAS_COLOR: {
+            const { newColor } = action.payload;
+            const newCanvas = {
+                ...state.canvas,
+                color: newColor,
+            };
+            console.log(newColor);
+            const updateState = {
+                ...state,
+                canvas: newCanvas,
+            };
+            console.log(updateState.canvas.bgColor);
+            history.addHistoryItem(updateState);
+            return updateState;
         }
 
         case EditorActionType.SELECT_ACTIVE: {
@@ -48,10 +118,12 @@ const editorReducer = (
             history.addHistoryItem(updateState);
             return updateState;
         }
+
         case EditorActionType.SAVE_CANVAS: {
+            const { updatedCanvas } = action.payload;
             const newState = {
                 ...state,
-                canvas: action.payload.updatedCanvas,
+                canvas: updatedCanvas,
             };
             history.addHistoryItem(newState);
             return newState;

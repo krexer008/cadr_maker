@@ -1,5 +1,51 @@
 import { EditorActionType } from "./editorActions";
-import { Canvas, Editor } from "../model/types";
+import {
+    ArtBlockType,
+    Canvas,
+    Editor,
+    ImageBlockType,
+    Position,
+    Size,
+    TextBlockType,
+} from "../model/types";
+
+function createChangeCanvasColorAction(newColor: string) {
+    return {
+        type: EditorActionType.CHANGE_CANVAS_COLOR,
+        payload: { newColor },
+    };
+}
+
+function createDragAndDropAction(
+    activeBlockId: string,
+    blockSize: Size,
+    blockPosition: Position
+) {
+    return {
+        type: EditorActionType.DRAG_N_DROP,
+        payload: {
+            activeBlockId,
+            blockSize,
+            blockPosition,
+        },
+    };
+}
+
+function createDeleteBlockAction(deleteBlockId: string) {
+    return {
+        type: EditorActionType.DELETE_BLOCK,
+        payload: { deleteBlockId },
+    };
+}
+
+function createAddBlockAction(
+    newBlock: TextBlockType | ImageBlockType | ArtBlockType
+) {
+    return {
+        type: EditorActionType.ADD_BLOCK,
+        payload: { newBlock },
+    };
+}
 
 function createChangeTextBlockValue(textValue: string, blockIndex: number) {
     return {
@@ -49,6 +95,10 @@ function createRedoAction() {
 }
 
 export {
+    createChangeCanvasColorAction,
+    createDragAndDropAction,
+    createDeleteBlockAction,
+    createAddBlockAction,
     createChangeTextBlockValue,
     createSelectActiveAction,
     createSaveCanvasAction,
