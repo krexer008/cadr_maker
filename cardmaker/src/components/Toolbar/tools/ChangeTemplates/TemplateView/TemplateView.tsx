@@ -40,7 +40,6 @@ function Template({ canvasData, index, onSelectTemplate }: TemplateProps) {
             style={styleCanvas}
             onClick={(event) => {
                 onSelectTemplate(index);
-                console.log({ index });
                 event.stopPropagation();
             }}
         >

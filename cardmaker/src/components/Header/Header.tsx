@@ -10,6 +10,7 @@ import {
 } from "../../utils/utils";
 import { useAppActions } from "../../redux/hooks";
 import { exportToImage } from "../../utils/exportToImage";
+import { createRedoAction, createUndoAction } from "../../redux/actionCreators";
 
 type MenuFileProps = {
     saveToFile: () => void;
@@ -24,6 +25,14 @@ function Header({ saveToFile, loadFromFile }: MenuFileProps) {
     const resetModelHandler = () => {
         const newCanvas = getNewCanvas();
         createSaveCanvasAction(newCanvas);
+    };
+
+    const undoHandler = () => {
+        createUndoAction();
+    };
+
+    const redoHandler = () => {
+        createRedoAction();
     };
 
     const handleAddNewText = () => {
@@ -67,19 +76,31 @@ function Header({ saveToFile, loadFromFile }: MenuFileProps) {
             <HeaderButton
                 onClick={loadFromFile}
                 className={"button"}
-                text="Open File"
+                text="Open"
             />
 
             <HeaderButton
                 onClick={saveToFile}
                 className={"button"}
-                text="Save File"
+                text="Save"
             />
 
             <HeaderButton
                 onClick={() => resetModelHandler()}
                 className={"button"}
-                text="Clear Editor" //Очистить редактор
+                text="Clear" //Очистить редактор
+            />
+
+            <HeaderButton
+                onClick={() => undoHandler()}
+                className={"button"}
+                text="UNDO" //Очистить редактор
+            />
+
+            <HeaderButton
+                onClick={() => redoHandler()}
+                className={"button"}
+                text="REDO" //Очистить редактор
             />
 
             <HeaderButton

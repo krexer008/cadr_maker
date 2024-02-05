@@ -4,18 +4,16 @@ import CanvasView from "../Canvas/CanvasView";
 import css from "./Workspace.module.css";
 
 function Workspace() {
-    const { createSaveCanvasAction } = useAppActions();
+    const { createSelectActiveAction } = useAppActions();
     const editorData = useAppSelector(selectEditor);
     const canvasData = editorData.canvas;
 
     const handleResetActive = () => {
-        // удаляет в состоянии active
-        canvasData.active = "";
-        createSaveCanvasAction(canvasData);
+        createSelectActiveAction("");
     };
+
     const handleSelectActive = (activeID: string) => {
-        canvasData.active = activeID;
-        createSaveCanvasAction(canvasData);
+        createSelectActiveAction(activeID);
     };
     return (
         <div className={css.workspace} onClick={() => handleResetActive()}>

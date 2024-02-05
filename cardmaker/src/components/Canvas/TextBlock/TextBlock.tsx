@@ -7,9 +7,16 @@ type textBlockProps = {
     preview: boolean;
     isSelected: boolean;
     setValue?: (newText: string) => void;
+    onClick?: () => void;
 };
 
-function TextBlock({ block, isSelected, preview, setValue }: textBlockProps) {
+function TextBlock({
+    block,
+    isSelected,
+    preview,
+    setValue,
+    onClick,
+}: textBlockProps) {
     const {
         id,
         size,
@@ -49,6 +56,7 @@ function TextBlock({ block, isSelected, preview, setValue }: textBlockProps) {
                     onChange={(event) => {
                         setValue(event.target.value);
                     }}
+                    onClick={onClick}
                 />
             </ActiveObjectView>
         );

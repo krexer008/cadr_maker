@@ -47,23 +47,6 @@ function ChangeImage() {
         xhr.send();
     }
 
-    // const toDataURL = (url: string) => {
-    //     fetch(url)
-    //         .then((response) => response.blob())
-    //         .then(
-    //             (blob) =>
-    //                 new Promise((resolve, reject) => {
-    //                     const reader = new FileReader();
-    //                     reader.onloadend = () =>
-    //                         saveImageToElement(
-    //                             reader.result ? reader.result.toString() : ""
-    //                         ); //resolve(reader.result);
-    //                     reader.onerror = reject;
-    //                     reader.readAsDataURL(blob);
-    //                 })
-    //         );
-    // };
-
     const onClickURL = () => {
         if (link.length) {
             toDataURL(link);

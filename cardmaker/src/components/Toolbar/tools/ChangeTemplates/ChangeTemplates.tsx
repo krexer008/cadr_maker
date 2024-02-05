@@ -17,7 +17,6 @@ function ChangeTemplates({ templates }: ChangeTemplatesProps) {
         <div className={css.toolblock}>
             Templates
             {templates.map((val, index) => {
-                console.log(index);
                 return (
                     <TemplateView
                         key={index}

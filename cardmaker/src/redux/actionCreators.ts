@@ -1,17 +1,24 @@
 import { EditorActionType } from "./editorActions";
 import { Canvas, Editor } from "../model/types";
 
+function createChangeTextBlockValue(textValue: string, blockIndex: number) {
+    return {
+        type: EditorActionType.CHANGE_TEXT_VALUE,
+        payload: { textValue, blockIndex },
+    };
+}
+
+function createSelectActiveAction(activeId: string) {
+    return {
+        type: EditorActionType.SELECT_ACTIVE,
+        payload: { activeId },
+    };
+}
+
 function createSaveCanvasAction(updatedCanvas: Canvas) {
     return {
         type: EditorActionType.SAVE_CANVAS,
         payload: { updatedCanvas },
-    };
-}
-
-function createUpdateCanvas(tempEditor: Editor) {
-    return {
-        type: EditorActionType.UPDATE_EDITOR,
-        payload: { tempEditor },
     };
 }
 
@@ -29,9 +36,24 @@ function createEmptyEditor(newEditor: Editor) {
     };
 }
 
+function createUndoAction() {
+    return {
+        type: EditorActionType.UNDO,
+    };
+}
+
+function createRedoAction() {
+    return {
+        type: EditorActionType.REDO,
+    };
+}
+
 export {
+    createChangeTextBlockValue,
+    createSelectActiveAction,
     createSaveCanvasAction,
-    createUpdateCanvas,
     createLoadCanvas,
     createEmptyEditor,
+    createUndoAction,
+    createRedoAction,
 };

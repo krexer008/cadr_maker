@@ -1,6 +1,9 @@
 import { RootState } from "./reducer";
-// eslint-disable-next-line import/named
-import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import {
+    useDispatch,
+    useSelector,
+    type TypedUseSelectorHook,
+} from "react-redux";
 import { bindActionCreators } from "redux";
 import * as EditorActionsCreator from "./actionCreators";
 

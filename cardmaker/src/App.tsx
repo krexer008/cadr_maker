@@ -1,8 +1,9 @@
 import css from "./App.module.css";
 import { EditorView } from "./components/EditorView/EditorView";
+import { useUndoRedoListeners } from "./hook/useUndoRedoListeners";
 
 const App = () => {
-    // слушатель УНДО/РЕДО
+    useUndoRedoListeners();
     return (
         <div className={css.app}>
             <EditorView />
