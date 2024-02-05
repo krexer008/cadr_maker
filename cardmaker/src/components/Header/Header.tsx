@@ -18,8 +18,14 @@ type MenuFileProps = {
 
 function Header({ saveToFile, loadFromFile }: MenuFileProps) {
     const editorModel = useSelector(selectEditor);
-    const { createSaveCanvasAction, createRedoAction, createUndoAction } =
-        useAppActions();
+    const {
+        createSaveCanvasAction,
+        createRedoAction,
+        createUndoAction,
+        createAddBlockAction,
+        createSelectActiveAction,
+        createDeleteBlockAction,
+    } = useAppActions();
     const canvas = editorModel.canvas;
 
     const resetModelHandler = () => {
@@ -37,31 +43,29 @@ function Header({ saveToFile, loadFromFile }: MenuFileProps) {
 
     const handleAddNewText = () => {
         const newTextBlock = getNewText();
-        canvas.blocks.push(newTextBlock);
-        canvas.active = newTextBlock.id;
-        createSaveCanvasAction(canvas);
+        createAddBlockAction(newTextBlock);
+        createSelectActiveAction(newTextBlock.id);
     };
 
     const handleAddNewArt = () => {
         const newArtBlock = getNewArt();
-        canvas.blocks.push(newArtBlock);
-        canvas.active = newArtBlock.id;
-        createSaveCanvasAction(canvas);
+        createAddBlockAction(newArtBlock);
+        createSelectActiveAction(newArtBlock.id);
     };
 
     const handleAddNewImageBlock = () => {
         const newImageBlock = getNewImage();
-        canvas.blocks.push(newImageBlock);
-        canvas.active = newImageBlock.id;
-        createSaveCanvasAction(canvas);
+        createAddBlockAction(newImageBlock);
+        createSelectActiveAction(newImageBlock.id);
     };
 
     const handleDeleteItem = () => {
-        const updateBlocks = canvas.blocks.filter(
-            (block) => block.id !== canvas.active
-        );
-        canvas.blocks = updateBlocks;
-        createSaveCanvasAction(canvas);
+        if (
+            editorModel.canvas.active &&
+            editorModel.canvas.active !== editorModel.canvas.id
+        ) {
+            createDeleteBlockAction(editorModel.canvas.active);
+        }
     };
 
     const handleExportToImage = () => {

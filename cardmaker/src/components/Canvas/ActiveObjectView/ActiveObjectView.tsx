@@ -26,9 +26,9 @@ function ActiveObjectView({
     blockId,
     transform,
 }: ActiveObjectViewProps) {
-    const { createSaveCanvasAction } = useAppActions();
+    const { createSelectActiveAction, createDragAndDropAction } =
+        useAppActions();
     const editorData = useAppSelector(selectEditor);
-    const canvas = editorData.canvas;
     const activeBlockId = editorData.canvas.active === blockId ? blockId : "";
     const classNames = `${active.container} ${
         isSelected ? active.selected : active[className]
@@ -49,8 +49,7 @@ function ActiveObjectView({
     const ref = useRef<HTMLDivElement>(null);
 
     const handleClick = () => {
-        canvas.active = blockId;
-        createSaveCanvasAction(canvas);
+        createSelectActiveAction(blockId);
     };
 
     const { isDragging } = useDragAndDrop(
@@ -66,17 +65,11 @@ function ActiveObjectView({
                     left: left + delta.left,
                     top: top + delta.top,
                 };
-
-                const updateBlocks = canvas.blocks.map((block) => {
-                    if (block.id === activeBlockId) {
-                        block.size = blockSize;
-                        block.position = blockPosition;
-                    }
-                    return block;
-                });
-
-                canvas.blocks = updateBlocks;
-                createSaveCanvasAction(canvas);
+                createDragAndDropAction(
+                    activeBlockId,
+                    blockSize,
+                    blockPosition
+                );
             },
         }
     );
@@ -94,17 +87,11 @@ function ActiveObjectView({
                     left: left + delta.left,
                     top: top + delta.top,
                 };
-
-                const updateBlocks = canvas.blocks.map((block) => {
-                    if (block.id === activeBlockId) {
-                        block.size = blockSize;
-                        block.position = blockPosition;
-                    }
-                    return block;
-                });
-
-                canvas.blocks = updateBlocks;
-                createSaveCanvasAction(canvas);
+                createDragAndDropAction(
+                    activeBlockId,
+                    blockSize,
+                    blockPosition
+                );
             },
         }
     );
@@ -122,17 +109,11 @@ function ActiveObjectView({
                     left: left + delta.left,
                     top,
                 };
-
-                const updateBlocks = canvas.blocks.map((block) => {
-                    if (block.id === activeBlockId) {
-                        block.size = blockSize;
-                        block.position = blockPosition;
-                    }
-                    return block;
-                });
-
-                canvas.blocks = updateBlocks;
-                createSaveCanvasAction(canvas);
+                createDragAndDropAction(
+                    activeBlockId,
+                    blockSize,
+                    blockPosition
+                );
             },
         }
     );
@@ -150,17 +131,11 @@ function ActiveObjectView({
                     left: left + delta.left,
                     top,
                 };
-
-                const updateBlocks = canvas.blocks.map((block) => {
-                    if (block.id === activeBlockId) {
-                        block.size = blockSize;
-                        block.position = blockPosition;
-                    }
-                    return block;
-                });
-
-                canvas.blocks = updateBlocks;
-                createSaveCanvasAction(canvas);
+                createDragAndDropAction(
+                    activeBlockId,
+                    blockSize,
+                    blockPosition
+                );
             },
         }
     );
@@ -178,17 +153,11 @@ function ActiveObjectView({
                     left,
                     top: top + delta.top,
                 };
-
-                const updateBlocks = canvas.blocks.map((block) => {
-                    if (block.id === activeBlockId) {
-                        block.size = blockSize;
-                        block.position = blockPosition;
-                    }
-                    return block;
-                });
-
-                canvas.blocks = updateBlocks;
-                createSaveCanvasAction(canvas);
+                createDragAndDropAction(
+                    activeBlockId,
+                    blockSize,
+                    blockPosition
+                );
             },
         }
     );
@@ -206,17 +175,11 @@ function ActiveObjectView({
                     left,
                     top,
                 };
-
-                const updateBlocks = canvas.blocks.map((block) => {
-                    if (block.id === activeBlockId) {
-                        block.size = blockSize;
-                        block.position = blockPosition;
-                    }
-                    return block;
-                });
-
-                canvas.blocks = updateBlocks;
-                createSaveCanvasAction(canvas);
+                createDragAndDropAction(
+                    activeBlockId,
+                    blockSize,
+                    blockPosition
+                );
             },
         }
     );
@@ -234,17 +197,11 @@ function ActiveObjectView({
                     left,
                     top,
                 };
-
-                const updateBlocks = canvas.blocks.map((block) => {
-                    if (block.id === activeBlockId) {
-                        block.size = blockSize;
-                        block.position = blockPosition;
-                    }
-                    return block;
-                });
-
-                canvas.blocks = updateBlocks;
-                createSaveCanvasAction(canvas);
+                createDragAndDropAction(
+                    activeBlockId,
+                    blockSize,
+                    blockPosition
+                );
             },
         }
     );
@@ -262,17 +219,11 @@ function ActiveObjectView({
                     left,
                     top,
                 };
-
-                const updateBlocks = canvas.blocks.map((block) => {
-                    if (block.id === activeBlockId) {
-                        block.size = blockSize;
-                        block.position = blockPosition;
-                    }
-                    return block;
-                });
-
-                canvas.blocks = updateBlocks;
-                createSaveCanvasAction(canvas);
+                createDragAndDropAction(
+                    activeBlockId,
+                    blockSize,
+                    blockPosition
+                );
             },
         }
     );
@@ -290,17 +241,11 @@ function ActiveObjectView({
                     left,
                     top: top + delta.top,
                 };
-
-                const updateBlocks = canvas.blocks.map((block) => {
-                    if (block.id === activeBlockId) {
-                        block.size = blockSize;
-                        block.position = blockPosition;
-                    }
-                    return block;
-                });
-
-                canvas.blocks = updateBlocks;
-                createSaveCanvasAction(canvas);
+                createDragAndDropAction(
+                    activeBlockId,
+                    blockSize,
+                    blockPosition
+                );
             },
         }
     );

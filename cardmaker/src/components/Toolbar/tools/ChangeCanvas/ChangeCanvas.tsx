@@ -9,12 +9,13 @@ type ChangeCanvasProps = {
 };
 
 function ChangeCanvas({ canvas }: ChangeCanvasProps) {
-    const { createSaveCanvasAction } = useAppActions();
+    const { createSaveCanvasAction, createChangeCanvasColorAction } =
+        useAppActions();
 
     const handleChangeColor = (newColor: string) => {
-        canvas.bgColor = newColor;
-        createSaveCanvasAction(canvas);
+        createChangeCanvasColorAction(newColor);
     };
+
     const handleChangeWidth = (newWidth: string) => {
         canvas.size.width = parseInt(newWidth);
         createSaveCanvasAction(canvas);
