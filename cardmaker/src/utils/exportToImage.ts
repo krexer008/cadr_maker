@@ -1,5 +1,5 @@
 import * as htmlToImage from "html-to-image";
-import { toPng, toJpeg, toBlob, toPixelData, toSvg } from "html-to-image";
+//import { toPng, toJpeg, toBlob, toPixelData, toSvg } from "html-to-image";
 
 export const exportToImage = (canvasId: string) => {
     const canvas = document.getElementById(canvasId);

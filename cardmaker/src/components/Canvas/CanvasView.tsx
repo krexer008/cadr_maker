@@ -48,7 +48,6 @@ function CanvasView({
     let ind = -1;
 
     const handleChangeText = (textValue: string) => {
-        onSelectActive(canvasData.blocks[ind].id);
         createChangeTextBlockValue(textValue, ind);
     };
 

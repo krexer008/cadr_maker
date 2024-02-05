@@ -73,7 +73,6 @@ const editorReducer = (
             return state;
         }
         case EditorActionType.REDO: {
-            console.log("redo");
             const nextState = history.redo();
             if (nextState) {
                 return nextState;

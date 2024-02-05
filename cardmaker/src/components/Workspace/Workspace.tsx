@@ -7,7 +7,6 @@ function Workspace() {
     const { createSelectActiveAction } = useAppActions();
     const editorData = useAppSelector(selectEditor);
     const canvasData = editorData.canvas;
-
     const handleResetActive = () => {
         createSelectActiveAction("");
     };

@@ -10,7 +10,6 @@ import {
 } from "../../utils/utils";
 import { useAppActions } from "../../redux/hooks";
 import { exportToImage } from "../../utils/exportToImage";
-import { createRedoAction, createUndoAction } from "../../redux/actionCreators";
 
 type MenuFileProps = {
     saveToFile: () => void;
@@ -19,7 +18,8 @@ type MenuFileProps = {
 
 function Header({ saveToFile, loadFromFile }: MenuFileProps) {
     const editorModel = useSelector(selectEditor);
-    const { createSaveCanvasAction } = useAppActions();
+    const { createSaveCanvasAction, createRedoAction, createUndoAction } =
+        useAppActions();
     const canvas = editorModel.canvas;
 
     const resetModelHandler = () => {

@@ -15,14 +15,12 @@ function ChangeImage() {
         if (updateCanvas.active === updateCanvas.id) {
             updateCanvas.bgImage.source = image;
         } else {
-            const updateBlocks = editorData.canvas.blocks.map(
-                (block, index) => {
-                    if (block.id === updateCanvas.active && "image" in block) {
-                        ind = index;
-                        return (block.image.source = image);
-                    }
+            editorData.canvas.blocks.map((block, index) => {
+                if (block.id === updateCanvas.active && "image" in block) {
+                    ind = index;
+                    return (block.image.source = image);
                 }
-            );
+            });
         }
         createSaveCanvasAction(updateCanvas);
     };
