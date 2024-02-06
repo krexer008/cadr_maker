@@ -93,12 +93,22 @@ const editorReducer = (
             const { newColor } = action.payload;
             const newCanvas = {
                 ...state.canvas,
+<<<<<<< HEAD
                 bgColor: newColor,
             };
+=======
+                color: newColor,
+            };
+            console.log(newColor);
+>>>>>>> bc01a5f6d781ff6ee8eea92e52f8c95e75742995
             const updateState = {
                 ...state,
                 canvas: newCanvas,
             };
+<<<<<<< HEAD
+=======
+            console.log(updateState.canvas.bgColor);
+>>>>>>> bc01a5f6d781ff6ee8eea92e52f8c95e75742995
             history.addHistoryItem(updateState);
             return updateState;
         }
