@@ -19,11 +19,6 @@ function ChangeBlockArt({ id, block }: ChangeProps) {
         }
     });
 
-    const handleChangeBorderColor = (newColor: string) => {
-        block.borderColor = newColor;
-        editorData.canvas.blocks[ind] = block;
-        createSaveCanvasAction(editorData.canvas);
-    };
     const handleChangeArtObject = (newArt: ArtValue) => {
         block.value = newArt;
         editorData.canvas.blocks[ind] = block;
@@ -36,11 +31,7 @@ function ChangeBlockArt({ id, block }: ChangeProps) {
                 artValue={block.value}
                 setValue={handleChangeArtObject}
             />
-            <ChangeColor
-                title="Border color"
-                value={block.borderColor}
-                setValue={handleChangeBorderColor}
-            />
+            <ChangeColor />
         </div>
     );
 }

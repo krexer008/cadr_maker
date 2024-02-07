@@ -63,7 +63,7 @@ function ChangeText({ id, block }: ChangeProps) {
 
     return (
         <div className={css.textbar}>
-            <ChangeColor value={block.color} setValue={handleChangeColor} />
+            <ChangeColor />
             <div className={css.toolblock}>
                 <div className={css.tool}>
                     <ToolbarButton

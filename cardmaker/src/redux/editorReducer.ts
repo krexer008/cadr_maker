@@ -1,5 +1,5 @@
 import { createHistory } from "../model/history";
-import { Editor, TextBlockType } from "../model/types";
+import { Editor, ImageBlockType, TextBlockType } from "../model/types";
 import { getEditorModel } from "../utils/utils";
 import { EditorAction, EditorActionType } from "./editorActions";
 
@@ -12,6 +12,80 @@ const editorReducer = (
     action: EditorAction
 ) => {
     switch (action.type) {
+        case EditorActionType.CHANGE_COLOR: {
+            const { newColor } = action.payload;
+            const active = state.canvas.active;
+            if (active == state.canvas.id) {
+                const updateCanvas = {
+                    ...state.canvas,
+                    bgColor: newColor,
+                };
+                const updateState = {
+                    ...state,
+                    canvas: updateCanvas,
+                };
+                history.addHistoryItem(updateState);
+                return updateState;
+            } else {
+                const newBlocksState = [...state.canvas.blocks].map((block) => {
+                    if (block.id === active && "color" in block) {
+                        return {
+                            ...block,
+                            color: newColor,
+                        };
+                    }
+                    return block;
+                });
+                const updateCanvas = {
+                    ...state.canvas,
+                    blocks: newBlocksState,
+                };
+                const updateState = {
+                    ...state,
+                    canvas: updateCanvas,
+                };
+                history.addHistoryItem(updateState);
+                return updateState;
+            }
+        }
+
+        case EditorActionType.CHANGE_IMAGE: {
+            const { newImage } = action.payload;
+            const active = state.canvas.active;
+            if (active == state.canvas.id) {
+                const updateCanvas = {
+                    ...state.canvas,
+                    bgImage: newImage,
+                };
+                const updateState = {
+                    ...state,
+                    canvas: updateCanvas,
+                };
+                history.addHistoryItem(updateState);
+                return updateState;
+            } else {
+                const newBlocksState = [...state.canvas.blocks].map((block) => {
+                    if (block.id === active && "image" in block) {
+                        return {
+                            ...block,
+                            image: newImage,
+                        } as ImageBlockType;
+                    }
+                    return block;
+                });
+                const updateCanvas = {
+                    ...state.canvas,
+                    blocks: newBlocksState,
+                };
+                const updateState = {
+                    ...state,
+                    canvas: updateCanvas,
+                };
+                history.addHistoryItem(updateState);
+                return updateState;
+            }
+        }
+
         case EditorActionType.DRAG_N_DROP: {
             const { activeBlockId, blockSize, blockPosition } = action.payload;
             const newBlocksState = state.canvas.blocks.map((block) => {
@@ -20,7 +94,7 @@ const editorReducer = (
                         ...block,
                         size: blockSize,
                         position: blockPosition,
-                    } as TextBlockType;
+                    };
                 }
                 return block;
             });
@@ -89,26 +163,37 @@ const editorReducer = (
             return updateState;
         }
 
-        case EditorActionType.CHANGE_CANVAS_COLOR: {
-            const { newColor } = action.payload;
+        case EditorActionType.CHANGE_CANVAS_HEIGHT: {
+            const { newHeight } = action.payload;
+            const newSize = {
+                ...state.canvas.size,
+                height: newHeight,
+            };
             const newCanvas = {
                 ...state.canvas,
-<<<<<<< HEAD
-                bgColor: newColor,
+                size: newSize,
             };
-=======
-                color: newColor,
-            };
-            console.log(newColor);
->>>>>>> bc01a5f6d781ff6ee8eea92e52f8c95e75742995
             const updateState = {
                 ...state,
                 canvas: newCanvas,
             };
-<<<<<<< HEAD
-=======
-            console.log(updateState.canvas.bgColor);
->>>>>>> bc01a5f6d781ff6ee8eea92e52f8c95e75742995
+            history.addHistoryItem(updateState);
+            return updateState;
+        }
+        case EditorActionType.CHANGE_CANVAS_WIDHT: {
+            const { newWidth } = action.payload;
+            const newSize = {
+                ...state.canvas.size,
+                width: newWidth,
+            };
+            const newCanvas = {
+                ...state.canvas,
+                size: newSize,
+            };
+            const updateState = {
+                ...state,
+                canvas: newCanvas,
+            };
             history.addHistoryItem(updateState);
             return updateState;
         }

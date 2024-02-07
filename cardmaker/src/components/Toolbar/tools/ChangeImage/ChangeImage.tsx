@@ -1,32 +1,24 @@
 import css from "../../../../common/Common.module.css";
 import { useSelector } from "react-redux";
 import { selectEditor } from "../../../../redux/selectors";
-import { createSaveCanvasAction } from "../../../../redux/actionCreators";
+import { ImageType } from "../../../../model/types";
+import { useAppActions } from "../../../../redux/hooks";
+import { useState } from "react";
 
 function ChangeImage() {
     const editorData = useSelector(selectEditor);
-
-    let ind: number;
-    let link = "";
+    const { createChangeImageAction } = useAppActions();
+    const [link, setLink] = useState("");
     let value = "";
 
-    const saveImageToElement = (image: string) => {
-        const updateCanvas = editorData.canvas;
-        if (updateCanvas.active === updateCanvas.id) {
-            updateCanvas.bgImage.source = image;
-        } else {
-            editorData.canvas.blocks.map((block, index) => {
-                if (block.id === updateCanvas.active && "image" in block) {
-                    ind = index;
-                    return (block.image.source = image);
-                }
-            });
+    const saveImageToElement = (newImage: string) => {
+        if (editorData.canvas.active) {
+            const newImageElem: ImageType = { source: newImage };
+            createChangeImageAction(newImageElem);
         }
-        createSaveCanvasAction(updateCanvas);
     };
-
     const handleLinkChange = (url: string) => {
-        link = url;
+        setLink(url);
     };
 
     function toDataURL(url: string) {
@@ -48,10 +40,10 @@ function ChangeImage() {
     const onClickURL = () => {
         if (link.length) {
             toDataURL(link);
+            value = "";
         } else {
             console.log("enter URL");
         }
-        value = "";
     };
 
     const handleFileChange = (e: any) => {

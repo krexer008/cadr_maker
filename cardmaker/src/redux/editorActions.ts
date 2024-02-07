@@ -1,15 +1,20 @@
 import {
     ArtBlockType,
     Canvas,
+    ColorType,
     Editor,
     ImageBlockType,
+    ImageType,
     Position,
     Size,
     TextBlockType,
 } from "../model/types";
 
 enum EditorActionType {
-    CHANGE_CANVAS_COLOR = "CHANGE_CANVAS_COLOR",
+    CHANGE_COLOR = "CHANGE_COLOR",
+    CHANGE_IMAGE = "CHANGE_IMAGE",
+    CHANGE_CANVAS_HEIGHT = "CHANGE_CANVAS_HEIGHT",
+    CHANGE_CANVAS_WIDHT = "CHANGE_CANVAS_WIDHT",
     DRAG_N_DROP = "DRAG_N_DROP",
     DELETE_BLOCK = "DELETE_BLOCK",
     ADD_BLOCK = "ADD_BLOCK",
@@ -23,10 +28,24 @@ enum EditorActionType {
     REDO = "REDO",
 }
 
-type ChangeCanvasColorAction = {
-    type: EditorActionType.CHANGE_CANVAS_COLOR;
+type ChangeColorAction = {
+    type: EditorActionType.CHANGE_COLOR;
+    payload: { newColor: ColorType };
+};
+type ChangeImageAction = {
+    type: EditorActionType.CHANGE_IMAGE;
+    payload: { newImage: ImageType };
+};
+type ChangeCanvasHeightAction = {
+    type: EditorActionType.CHANGE_CANVAS_HEIGHT;
     payload: {
-        newColor: string;
+        newHeight: number;
+    };
+};
+type ChangeCanvasWidthAction = {
+    type: EditorActionType.CHANGE_CANVAS_WIDHT;
+    payload: {
+        newWidth: number;
     };
 };
 
@@ -97,7 +116,10 @@ type RedoAction = {
 };
 
 type EditorAction =
-    | ChangeCanvasColorAction
+    | ChangeColorAction
+    | ChangeImageAction
+    | ChangeCanvasHeightAction
+    | ChangeCanvasWidthAction
     | DragAndDropAction
     | DeleteBlockAction
     | AddBlockAction

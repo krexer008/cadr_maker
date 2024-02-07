@@ -59,8 +59,8 @@ type ImageBlockType = Block & {
 type ArtBlockType = Block & {
     type: "art";
     value: ArtValue;
-    bgColor: ColorType;
-    borderColor: ColorType;
+    //bgColor: ColorType;
+    color: ColorType;
 };
 
 type ActiveElement = string;

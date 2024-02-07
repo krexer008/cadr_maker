@@ -1,22 +1,24 @@
+import { useState } from "react";
 import css from "../../../../common/Common.module.css";
+import { useAppActions } from "../../../../redux/hooks";
 
-type ChangeColorProps = {
-    title?: string;
-    value: string;
-    setValue: (newColor: string) => void;
-};
+function ChangeColor() {
+    const { createChangeColorAction } = useAppActions();
+    const [color, setColor] = useState("#ffffff");
+    function handleChangeColor(newColor: string) {
+        setColor(newColor);
+        createChangeColorAction(newColor);
+    }
 
-function ChangeColor({ title, value, setValue }: ChangeColorProps) {
     return (
         <div className={css.toolblock}>
             <div className={css.tool}>
-                <label htmlFor="bg-color">{title ? title : "Color"}</label>
+                <label htmlFor="color">Color</label>
                 <input
-                    id="bg-color"
+                    id="color"
                     type="color"
-                    value={value}
-                    defaultValue={value}
-                    onChange={(e) => setValue(e.target.value)}
+                    value={color}
+                    onChange={(e) => handleChangeColor(e.target.value)}
                 />
             </div>
         </div>

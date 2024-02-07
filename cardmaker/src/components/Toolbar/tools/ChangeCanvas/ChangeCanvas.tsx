@@ -9,25 +9,20 @@ type ChangeCanvasProps = {
 };
 
 function ChangeCanvas({ canvas }: ChangeCanvasProps) {
-    const { createSaveCanvasAction, createChangeCanvasColorAction } =
+    const { createChangeCanvasWidthAction, createChangeCanvasHeightAction } =
         useAppActions();
 
-    const handleChangeColor = (newColor: string) => {
-        createChangeCanvasColorAction(newColor);
+    const handleChangeWidth = (newWidth: string) => {
+        createChangeCanvasWidthAction(parseInt(newWidth));
     };
 
-    const handleChangeWidth = (newWidth: string) => {
-        canvas.size.width = parseInt(newWidth);
-        createSaveCanvasAction(canvas);
-    };
     const handleChangeHeight = (newHeight: string) => {
-        canvas.size.height = parseInt(newHeight);
-        createSaveCanvasAction(canvas);
+        createChangeCanvasHeightAction(parseInt(newHeight));
     };
 
     return (
         <div>
-            <ChangeColor value={canvas.bgColor} setValue={handleChangeColor} />
+            <ChangeColor />
             <ChangeImage />
             <ChangeSize
                 size={canvas.size}

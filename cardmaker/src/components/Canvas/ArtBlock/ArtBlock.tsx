@@ -20,7 +20,7 @@ type artBlockProps = {
 };
 
 function ArtBlock({ block, preview, isSelected, onClick }: artBlockProps) {
-    const { value, borderColor, size, position, transform } = block;
+    const { value, color, size, position, transform } = block;
     let ArtObjectContent;
     const sizeArt: Size = {
         width: preview ? size.width * 0.23 : size.width,
@@ -29,53 +29,37 @@ function ArtBlock({ block, preview, isSelected, onClick }: artBlockProps) {
 
     switch (value) {
         case ArtValue.Arrow:
-            ArtObjectContent = (
-                <ArtObjectArrow color={borderColor} size={sizeArt} />
-            );
+            ArtObjectContent = <ArtObjectArrow color={color} size={sizeArt} />;
             break;
         case ArtValue.Circle:
-            ArtObjectContent = (
-                <ArtObjectCircle color={borderColor} size={sizeArt} />
-            );
+            ArtObjectContent = <ArtObjectCircle color={color} size={sizeArt} />;
             break;
         case ArtValue.Chat:
-            ArtObjectContent = (
-                <ArtObjectChat color={borderColor} size={sizeArt} />
-            );
+            ArtObjectContent = <ArtObjectChat color={color} size={sizeArt} />;
             break;
         case ArtValue.Clock:
-            ArtObjectContent = (
-                <ArtObjectClock color={borderColor} size={sizeArt} />
-            );
+            ArtObjectContent = <ArtObjectClock color={color} size={sizeArt} />;
             break;
         case ArtValue.Flower:
-            ArtObjectContent = (
-                <ArtObjectFlower color={borderColor} size={sizeArt} />
-            );
+            ArtObjectContent = <ArtObjectFlower color={color} size={sizeArt} />;
             break;
         case ArtValue.Gift:
-            ArtObjectContent = (
-                <ArtObjectGift color={borderColor} size={sizeArt} />
-            );
+            ArtObjectContent = <ArtObjectGift color={color} size={sizeArt} />;
             break;
         case ArtValue.Heart:
-            ArtObjectContent = (
-                <ArtObjectHeart color={borderColor} size={sizeArt} />
-            );
+            ArtObjectContent = <ArtObjectHeart color={color} size={sizeArt} />;
             break;
         case ArtValue.Square:
-            ArtObjectContent = (
-                <ArtObjectSquare color={borderColor} size={sizeArt} />
-            );
+            ArtObjectContent = <ArtObjectSquare color={color} size={sizeArt} />;
             break;
         case ArtValue.ThugLife:
             ArtObjectContent = (
-                <ArtObjectThugLife color={borderColor} size={sizeArt} />
+                <ArtObjectThugLife color={color} size={sizeArt} />
             );
             break;
         case ArtValue.ThumbsUp:
             ArtObjectContent = (
-                <ArtObjectThumbsUp color={borderColor} size={sizeArt} />
+                <ArtObjectThumbsUp color={color} size={sizeArt} />
             );
             break;
         default:

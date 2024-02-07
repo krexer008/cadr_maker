@@ -96,8 +96,8 @@ function getNewArt(): ArtBlockType {
             top: 50,
         },
         value: ArtValue.ThugLife,
-        bgColor: "",
-        borderColor: "#000000",
+        //bgColor: "",
+        color: "#000000",
         transform: {
             type: "scale",
             value: 1,
