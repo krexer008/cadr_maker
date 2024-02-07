@@ -30,7 +30,6 @@ function createHistory<T>(initHystoryAction: T): Hystory<T> {
             // Смещаем указатель на один назад
             --nextItemIndex;
 
-            console.log(nextItemIndex);
             // Возвращаем элемент из истории
             return historyItems[nextItemIndex];
         },
@@ -41,7 +40,6 @@ function createHistory<T>(initHystoryAction: T): Hystory<T> {
             }
             // Смещаем указатель на один вперед
             ++nextItemIndex;
-            console.log(nextItemIndex);
             // Получаем элемент из истории
             return historyItems[nextItemIndex];
         },

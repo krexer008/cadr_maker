@@ -1,6 +1,7 @@
 import { EditorActionType } from "./editorActions";
 import {
     ArtBlockType,
+    ArtValue,
     Canvas,
     ColorType,
     Editor,
@@ -10,6 +11,64 @@ import {
     Size,
     TextBlockType,
 } from "../model/types";
+
+function createChangeArtAction(newArt: ArtValue) {
+    return {
+        type: EditorActionType.CHANGE_ART,
+        payload: { newArt },
+    };
+}
+
+function createChangeFontBoldlineAction(newBold: boolean, blockIndex: number) {
+    return {
+        type: EditorActionType.CHANGE_FONT_BOLD,
+        payload: { newBold, blockIndex },
+    };
+}
+
+function createChangeFontCursivelineAction(
+    newCursive: boolean,
+    blockIndex: number
+) {
+    return {
+        type: EditorActionType.CHANGE_FONT_CURSIVE,
+        payload: { newCursive, blockIndex },
+    };
+}
+
+function createChangeFontUnderlineAction(
+    newUnderline: boolean,
+    blockIndex: number
+) {
+    return {
+        type: EditorActionType.CHANGE_FONT_UNDERLINE,
+        payload: { newUnderline, blockIndex },
+    };
+}
+
+function createChangeFontFamilyAction(
+    newFontFamily: string,
+    blockIndex: number
+) {
+    return {
+        type: EditorActionType.CHANGE_FONT_FAMILY,
+        payload: { newFontFamily, blockIndex },
+    };
+}
+
+function createChangeFontSizeAction(newFontSize: number, blockIndex: number) {
+    return {
+        type: EditorActionType.CHANGE_FONT_SIZE,
+        payload: { newFontSize, blockIndex },
+    };
+}
+
+function createChangeTextBlockValue(textValue: string, blockIndex: number) {
+    return {
+        type: EditorActionType.CHANGE_TEXT_VALUE,
+        payload: { textValue, blockIndex },
+    };
+}
 
 function createChangeColorAction(newColor: ColorType) {
     return {
@@ -68,13 +127,6 @@ function createAddBlockAction(
     };
 }
 
-function createChangeTextBlockValue(textValue: string, blockIndex: number) {
-    return {
-        type: EditorActionType.CHANGE_TEXT_VALUE,
-        payload: { textValue, blockIndex },
-    };
-}
-
 function createSelectActiveAction(activeId: string) {
     return {
         type: EditorActionType.SELECT_ACTIVE,
@@ -116,6 +168,12 @@ function createRedoAction() {
 }
 
 export {
+    createChangeArtAction,
+    createChangeFontBoldlineAction,
+    createChangeFontCursivelineAction,
+    createChangeFontUnderlineAction,
+    createChangeFontFamilyAction,
+    createChangeFontSizeAction,
     createChangeColorAction,
     createChangeImageAction,
     createChangeCanvasHeightAction,

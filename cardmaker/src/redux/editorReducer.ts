@@ -1,5 +1,10 @@
 import { createHistory } from "../model/history";
-import { Editor, ImageBlockType, TextBlockType } from "../model/types";
+import {
+    ArtBlockType,
+    Editor,
+    ImageBlockType,
+    TextBlockType,
+} from "../model/types";
 import { getEditorModel } from "../utils/utils";
 import { EditorAction, EditorActionType } from "./editorActions";
 
@@ -12,6 +17,163 @@ const editorReducer = (
     action: EditorAction
 ) => {
     switch (action.type) {
+        case EditorActionType.CHANGE_ART: {
+            const { newArt } = action.payload;
+            const active = state.canvas.active;
+            const newBlocksState = state.canvas.blocks.map((block) => {
+                if (block.id === active) {
+                    return {
+                        ...block,
+                        value: newArt,
+                    } as ArtBlockType;
+                }
+                return block;
+            });
+            const newCanvas = {
+                ...state.canvas,
+                blocks: newBlocksState,
+            };
+            const updateState = {
+                ...state,
+                canvas: newCanvas,
+            };
+            history.addHistoryItem(updateState);
+            return updateState;
+        }
+        case EditorActionType.CHANGE_FONT_BOLD: {
+            const { newBold, blockIndex } = action.payload;
+            const newBlocksState = state.canvas.blocks.map((block, index) => {
+                if (index === blockIndex) {
+                    return {
+                        ...block,
+                        bold: newBold,
+                    } as TextBlockType;
+                }
+                return block;
+            });
+            const newCanvas = {
+                ...state.canvas,
+                blocks: newBlocksState,
+            };
+            const updateState = {
+                ...state,
+                canvas: newCanvas,
+            };
+            history.addHistoryItem(updateState);
+            return updateState;
+        }
+        case EditorActionType.CHANGE_FONT_CURSIVE: {
+            const { newCursive, blockIndex } = action.payload;
+            const newBlocksState = state.canvas.blocks.map((block, index) => {
+                if (index === blockIndex) {
+                    return {
+                        ...block,
+                        cursive: newCursive,
+                    } as TextBlockType;
+                }
+                return block;
+            });
+            const newCanvas = {
+                ...state.canvas,
+                blocks: newBlocksState,
+            };
+            const updateState = {
+                ...state,
+                canvas: newCanvas,
+            };
+            history.addHistoryItem(updateState);
+            return updateState;
+        }
+        case EditorActionType.CHANGE_FONT_UNDERLINE: {
+            const { newUnderline, blockIndex } = action.payload;
+            const newBlocksState = state.canvas.blocks.map((block, index) => {
+                if (index === blockIndex) {
+                    return {
+                        ...block,
+                        underline: newUnderline,
+                    } as TextBlockType;
+                }
+                return block;
+            });
+            const newCanvas = {
+                ...state.canvas,
+                blocks: newBlocksState,
+            };
+            const updateState = {
+                ...state,
+                canvas: newCanvas,
+            };
+            history.addHistoryItem(updateState);
+            return updateState;
+        }
+        case EditorActionType.CHANGE_FONT_FAMILY: {
+            const { newFontFamily, blockIndex } = action.payload;
+            const newBlocksState = state.canvas.blocks.map((block, index) => {
+                if (index === blockIndex) {
+                    return {
+                        ...block,
+                        fontFamily: newFontFamily,
+                    } as TextBlockType;
+                }
+                return block;
+            });
+            const newCanvas = {
+                ...state.canvas,
+                blocks: newBlocksState,
+            };
+            const updateState = {
+                ...state,
+                canvas: newCanvas,
+            };
+            history.addHistoryItem(updateState);
+            return updateState;
+        }
+        case EditorActionType.CHANGE_FONT_SIZE: {
+            const { newFontSize, blockIndex } = action.payload;
+            const newBlocksState = state.canvas.blocks.map((block, index) => {
+                if (index === blockIndex) {
+                    return {
+                        ...block,
+                        fontSize: newFontSize,
+                    } as TextBlockType;
+                }
+                return block;
+            });
+            const newCanvas = {
+                ...state.canvas,
+                blocks: newBlocksState,
+            };
+            const updateState = {
+                ...state,
+                canvas: newCanvas,
+            };
+            history.addHistoryItem(updateState);
+            return updateState;
+        }
+
+        case EditorActionType.CHANGE_TEXT_VALUE: {
+            const { textValue, blockIndex } = action.payload;
+            const newBlocksState = state.canvas.blocks.map((block, index) => {
+                if (index === blockIndex) {
+                    return {
+                        ...block,
+                        value: textValue,
+                    } as TextBlockType;
+                }
+                return block;
+            });
+            const newCanvas = {
+                ...state.canvas,
+                blocks: newBlocksState,
+            };
+            const updateState = {
+                ...state,
+                canvas: newCanvas,
+            };
+            history.addHistoryItem(updateState);
+            return updateState;
+        }
+
         case EditorActionType.CHANGE_COLOR: {
             const { newColor } = action.payload;
             const active = state.canvas.active;
@@ -131,29 +293,6 @@ const editorReducer = (
             const newCanvas = {
                 ...state.canvas,
                 blocks: [...state.canvas.blocks, newBlock],
-            };
-            const updateState = {
-                ...state,
-                canvas: newCanvas,
-            };
-            history.addHistoryItem(updateState);
-            return updateState;
-        }
-
-        case EditorActionType.CHANGE_TEXT_VALUE: {
-            const { textValue, blockIndex } = action.payload;
-            const newBlocksState = state.canvas.blocks.map((block, index) => {
-                if (index === blockIndex) {
-                    return {
-                        ...block,
-                        value: textValue,
-                    } as TextBlockType;
-                }
-                return block;
-            });
-            const newCanvas = {
-                ...state.canvas,
-                blocks: newBlocksState,
             };
             const updateState = {
                 ...state,

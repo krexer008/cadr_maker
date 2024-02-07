@@ -36,7 +36,7 @@ function Toolbar() {
             menu = <ChangeImage />;
             break;
         case "art":
-            menu = <ChangeBlockArt block={block as ArtBlockType} id={active} />;
+            menu = <ChangeBlockArt />;
             break;
         default:
             menu = <ChangeTemplates templates={editorData.templates} />;

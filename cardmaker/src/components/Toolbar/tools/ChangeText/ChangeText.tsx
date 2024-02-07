@@ -4,18 +4,27 @@ import ToolbarButton from "../../ToolbarButton/ToolbarButton";
 import { selectEditor } from "../../../../redux/selectors";
 import { useAppActions, useAppSelector } from "../../../../redux/hooks";
 import { TextBlockType } from "../../../../model/types";
+import { useState } from "react";
 
 type ChangeProps = { id: string; block: TextBlockType };
 
 const Fonts = ["Arial", "Calibri", "Impact", "Times New Roman", "Symbol"];
-const FontSize = [8, 10, 12, 14, 16, 18, 20, 24, 28, 32, 36, 40];
+const FontSize = [
+    8, 10, 12, 14, 16, 18, 20, 24, 28, 32, 36, 40, 58, 66, 72, 86, 98, 106, 114,
+    122, 130, 142, 154, 166, 178, 188, 196, 202,
+];
 
 function ChangeText({ id, block }: ChangeProps) {
     const editorData = useAppSelector(selectEditor);
-    const { createSaveCanvasAction } = useAppActions();
-
-    let ind: number;
-    const updateBlocks = editorData.canvas.blocks.map((block, index) => {
+    const {
+        createChangeFontSizeAction,
+        createChangeFontFamilyAction,
+        createChangeFontUnderlineAction,
+        createChangeFontCursivelineAction,
+        createChangeFontBoldlineAction,
+    } = useAppActions();
+    const [ind, setInd] = useState<number>(-1);
+    editorData.canvas.blocks.map((block, index) => {
         if (
             block.id === id &&
             "fontSize" in block &&
@@ -25,40 +34,24 @@ function ChangeText({ id, block }: ChangeProps) {
             "cursive" in block &&
             "underline" in block
         ) {
-            ind = index;
+            setInd(index);
         }
     });
 
-    const handleChangeColor = (newColor: string) => {
-        block.color = newColor;
-        editorData.canvas.blocks[ind] = block;
-        createSaveCanvasAction(editorData.canvas);
-    };
-
     const handlerChangeBold = (bold: boolean) => {
-        block.bold = bold;
-        editorData.canvas.blocks[ind] = block;
-        createSaveCanvasAction(editorData.canvas);
+        createChangeFontBoldlineAction(bold, ind);
     };
     const handlerChangeCursive = (cursive: boolean) => {
-        block.cursive = cursive;
-        editorData.canvas.blocks[ind] = block;
-        createSaveCanvasAction(editorData.canvas);
+        createChangeFontCursivelineAction(cursive, ind);
     };
     const handlerChangeUnderline = (underline: boolean) => {
-        block.underline = underline;
-        editorData.canvas.blocks[ind] = block;
-        createSaveCanvasAction(editorData.canvas);
+        createChangeFontUnderlineAction(underline, ind);
     };
     const handlerChangeFontFamily = (font: string) => {
-        block.fontFamily = font;
-        editorData.canvas.blocks[ind] = block;
-        createSaveCanvasAction(editorData.canvas);
+        createChangeFontFamilyAction(font, ind);
     };
     const handlerChangeFontSize = (font: string) => {
-        block.fontSize = parseInt(font);
-        editorData.canvas.blocks[ind] = block;
-        createSaveCanvasAction(editorData.canvas);
+        createChangeFontSizeAction(parseInt(font), ind);
     };
 
     return (

@@ -1,12 +1,15 @@
 import css from "../../../../../common/Common.module.css";
-import { ArtValue } from "../../../../../model/types";
+import { ArtBlockType, ArtValue } from "../../../../../model/types";
+import { useAppActions, useAppSelector } from "../../../../../redux/hooks";
+import { selectEditor } from "../../../../../redux/selectors";
 
-type ChangeProps = {
-    artValue: ArtValue;
-    setValue: (newArt: ArtValue) => void;
-};
+function ChangeArt() {
+    const editorData = useAppSelector(selectEditor);
+    const { createChangeArtAction } = useAppActions();
+    const activeBlock = editorData.canvas.blocks.find(
+        (block) => block.id === editorData.canvas.active
+    ) as ArtBlockType;
 
-function ChangeArt({ artValue, setValue }: ChangeProps) {
     const ArtValues = [
         ArtValue.Arrow,
         ArtValue.Chat,
@@ -31,14 +34,19 @@ function ChangeArt({ artValue, setValue }: ChangeProps) {
         "ThugLife",
         "ThumbsUp",
     ];
+
+    const handleChangeArtObject = (value: string) => {
+        const changeArt = parseInt(value);
+        createChangeArtAction(changeArt);
+    };
     return (
         <div className={css.tool}>
             <label htmlFor="art-name">Art object: </label>
             <select
                 id="art-name"
-                defaultValue={artValue}
+                defaultValue={activeBlock.value}
                 onChange={(event) => {
-                    setValue(parseInt(event.target.value));
+                    handleChangeArtObject(event.target.value);
                 }}
             >
                 {ArtValues.map((art) => (

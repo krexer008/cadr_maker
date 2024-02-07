@@ -1,13 +1,13 @@
 import { useState } from "react";
 import css from "../../../../common/Common.module.css";
 import { useAppActions } from "../../../../redux/hooks";
-
 function ChangeColor() {
     const { createChangeColorAction } = useAppActions();
     const [color, setColor] = useState("#ffffff");
+
     function handleChangeColor(newColor: string) {
-        setColor(newColor);
         createChangeColorAction(newColor);
+        setColor(newColor);
     }
 
     return (
@@ -17,7 +17,7 @@ function ChangeColor() {
                 <input
                     id="color"
                     type="color"
-                    value={color}
+                    defaultValue={color}
                     onChange={(e) => handleChangeColor(e.target.value)}
                 />
             </div>

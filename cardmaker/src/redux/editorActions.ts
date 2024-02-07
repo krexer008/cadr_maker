@@ -1,5 +1,6 @@
 import {
     ArtBlockType,
+    ArtValue,
     Canvas,
     ColorType,
     Editor,
@@ -11,6 +12,13 @@ import {
 } from "../model/types";
 
 enum EditorActionType {
+    CHANGE_ART = "CHANGE_ART",
+    CHANGE_FONT_BOLD = "CHANGE_FONT_BOLD",
+    CHANGE_FONT_CURSIVE = "CHANGE_FONT_CURSIVE",
+    CHANGE_FONT_UNDERLINE = "CHANGE_FONT_UNDERLINE",
+    CHANGE_FONT_FAMILY = "CHANGE_FONT_FAMILY",
+    CHANGE_FONT_SIZE = "CHANGE_FONT_SIZE",
+    CHANGE_TEXT_VALUE = "CHANGE_TEXT_VALUE",
     CHANGE_COLOR = "CHANGE_COLOR",
     CHANGE_IMAGE = "CHANGE_IMAGE",
     CHANGE_CANVAS_HEIGHT = "CHANGE_CANVAS_HEIGHT",
@@ -18,7 +26,6 @@ enum EditorActionType {
     DRAG_N_DROP = "DRAG_N_DROP",
     DELETE_BLOCK = "DELETE_BLOCK",
     ADD_BLOCK = "ADD_BLOCK",
-    CHANGE_TEXT_VALUE = "CHANGE_TEXT_VALUE",
     SELECT_ACTIVE = "SELECT_ACTIVE",
     UPDATE_EDITOR = "UPDATE_EDITOR",
     LOAD_CANVAS = "LOAD_CANVAS",
@@ -27,6 +34,57 @@ enum EditorActionType {
     UNDO = "UNDO",
     REDO = "REDO",
 }
+
+type ChangeArtAction = {
+    type: EditorActionType.CHANGE_ART;
+    payload: {
+        newArt: ArtValue;
+    };
+};
+
+type ChangeFontBoldAction = {
+    type: EditorActionType.CHANGE_FONT_BOLD;
+    payload: {
+        newBold: boolean;
+        blockIndex: number;
+    };
+};
+type ChangeFontCursiveAction = {
+    type: EditorActionType.CHANGE_FONT_CURSIVE;
+    payload: {
+        newCursive: boolean;
+        blockIndex: number;
+    };
+};
+type ChangeFontUnderlineAction = {
+    type: EditorActionType.CHANGE_FONT_UNDERLINE;
+    payload: {
+        newUnderline: boolean;
+        blockIndex: number;
+    };
+};
+type ChangeFontFamilyAction = {
+    type: EditorActionType.CHANGE_FONT_FAMILY;
+    payload: {
+        newFontFamily: string;
+        blockIndex: number;
+    };
+};
+type ChangeFontSizeAction = {
+    type: EditorActionType.CHANGE_FONT_SIZE;
+    payload: {
+        newFontSize: number;
+        blockIndex: number;
+    };
+};
+
+type ChangeTextBlockValue = {
+    type: EditorActionType.CHANGE_TEXT_VALUE;
+    payload: {
+        textValue: string;
+        blockIndex: number;
+    };
+};
 
 type ChangeColorAction = {
     type: EditorActionType.CHANGE_COLOR;
@@ -71,14 +129,6 @@ type AddBlockAction = {
     };
 };
 
-type ChangeTextBlockValue = {
-    type: EditorActionType.CHANGE_TEXT_VALUE;
-    payload: {
-        textValue: string;
-        blockIndex: number;
-    };
-};
-
 type SelectActiveAction = {
     type: EditorActionType.SELECT_ACTIVE;
     payload: {
@@ -116,6 +166,12 @@ type RedoAction = {
 };
 
 type EditorAction =
+    | ChangeArtAction
+    | ChangeFontBoldAction
+    | ChangeFontCursiveAction
+    | ChangeFontUnderlineAction
+    | ChangeFontFamilyAction
+    | ChangeFontSizeAction
     | ChangeColorAction
     | ChangeImageAction
     | ChangeCanvasHeightAction
