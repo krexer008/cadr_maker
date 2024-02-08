@@ -6,7 +6,7 @@ import ChangeBlockArt from "./tools/ChangeBlockArt/ChangeBlockArt";
 import ChangeCanvas from "./tools/ChangeCanvas/ChangeCanvas";
 import ChangeImage from "./tools/ChangeImage/ChangeImage";
 import ChangeTemplates from "./tools/ChangeTemplates/ChangeTemplates";
-import { ArtBlockType, TextBlockType } from "../../model/types";
+import { TextBlockType } from "../../model/types";
 
 function Toolbar() {
     const editorData = useSelector(selectEditor);

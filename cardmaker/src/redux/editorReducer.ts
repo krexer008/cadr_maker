@@ -293,6 +293,7 @@ const editorReducer = (
             const newCanvas = {
                 ...state.canvas,
                 blocks: [...state.canvas.blocks, newBlock],
+                active: newBlock.id,
             };
             const updateState = {
                 ...state,

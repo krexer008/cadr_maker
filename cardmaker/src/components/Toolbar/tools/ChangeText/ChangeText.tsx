@@ -4,7 +4,6 @@ import ToolbarButton from "../../ToolbarButton/ToolbarButton";
 import { selectEditor } from "../../../../redux/selectors";
 import { useAppActions, useAppSelector } from "../../../../redux/hooks";
 import { TextBlockType } from "../../../../model/types";
-import { useState } from "react";
 
 type ChangeProps = { id: string; block: TextBlockType };
 
@@ -23,18 +22,10 @@ function ChangeText({ id, block }: ChangeProps) {
         createChangeFontCursivelineAction,
         createChangeFontBoldlineAction,
     } = useAppActions();
-    const [ind, setInd] = useState<number>(-1);
+    let ind: number;
     editorData.canvas.blocks.map((block, index) => {
-        if (
-            block.id === id &&
-            "fontSize" in block &&
-            "fontFamily" in block &&
-            "color" in block &&
-            "bold" in block &&
-            "cursive" in block &&
-            "underline" in block
-        ) {
-            setInd(index);
+        if (block.id === id && block.type === "text") {
+            ind = index;
         }
     });
 
@@ -47,11 +38,11 @@ function ChangeText({ id, block }: ChangeProps) {
     const handlerChangeUnderline = (underline: boolean) => {
         createChangeFontUnderlineAction(underline, ind);
     };
-    const handlerChangeFontFamily = (font: string) => {
-        createChangeFontFamilyAction(font, ind);
+    const handlerChangeFontFamily = (fontFamily: string) => {
+        createChangeFontFamilyAction(fontFamily, ind);
     };
-    const handlerChangeFontSize = (font: string) => {
-        createChangeFontSizeAction(parseInt(font), ind);
+    const handlerChangeFontSize = (fontSize: string) => {
+        createChangeFontSizeAction(parseInt(fontSize), ind);
     };
 
     return (

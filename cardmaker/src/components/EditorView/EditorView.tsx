@@ -9,7 +9,6 @@ import { loadDatalFromLocal, saveJsonObjToFile } from "../../utils/fileutils";
 
 function EditorView() {
     const editorModel = useSelector(selectEditor);
-
     const { createLoadCanvas } = useAppActions();
 
     const loadFromFile = () => {

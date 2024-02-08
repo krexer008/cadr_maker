@@ -23,7 +23,6 @@ function Header({ saveToFile, loadFromFile }: MenuFileProps) {
         createRedoAction,
         createUndoAction,
         createAddBlockAction,
-        createSelectActiveAction,
         createDeleteBlockAction,
     } = useAppActions();
     const canvas = editorModel.canvas;
@@ -44,19 +43,16 @@ function Header({ saveToFile, loadFromFile }: MenuFileProps) {
     const handleAddNewText = () => {
         const newTextBlock = getNewText();
         createAddBlockAction(newTextBlock);
-        createSelectActiveAction(newTextBlock.id);
     };
 
     const handleAddNewArt = () => {
         const newArtBlock = getNewArt();
         createAddBlockAction(newArtBlock);
-        createSelectActiveAction(newArtBlock.id);
     };
 
     const handleAddNewImageBlock = () => {
         const newImageBlock = getNewImage();
         createAddBlockAction(newImageBlock);
-        createSelectActiveAction(newImageBlock.id);
     };
 
     const handleDeleteItem = () => {
@@ -108,7 +104,7 @@ function Header({ saveToFile, loadFromFile }: MenuFileProps) {
             />
 
             <HeaderButton
-                onClick={handleAddNewText}
+                onClick={() => handleAddNewText()}
                 className={"button"}
                 text="Add Text"
             />

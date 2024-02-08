@@ -15,7 +15,7 @@ function Template({ canvasData, index, onSelectTemplate }: TemplateProps) {
         return null;
     }
     const {
-        id,
+        //id,
         filter,
         size: { width, height },
         bgImage,
